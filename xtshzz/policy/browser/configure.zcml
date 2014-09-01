@@ -1,0 +1,28 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:z3c="http://namespaces.zope.org/z3c"    
+    i18n_domain="xtshzz.policy">
+
+  <browser:page
+    for="*"
+    name="tinymce-jsonconfiguration"
+    class=".tinymce.TinyMCEBrowserView"
+    permission="zope2.View"
+    attribute="jsonConfiguration"
+    layer=".interfaces.IXtshzzThemeSpecific"
+    />
+    
+   <z3c:widgetTemplate
+        mode="input"
+ 		widget="collective.z3cform.datetimewidget.interfaces.IDateWidget"        
+ 		layer=".interfaces.IXtshzzThemeSpecific"
+ 		template="templates/date_input.pt" />
+<!-- 		
+<include package="z3c.jbot" file="meta.zcml" />
+
+<browser:jbot
+    directory="overrides"
+    layer=".interfaces.IXtshzzThemeSpecific" />
+-->    
+</configure>
