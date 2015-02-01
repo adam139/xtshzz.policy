@@ -130,12 +130,14 @@ class FrontpageView(baseview):
             objurl = braindata[i].getURL()
             objtitle = braindata[i].Title
             outimg = """<div class="%(classes)s">
-                        <img src="%(imgsrc)s" alt="%(imgtitle)s"/>
+                        <a href="%(ourl)s"><img src="%(imgsrc)s" alt="%(imgtitle)s"/></a>
                           <div class="carousel-caption">
                             <h3>%(imgtitle)s</h3>
                               </div>
                                 </div>""" % dict(classes=''.join(["item ", self.active(i)]),
-                     imgsrc=''.join([objurl, "/@@images/image/preview"]),imgtitle=objtitle)
+                     ourl=objurl,
+                     imgsrc=''.join([objurl, "/@@images/image/preview"]),
+                     imgtitle=objtitle)
             outhtml2 = ''.join([outhtml2,outimg])   # quick concat string                    
 #        outhtml = outhtml +'</ol><div class="carousel-inner">'
         result = ''.join([outhtml,outhtml2])   # quick concat string

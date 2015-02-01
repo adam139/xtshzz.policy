@@ -26,11 +26,13 @@ setup(name='xtshzz.policy',
       install_requires=[
           'setuptools',
           'Products.CMFPlone',
+          'collective.wtf',
           'z3c.jbot',          
           'collective.quickupload',
           'collective.monkeypatcher',
           'diazotheme.bootstrap',
           'Products.ContentWellPortlets',
+          'collective.autopermission',
                                                                      
           # -*- Extra requirements: -*-
       ],
