@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from five import grok
 from zope.interface import alsoProvides, implements
 from zope.component import adapts
 from zope import schema
@@ -13,7 +14,7 @@ from my315ok.socialorgnization.registrysource import RegistrySource, DynamicVoca
 from my315ok.socialorgnization.content.orgnization import IOrgnization
 
 from xtshzz.policy import MessageFactory as _
-class IOrg(model.Schema):
+class IOrg(form.Schema):
     
     orgname = schema.Choice(
             title=_(u"organization name"),
@@ -29,11 +30,20 @@ class IOrg(model.Schema):
 alsoProvides(IOrg, IFormFieldProvider)
 
 class Org(object):
-    implements(IOrg)
-    adapts(IDexterityContent)
+#    implements(IOrg)
+#    adapts(IDexterityContent)
     
     def __init__(self, context):
         self.context = context
+        
+    def _get_orgname(self):
+        return self.context.orgname
+
+    def _set_orgname(self, value):
+        if isinstance(value, str):
+            raise ValueError('must be unicode.')
+        self.context.orgname = value
+    orgname = property(_get_orgname, _set_orgname)        
     
     def getOrgBn(self):
         "get sponsor"
@@ -52,7 +62,7 @@ class Org(object):
         return bn.orgnization_supervisor
     
     
-#
-#class QrcodeAdapter(grok.Adapter, Qrcode):
+
+#class OrgAdapter(grok.Adapter, Org):
 #    grok.context(IDexterityContent)
-#    grok.implements(IQrcode)        
+#    grok.implements(IOrg)        

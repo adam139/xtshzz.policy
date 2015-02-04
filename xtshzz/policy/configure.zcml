@@ -8,10 +8,11 @@
     
   <five:registerPackage package="." initialize=".initialize" />
   <includeDependencies package="." />
-  <grok:grok package=".browser" />  
+  
   <i18n:registerTranslations directory="locales" />
     <include package=".patch" />
-    <include package=".browser" />    
+    <include package=".browser" />
+    <include package=".behaviors" />        
     <include package=".portlet" />
     <include file="permissions.zcml" />
       

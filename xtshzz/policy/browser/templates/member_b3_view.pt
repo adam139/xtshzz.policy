@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"      
+      i18n:domain="dexterity.membrane">        
+      <head>
+   		<metal:block fill-slot="style_slot">
+      	<metal:block use-macro="here/@@xtshzz-policy-macros/macros/styles"/>
+   		</metal:block>
+		</head>
+<body>
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main" 
+    	tal:define="text_to_html nocall:here/@@xtshzz-policy-macros/text_to_html">
+
+       <section id="profile">
+       <div class="page-header">
+           <h3 i18n:translate="">Base information</h3>           
+       </div>  
+       <div class="row">
+          <div class="col-md-1">&nbsp;</div>
+        <div class="col-md-2" tal:define="person python:context">
+            <metal:photo use-macro="here/@@xtshzz-policy-macros/macros/profilephoto"></metal:photo>
+        </div>
+        <div class="col-md-7">
+          <dl class="dl-horizontal">                      	
+            <dt i18n:translate="">Email</dt>
+            <dd tal:content="python:(context.email or '').replace('@',' (at) ')">vader@empire.com</dd>
+            
+            <tal:block condition="context/bonus">
+            <dt i18n:translate="">bonus</dt>
+            <dd tal:content="context/bonus"></dd>
+            <dt i18n:translate="">bonus recorders</dt>
+            <dd><a tal:attributes="href python:context.absolute_url() + '/@@bonus_recorders'">Click</a></dd>            
+            </tal:block>
+            
+            <tal:block condition="context/homepage">
+            <dt i18n:translate="">External Homepage</dt>
+            <dd tal:content="context/homepage"></dd>
+            </tal:block>
+            
+            <tal:block condition="context/description">
+            <dt i18n:translate="">Biography</dt>
+            <dd tal:replace="structure python:text_to_html(context.description)"></dd>
+            </tal:block>
+         </dl>
+       </div>
+          <div class="col-md-2 buttonOverlay">
+          	<a tal:attributes="href python:context.absolute_url() + '/@@edit-baseinfo'" i18n:domain="plone" i18n:translate="" title="Edit">Edit</a>
+          	<br />
+          	<a tal:attributes="href python:context.absolute_url() + '/@@edit-password'"  i18n:translate="" title="change password">change password</a>          	
+          	</div>       
+      </div>
+      </section>
+       
+     
+    </tal:main-macro>
+</metal:main>
+<metal:js fill-slot="javascript_bottom_slot">
+			  <script type="text/javascript">
+   	var jq=jQuery.noConflict();
+jq(document).ready(function(){
+   	//load overlay effect
+// No overlays for IE6
+	if (!jq.browser.msie ||
+	parseInt(jq.browser.version, 10) >= 7) {
+		// Set up overlays
+		jq(".buttonOverlay > a").prepOverlay({
+		subtype: 'ajax',
+		filter: '#content>*',
+		formselector: '#content-core > form',
+//		noform: 'close',
+		noform: 'reload',
+		closeselector: '[name=form.buttons.cancel]',
+		});
+	}
+	})
+</script>	
+</metal:js>
+</body>
+</html>

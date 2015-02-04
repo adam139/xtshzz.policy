@@ -6,15 +6,28 @@
    <include package="plone.behavior" file="meta.zcml" />
    <include package="plone.directives.form" file="meta.zcml" />
    <include package="plone.directives.form" />
-
-
+<!--
+  <plone:behavior
+      title="Name from full name"
+      description="Use the full name as name (basis for the id)"
+      provides=".namefromtitle.INameFromFullName"
+      factory=".namefromtitle.NameFromFullName"
+      for="dexterity.membrane.content.member.IOrganizationMember"
+      />
+ -->     
  	<plone:behavior
 				title="Organization name"
 				description="extension a organization name field"
 				provides=".org.IOrg"
 				factory=".org.Org"
-				for="plone.dexterity.interfaces.IDexterityContent"
+				for="dexterity.membrane.content.member.IOrganizationMember"
 				marker=".org.IOrg"/>
-			  
-      
+	<adapter
+     		factory=".roles.OrgDefaultRoles"
+     		provides="Products.membrane.interfaces.IMembraneUserRoles"
+	/>			  
+ 	<adapter
+     		factory=".roles.SprDefaultRoles"
+     		provides="Products.membrane.interfaces.IMembraneUserRoles"
+	/>	     
 </configure>

@@ -15,13 +15,16 @@ class SitePolicy(PloneSandboxLayer):
         # Load ZCML
         import xtshzz.policy
         xmlconfig.file('configure.zcml', xtshzz.policy, context=configurationContext)
-        
+        import my315ok.socialorgnization
+        import dexterity.membrane
+        xmlconfig.file('configure.zcml', dexterity.membrane, context=configurationContext)
+        xmlconfig.file('configure.zcml', my315ok.socialorgnization, context=configurationContext)        
         # Install products that use an old-style initialize() function
         z2.installProduct(app, 'Products.PythonField')
         z2.installProduct(app, 'Products.TALESField')
         z2.installProduct(app, 'Products.TemplateFields')
         z2.installProduct(app, 'Products.PloneFormGen')
-#        z2.installProduct(app, 'Products.membrane')        
+        z2.installProduct(app, 'Products.membrane')        
     
     def tearDownZope(self, app):
         # Uninstall products installed above
@@ -29,10 +32,13 @@ class SitePolicy(PloneSandboxLayer):
         z2.uninstallProduct(app, 'Products.TemplateFields')
         z2.uninstallProduct(app, 'Products.TALESField')
         z2.uninstallProduct(app, 'Products.PythonField')
-#        z2.uninstallProduct(app, 'Products.membrane')        
+        z2.uninstallProduct(app, 'Products.membrane')        
         
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'xtshzz.policy:default')
+        applyProfile(portal, 'my315ok.socialorgnization:default')
+        applyProfile(portal, 'dexterity.membrane:default')
+        applyProfile(portal, 'dexterity.membrane.content:example')
 
 POLICY_FIXTURE = SitePolicy()
 POLICY_INTEGRATION_TESTING = IntegrationTesting(bases=(POLICY_FIXTURE,), name="Site:Integration")
