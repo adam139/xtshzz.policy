@@ -15,12 +15,12 @@ from dexterity.membrane.behavior.membranepassword import IProvidePasswords
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from dexterity.membrane import _
 from plone.directives import dexterity
-
+from xtshzz.policy.browser.interfaces import IXtshzzThemeSpecific as IThemeSpecific
 grok.templatedir('templates')
 
 class MemberUrlView(grok.View):
     grok.name('member_url')
-#    grok.require("zope.Public")    
+    grok.layer(IThemeSpecific)    
     grok.require('zope2.View')
     grok.context(Interface)
 
@@ -42,6 +42,7 @@ class MembraneMemberView(grok.View):
     grok.context(IOrganizationMember)     
     grok.template('member_b3_view')
     grok.name('view')
+    grok.layer(IThemeSpecific)    
     grok.require('zope2.View')
 
     def update(self):
@@ -86,21 +87,12 @@ class MembraneMemberView(grok.View):
     
 
 
-class EditBonus(dexterity.EditForm):
-    grok.name('memberajaxedit')
-    grok.context(IOrganizationMember)    
-    label = _(u'Edit user bonus')
-            
-# avoid autoform functionality
-    def updateFields(self):
-        pass
-    @property
-    def fields(self):
-        return field.Fields(IOrganizationMember).select('bonus')       
+      
     
 class EditProfile(dexterity.EditForm):
     grok.name('edit-baseinfo')
-    grok.context(IOrganizationMember)    
+    grok.context(IOrganizationMember)
+    grok.layer(IThemeSpecific)        
     label = _(u'Base information')
 # avoid autoform functionality
     def updateFields(self):
@@ -111,7 +103,8 @@ class EditProfile(dexterity.EditForm):
 
 class EditProfilePassword(dexterity.EditForm):
     grok.name('edit-password')
-    grok.context(IOrganizationMember)    
+    grok.context(IOrganizationMember)
+    grok.layer(IThemeSpecific)        
     label = _(u'Update password')
 # avoid autoform functionality
     def updateFields(self):
@@ -122,12 +115,13 @@ class EditProfilePassword(dexterity.EditForm):
 
 class EditProfileNetworking(dexterity.EditForm):
     grok.name('edit-networking')
-    grok.context(IOrganizationMember)    
+    grok.context(IOrganizationMember)
+    grok.layer(IThemeSpecific)        
     label = _(u'Network information')
 # avoid autoform functionality
     def updateFields(self):
         pass
     @property
     def fields(self):
-        return field.Fields(IOrganizationMember).select('homepage', 'phone','qq_number')
+        return field.Fields(IOrganizationMember).select('homepage',)
         

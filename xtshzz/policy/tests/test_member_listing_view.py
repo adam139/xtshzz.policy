@@ -1,7 +1,7 @@
 #-*- coding: UTF-8 -*-
 from Products.CMFCore.utils import getToolByName
 from dexterity.membrane.testing import DEXTERITY_MEMBRANE_FUNCTIONAL_TESTING as FUNCTIONAL_TESTING 
-
+from xtshzz.policy.testing import POLICY_INTEGRATION_TESTING
 from plone.app.testing import TEST_USER_ID, login, TEST_USER_NAME, \
     TEST_USER_PASSWORD, setRoles
 from plone.testing.z2 import Browser
@@ -16,7 +16,7 @@ def getFile(filename):
 
 class TestView(unittest.TestCase):
     
-    layer = FUNCTIONAL_TESTING
+    layer = POLICY_INTEGRATION_TESTING
     def setUp(self):
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ('Manager',))
@@ -25,7 +25,7 @@ class TestView(unittest.TestCase):
 #        pdb.set_trace()
         start = datetime.datetime.today()
         end = start + datetime.timedelta(7)
-        portal.invokeFactory('dexterity.membrane.memberfolder', 'memberfolder')
+#        portal.invokeFactory('dexterity.membrane.memberfolder', 'memberfolder')
         
         portal['memberfolder'].invokeFactory('dexterity.membrane.organizationmember', 'member1',
                              email="12@qq.com",
@@ -35,7 +35,7 @@ class TestView(unittest.TestCase):
                              password="391124",
                              confirm_password ="391124",
                              homepae = 'http://315ok.org/',
-                             bonus = 10,
+
                              description="I am member1")     
         portal['memberfolder'].invokeFactory('dexterity.membrane.organizationmember', 'member2',
                              email="13@qq.com",
@@ -45,32 +45,21 @@ class TestView(unittest.TestCase):
                              password="391124",
                              confirm_password ="391124",
                              homepae = 'http://315ok.org/',
-                             bonus = 300,
+
                              description="I am member1")   
         
         portal['memberfolder'].invokeFactory('dexterity.membrane.organizationmember', 'member3',
-                             email="12@qq.com",
+                             email="14@qq.com",
                              last_name=u"唐",
                              first_name=u"岳军",
                              title = u"tangyuejun",
                              password="391124",
                              confirm_password ="391124",
                              homepae = 'http://315ok.org/',
-                             bonus = 300,
+
                              description="I am member1")   
         
         portal['memberfolder'].invokeFactory('dexterity.membrane.organizationmember', 'member4',
-                             email="12@qq.com",
-                             last_name=u"唐",
-                             first_name=u"岳军",
-                             title = u"tangyuejun",
-                             password="391124",
-                             confirm_password ="391124",
-                             homepae = 'http://315ok.org/',
-                             bonus = 300,
-                             description="I am member1")   
-        
-        portal['memberfolder'].invokeFactory('dexterity.membrane.organizationmember', 'member5',
                              email="15@qq.com",
                              last_name=u"唐",
                              first_name=u"岳军",
@@ -78,7 +67,18 @@ class TestView(unittest.TestCase):
                              password="391124",
                              confirm_password ="391124",
                              homepae = 'http://315ok.org/',
-                             bonus = 300,
+
+                             description="I am member1")   
+        
+        portal['memberfolder'].invokeFactory('dexterity.membrane.organizationmember', 'member5',
+                             email="16@qq.com",
+                             last_name=u"唐",
+                             first_name=u"岳军",
+                             title = u"tangyuejun",
+                             password="391124",
+                             confirm_password ="391124",
+                             homepae = 'http://315ok.org/',
+
                              description="I am member1")                                
           
  
@@ -99,11 +99,12 @@ class TestView(unittest.TestCase):
         
         import transaction
         transaction.commit()
-        obj = portal['memberfolder'].absolute_url() + '/@@adminb3_view'        
+        obj = portal['memberfolder'].absolute_url() + '/@@admin_view'        
 
         browser.open(obj)
  
-        outstr = "qq.com"        
+        outstr = "12@qq.com"
+        
         self.assertTrue(outstr in browser.contents)          
         
    

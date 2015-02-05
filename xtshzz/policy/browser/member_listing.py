@@ -15,6 +15,7 @@ from Products.CMFCore import permissions
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from dexterity.membrane import _
 from plone.directives import dexterity
+from xtshzz.policy.browser.interfaces import IXtshzzThemeSpecific as IThemeSpecific
 
 grok.templatedir('templates')
 
@@ -22,6 +23,7 @@ class MemberFolderView(grok.View):
     grok.context(IMemberfolder)     
     grok.template('member_listing')
     grok.name('admin_view')
+    grok.layer(IThemeSpecific)
     grok.require('cmf.ManagePortal')
 
     def update(self):
@@ -53,6 +55,7 @@ class MemberFolderView(grok.View):
 
     def _getUserData(self,userId):
 
+
         member = self.pm.getMemberById(userId)
         try:
             groups = member.getGroups()
@@ -63,6 +66,7 @@ class MemberFolderView(grok.View):
         return roles
         
     def getMemberBrains(self):
+
         catalog = getToolByName(self.context, "portal_catalog")
         memberbrains = catalog(object_provides=IOrganizationMember.__identifier__, 
                                 path="/".join(self.context.getPhysicalPath()),
@@ -84,12 +88,13 @@ class MemberFolderView(grok.View):
             row['id'] = brain.id
             row['name'] = brain.Title
             row['url'] = brain.getURL()
+
             email = brain.email
             row['roles'] = self._getUserData(email)
             row['email'] = email
             row['register_date'] = brain.created.strftime('%Y-%m-%d')
             row['status'] = brain.review_state
-            row['editurl'] = row['url'] + '/memberajaxedit'
+            row['editurl'] = row['url'] + '/@@edit-baseinfo'
             row['delurl'] = row['url'] + '/delete_confirmation'            
             mlist.append(row)
         return mlist
@@ -98,11 +103,13 @@ class MemberFolderB3View(MemberFolderView):
     grok.context(IMemberfolder)     
     grok.template('member_b3_listing')
     grok.name('adminb3_view')
+    grok.layer(IThemeSpecific)
     grok.require('cmf.ManagePortal')             
 
 class memberstate(grok.View):
     grok.context(INavigationRoot)
     grok.name('ajaxmemberstate')
+    grok.layer(IThemeSpecific)
     grok.require('zope2.View')
     
     def render(self):

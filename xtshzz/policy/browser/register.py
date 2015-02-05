@@ -13,6 +13,7 @@ from zope.component.hooks import getSite
 from zope.globalrequest import getRequest
 from zope import schema
 from z3c.form.error import ErrorViewSnippet
+from z3c.form import field, button, interfaces
 
 from Products.CMFPlone.utils import _createObjectByType
 from Products.CMFCore.utils import getToolByName
@@ -22,7 +23,7 @@ from zope.component import getMultiAdapter
 from Products.statusmessages.interfaces import IStatusMessage
 from dexterity.membrane import _
 from Products.CMFPlone import PloneMessageFactory as _p
-from xtshzz.policy.browser.interfaces import IThemeSpecific
+from xtshzz.policy.browser.interfaces import IXtshzzThemeSpecific as IThemeSpecific
 
 defaultvalue = u"""
 <h3 style="text-align: center">OWASP中国会员注册协议</h3>
@@ -60,7 +61,7 @@ class IRegistrationForm(IOrganizationMember):
     captcha = schema.TextLine(title=u"",
                             required=True)
 
-    form.omitted('description','homepage')
+    form.omitted('description','homepage','bio','last_name','first_name')
 
     form.no_omit(IEditForm, 'description','homepage')
   
@@ -77,41 +78,69 @@ def validateCaptca(value):
     captcha.validate(value)
 
 
-class RegistrationForm(form.SchemaAddForm):
+class RegistrationForm(form.SchemaForm):
     grok.name('register')
     grok.context(IMemberfolder)
     grok.require("zope.Public")
     grok.layer(IThemeSpecific)    
     schema = IRegistrationForm
+    ignoreContext = True
     label = _(u"Register for site member")
 
 
-    def create(self, data):
+    def update(self):
+        self.request.set('disable_border', True)
+        return super(RegistrationForm, self).update()
+    
+    def updateWidgets(self):
+        super(RegistrationForm, self).updateWidgets()
+
+        self.widgets['privacy'].label = u''        
+        self.widgets['privacy'].mode = 'display'
+        self.widgets['privacy'].autoresize = True
+        self.widgets['agree'].addClass("checkbox")
+    
+    def updateActions(self):
+
+        super(RegistrationForm, self).updateActions()
+        self.actions['submit'].addClass("bn-lg btn-primary")
+        self.actions['cancel'].addClass("bn-lg btn-default")        
+    
+    @button.buttonAndHandler(_(u"submit"))
+    def submit(self, action):        
+        data, errors = self.extractData() 
+
+        if not(data['agree']):
+            self.status = "must agree this private policy"
+            return       
         inc = str(int(getattr(self.context, 'registrant_increment', '0')) + 1)
         data['id'] = '%s' % inc
         self.context.registrant_increment = inc
         obj = _createObjectByType("dexterity.membrane.organizationmember", 
                 self.context, data['id'])
 
-#        publishinfo = data['publishinfo']
-        del data['privacy']
         del data['agree']        
-        del data['captcha']     
-#        del data['publishinfo']
+
         for k, v in data.items():
             setattr(obj, k, v)
-
-        obj.reindexObject()
+        
+        urltool = getToolByName(self.context, 'portal_url')
+        portal = urltool.getPortalObject()
+        self.request.response.redirect(portal.absolute_url())
         email = data.get('email', '')
         IStatusMessage(self.request).addStatusMessage(
                         _p(u'create_membrane_account_succesful_pending_audit',
                           default=u"Your account:${address} has been created,Please wait for audit",
                           mapping={u'address': email}),
                         type='info')
-        return obj
+        return
     
-    def add(self, obj):
-        pass
+    @button.buttonAndHandler(_(u"cancel"))
+    def cancel(self, action):
+        urltool = getToolByName(self.context, 'portal_url')
+        portal = urltool.getPortalObject()
+        self.request.response.redirect(portal.absolute_url())
+        return
 ## sponsor member register
 class IRegistrationSponsorForm(ISponsorMember):
 
@@ -128,7 +157,7 @@ class IRegistrationSponsorForm(ISponsorMember):
     captcha = schema.TextLine(title=u"",
                             required=True)
 
-    form.omitted('description','homepage')
+    form.omitted('description','homepage','bio','last_name','first_name')
 
     form.no_omit(IEditForm, 'description','homepage')
   
@@ -145,38 +174,66 @@ def validateCaptca(value):
     captcha.validate(value)
 
 
-class RegistrationSponsorForm(form.SchemaAddForm):
+class RegistrationSponsorForm(form.SchemaForm):
     grok.name('register_sponsor')
     grok.context(IMemberfolder)
     grok.require("zope.Public")
     grok.layer(IThemeSpecific)    
     schema = IRegistrationSponsorForm
+    ignoreContext = True
     label = _(u"Register a sponsor account")
 
 
-    def create(self, data):
+    def update(self):
+        self.request.set('disable_border', True)
+        return super(RegistrationForm, self).update()
+    
+    def updateWidgets(self):
+        super(RegistrationForm, self).updateWidgets()
+
+        self.widgets['privacy'].label = u''        
+        self.widgets['privacy'].mode = 'display'
+        self.widgets['privacy'].autoresize = True
+        self.widgets['agree'].addClass("checkbox")
+    
+    def updateActions(self):
+
+        super(RegistrationForm, self).updateActions()
+        self.actions['submit'].addClass("bn-lg btn-primary")
+        self.actions['cancel'].addClass("bn-lg btn-default")        
+    
+    @button.buttonAndHandler(_(u"submit"))
+    def submit(self, action):        
+        data, errors = self.extractData() 
+
+        if not(data['agree']):
+            self.status = "must agree this private policy"
+            return       
         inc = str(int(getattr(self.context, 'registrant_increment', '0')) + 1)
         data['id'] = '%s' % inc
         self.context.registrant_increment = inc
-        obj = _createObjectByType("dexterity.membrane.organizationmember", 
+        obj = _createObjectByType("dexterity.membrane.sponsormember", 
                 self.context, data['id'])
 
-#        publishinfo = data['publishinfo']
-        del data['privacy']
         del data['agree']        
-        del data['captcha']     
-#        del data['publishinfo']
+
         for k, v in data.items():
             setattr(obj, k, v)
-
-        obj.reindexObject()
+        
+        urltool = getToolByName(self.context, 'portal_url')
+        portal = urltool.getPortalObject()
+        self.request.response.redirect(portal.absolute_url())
         email = data.get('email', '')
         IStatusMessage(self.request).addStatusMessage(
                         _p(u'create_membrane_account_succesful_pending_audit',
                           default=u"Your account:${address} has been created,Please wait for audit",
                           mapping={u'address': email}),
                         type='info')
-        return obj
+        return
     
-    def add(self, obj):
-        pass
+    @button.buttonAndHandler(_(u"cancel"))
+    def cancel(self, action):
+        urltool = getToolByName(self.context, 'portal_url')
+        portal = urltool.getPortalObject()
+        self.request.response.redirect(portal.absolute_url())
+        return

@@ -51,7 +51,7 @@
                   </td>
                   <td class="col-md-2 handler">
  					         <input tal:condition="python:str(lists['status'])=='enabled'" type="checkbox" tal:attributes="id python:lists['id']" class="iphone-style-checkbox" checked="checked"/>
-                    <input tal:condition="python:str(lists['status'])=='disabled'" type="checkbox" tal:attributes="id python:lists['id']" class="iphone-style-checkbox" />                                    	
+                    <input tal:condition="python:status=='disabled' or status=='pending'" type="checkbox" tal:attributes="id python:lists['id']" class="iphone-style-checkbox" />                                    	
                   </td>
                   <td class="col-md-3">
 									<div i18n:domain="plone" class="row">
