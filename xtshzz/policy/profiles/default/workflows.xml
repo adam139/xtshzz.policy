@@ -2,6 +2,7 @@
 <object name="portal_workflow">
 		<object name="organization_anual_survey_workflow" meta_type="Workflow"/>
 		<object name="simple_publication_workflow" meta_type="Workflow"/>
+		<object name="dexterity_membrane_workflow" meta_type="Workflow"/>
     <bindings>
     	<default/>
     	    <type type_id="my315ok.socialorgnization.orgnization">
