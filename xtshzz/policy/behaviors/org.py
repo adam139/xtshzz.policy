@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 from five import grok
 from zope.interface import alsoProvides, implements
+from zope.interface import Interface
 from zope.component import adapts
+from zope.component import adapter
+from zope.interface import implementer
 from zope import schema
 from plone.supermodel import model
 from plone.directives import form
@@ -12,23 +15,23 @@ from Products.CMFCore.utils import getToolByName
 
 from my315ok.socialorgnization.registrysource import RegistrySource, DynamicVocabulary
 from my315ok.socialorgnization.content.orgnization import IOrgnization
+from dexterity.membrane.content.member import IOrganizationMember
 
 from xtshzz.policy import MessageFactory as _
-class IOrg(form.Schema):
-    
-    orgname = schema.Choice(
-            title=_(u"organization name"),
-            source=DynamicVocabulary("my315ok.socialorgnization.content.orgnization", "IOrgnization")
-                        )  
-#    orgname = schema.Choice(
-#        title=_(u"organization name"),     
-#        source=possibleOrganization,     
-#        required=True
-#    )
+class IOrg(Interface):
 
+    def getOrgBn():
+        """get relative organization brain
+        """
+    def getLegalPerson():
+        """ 获取法人"""
+                               
+    def getSponsor():
+        """获取监管单位
+        """
 
-alsoProvides(IOrg, IFormFieldProvider)
-
+@implementer(IOrg)
+@adapter(IOrganizationMember)
 class Org(object):
 #    implements(IOrg)
 #    adapts(IDexterityContent)
@@ -36,30 +39,40 @@ class Org(object):
     def __init__(self, context):
         self.context = context
         
-    def _get_orgname(self):
-        return self.context.orgname
-
-    def _set_orgname(self, value):
-        if isinstance(value, str):
-            raise ValueError('must be unicode.')
-        self.context.orgname = value
-    orgname = property(_get_orgname, _set_orgname)        
+      
     
     def getOrgBn(self):
         "get sponsor"
         orgid = self.context.orgname
-        catalog = getToolByName(context,"portal_catalog")
-        query = {"object_provides":IOrgnization.__identifier__,id:orgid}
+#        import pdb
+#        pdb.set_trace()
+        if not orgid:return None
+        catalog = getToolByName(self.context,"portal_catalog")
+        query = {"object_provides":IOrgnization.__identifier__,'id':orgid}
+
         bs = catalog(query)
         return bs[0]
     
+    
+    def getOrgPath(self):
+        bn = self.getOrgBn()
+        if  bn:return bn.getURL()
+        return None
+    
     def getLegalPerson(self):
         bn = self.getOrgBn()
-        return bn.orgnization_legalPerson
+        if  bn:return bn.orgnization_legalPerson
+        return ""
+        
+        
+
         
     def getSponsor(self):
         bn = self.getOrgBn()
-        return bn.orgnization_supervisor
+        if not bn:return bn.orgnization_supervisor
+        return ""        
+
+
     
     
 

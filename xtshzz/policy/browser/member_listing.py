@@ -89,6 +89,7 @@ class MemberFolderView(grok.View):
             row['name'] = brain.Title
             row['url'] = brain.getURL()
 
+
             email = brain.email
             row['roles'] = self._getUserData(email)
             row['email'] = email
@@ -107,7 +108,7 @@ class MemberFolderB3View(MemberFolderView):
     grok.require('cmf.ManagePortal')             
 
 class memberstate(grok.View):
-    grok.context(INavigationRoot)
+    grok.context(IMemberfolder)
     grok.name('ajaxmemberstate')
     grok.layer(IThemeSpecific)
     grok.require('zope2.View')
@@ -116,14 +117,18 @@ class memberstate(grok.View):
         data = self.request.form
         id = data['id']
         state = data['state']
+
         
         catalog = getToolByName(self.context, 'portal_catalog')
-        obj = catalog({'object_provides': IOrganizationMember.__identifier__, "id":id})[0].getObject()        
+        obj = catalog({'object_provides': IOrganizationMember.__identifier__,
+                       'path':"/".join(self.context.getPhysicalPath()), 
+                       "id":id})[0].getObject()        
         portal_workflow = getToolByName(self.context, 'portal_workflow')
 # obj current status        
         if state == "pending" :
             try:
                 portal_workflow.doActionFor(obj, 'approve')
+
 
                 result = True
 #                IStatusMessage(self.request).addStatusMessage(
@@ -134,7 +139,7 @@ class memberstate(grok.View):
 
             except:
                 result = False
-        elif state == "disable":
+        elif state == "disabled":
             try:
                 portal_workflow.doActionFor(obj, 'enable')
                 result = True

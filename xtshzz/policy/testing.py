@@ -1,7 +1,7 @@
 from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import applyProfile
 from plone.app.testing import PLONE_FIXTURE
-from plone.app.testing import IntegrationTesting
+from plone.app.testing import IntegrationTesting,FunctionalTesting
 
 from plone.testing import z2
 
@@ -38,7 +38,8 @@ class SitePolicy(PloneSandboxLayer):
         applyProfile(portal, 'xtshzz.policy:default')
         applyProfile(portal, 'my315ok.socialorgnization:default')
         applyProfile(portal, 'dexterity.membrane:default')
-        applyProfile(portal, 'dexterity.membrane.content:example')
+#        applyProfile(portal, 'dexterity.membrane.content:example')
 
 POLICY_FIXTURE = SitePolicy()
 POLICY_INTEGRATION_TESTING = IntegrationTesting(bases=(POLICY_FIXTURE,), name="Site:Integration")
+FunctionalTesting = FunctionalTesting(bases=(POLICY_FIXTURE,), name="Site:FunctionalTesting")

@@ -26,6 +26,7 @@ setup(name='xtshzz.policy',
       install_requires=[
           'setuptools',
           'Products.CMFPlone',
+          'Products.membrane>=2.0.2',          
           'five.grok',
           'collective.wtf',
           'dexterity.membrane',          

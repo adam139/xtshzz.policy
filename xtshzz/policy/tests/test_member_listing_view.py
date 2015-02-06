@@ -1,7 +1,7 @@
 #-*- coding: UTF-8 -*-
 from Products.CMFCore.utils import getToolByName
-from dexterity.membrane.testing import DEXTERITY_MEMBRANE_FUNCTIONAL_TESTING as FUNCTIONAL_TESTING 
-from xtshzz.policy.testing import POLICY_INTEGRATION_TESTING
+ 
+from xtshzz.policy.testing import FunctionalTesting
 from plone.app.testing import TEST_USER_ID, login, TEST_USER_NAME, \
     TEST_USER_PASSWORD, setRoles
 from plone.testing.z2 import Browser
@@ -16,7 +16,7 @@ def getFile(filename):
 
 class TestView(unittest.TestCase):
     
-    layer = POLICY_INTEGRATION_TESTING
+    layer = FunctionalTesting
     def setUp(self):
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ('Manager',))
@@ -25,9 +25,9 @@ class TestView(unittest.TestCase):
 #        pdb.set_trace()
         start = datetime.datetime.today()
         end = start + datetime.timedelta(7)
-#        portal.invokeFactory('dexterity.membrane.memberfolder', 'memberfolder')
+        portal.invokeFactory('dexterity.membrane.memberfolder', 'memberfolder1')
         
-        portal['memberfolder'].invokeFactory('dexterity.membrane.organizationmember', 'member1',
+        portal['memberfolder1'].invokeFactory('dexterity.membrane.organizationmember', 'member1',
                              email="12@qq.com",
                              last_name=u"唐",
                              first_name=u"岳军",
@@ -37,7 +37,7 @@ class TestView(unittest.TestCase):
                              homepae = 'http://315ok.org/',
 
                              description="I am member1")     
-        portal['memberfolder'].invokeFactory('dexterity.membrane.organizationmember', 'member2',
+        portal['memberfolder1'].invokeFactory('dexterity.membrane.organizationmember', 'member2',
                              email="13@qq.com",
                              last_name=u"唐",
                              first_name=u"岳军",
@@ -48,7 +48,7 @@ class TestView(unittest.TestCase):
 
                              description="I am member1")   
         
-        portal['memberfolder'].invokeFactory('dexterity.membrane.organizationmember', 'member3',
+        portal['memberfolder1'].invokeFactory('dexterity.membrane.organizationmember', 'member3',
                              email="14@qq.com",
                              last_name=u"唐",
                              first_name=u"岳军",
@@ -59,7 +59,7 @@ class TestView(unittest.TestCase):
 
                              description="I am member1")   
         
-        portal['memberfolder'].invokeFactory('dexterity.membrane.organizationmember', 'member4',
+        portal['memberfolder1'].invokeFactory('dexterity.membrane.organizationmember', 'member4',
                              email="15@qq.com",
                              last_name=u"唐",
                              first_name=u"岳军",
@@ -70,7 +70,7 @@ class TestView(unittest.TestCase):
 
                              description="I am member1")   
         
-        portal['memberfolder'].invokeFactory('dexterity.membrane.organizationmember', 'member5',
+        portal['memberfolder1'].invokeFactory('dexterity.membrane.organizationmember', 'member5',
                              email="16@qq.com",
                              last_name=u"唐",
                              first_name=u"岳军",
@@ -83,7 +83,7 @@ class TestView(unittest.TestCase):
           
  
         data = getFile('image.jpg').read()
-        item = portal['memberfolder']['member1']
+        item = portal['memberfolder1']['member1']
         item.photo = NamedImage(data, 'image/jpg', u'image.jpg')
            
         self.portal = portal
@@ -99,7 +99,7 @@ class TestView(unittest.TestCase):
         
         import transaction
         transaction.commit()
-        obj = portal['memberfolder'].absolute_url() + '/@@admin_view'        
+        obj = portal['memberfolder1'].absolute_url() + '/@@admin_view'        
 
         browser.open(obj)
  

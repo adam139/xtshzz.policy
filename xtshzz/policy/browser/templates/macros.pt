@@ -16,24 +16,25 @@
                   photoHeight photoHeight|nothing;
                   photoWidth photoWidth|nothing;
                   width python:photoWidth or 150;
+                  navroot context/@@plone_portal_state/navigation_root_url;
                   height python:photoHeight or 195">
      <tal:c condition="photo">
         <tal:block define="scales person/@@images;
-                       thumbnail python:scales.scale('photo', width=width, height=height)">
+                       thumbnail python:scales.scale('photo', width=width, height=height);">
         <tal:c condition="thumbnail">
               <img tal:attributes="src thumbnail/url;
                                                   height thumbnail/height;
                                                   width thumbnail/width;"/>
         </tal:c>
         <tal:c condition="not:thumbnail">
-              <img tal:attributes="src string:${view/static}/avatar-default.png;
+              <img tal:attributes="src string:${navroot}/++resource++xtshzz.policy/avatar-default.png;
                                   width width;
                                   height height;"/>
         </tal:c>
      </tal:block>
      </tal:c>
         <tal:c condition="not:photo">
-              <img tal:attributes="src string:${view/static}/avatar-default.png;
+              <img tal:attributes="src string:${navroot}/++resource++xtshzz.policy/avatar-default.png;
                                  width width;
                                  height height;"/>
         </tal:c>

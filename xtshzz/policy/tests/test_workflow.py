@@ -28,9 +28,10 @@ class TestView(unittest.TestCase):
 #        pdb.set_trace()
         start = datetime.datetime.today()
         end = start + datetime.timedelta(7)
-# create member         
-        portal.invokeFactory('dexterity.membrane.memberfolder', 'memberfolder')        
-        portal['memberfolder'].invokeFactory('dexterity.membrane.organizationmember', 'member1',
+# create member 
+       
+        portal.invokeFactory('dexterity.membrane.memberfolder', 'memberfolder1')        
+        portal['memberfolder1'].invokeFactory('dexterity.membrane.organizationmember', 'member1',
                              email="12@qq.com",
                              last_name=u"唐",
                              first_name=u"岳军",
@@ -40,7 +41,8 @@ class TestView(unittest.TestCase):
                              homepae = 'http://315ok.org/',
                              bonus = 10,
                              description="I am member1")     
-        portal['memberfolder'].invokeFactory('dexterity.membrane.organizationmember', 'member2',
+
+        portal['memberfolder1'].invokeFactory('dexterity.membrane.organizationmember', 'member2',
                              email="13@qq.com",
                              last_name=u"唐",
                              first_name=u"岳军",
@@ -51,7 +53,7 @@ class TestView(unittest.TestCase):
                              bonus = 300,
                              description="I am member1") 
         data = getFile('image.jpg').read()
-        item = portal['memberfolder']['member1']
+        item = portal['memberfolder1']['member1']
         item.photo = NamedImage(data, 'image/jpg', u'image.jpg')
 # create organization object
         portal.invokeFactory('my315ok.socialorgnization.orgnizationfolder', 'orgnizationfolder1',
@@ -121,7 +123,8 @@ class TestView(unittest.TestCase):
 
 
         wt = wf.dexterity_membrane_workflow
-        dummy = portal['memberfolder']['member1']
+        dummy = portal['memberfolder1']['member1']
+
         wf.notifyCreated(dummy)
 
         chain = wf.getChainFor(dummy)
@@ -209,7 +212,7 @@ class TestView(unittest.TestCase):
                
 
         wt = wf.dexterity_membrane_workflow
-        dummy = portal['memberfolder']['member1']
+        dummy = portal['memberfolder1']['member1']
         wf.notifyCreated(dummy)
         dummy.email = 'JOE@example.org'
         dummy.password = 'secret'

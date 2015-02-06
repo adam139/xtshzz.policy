@@ -14,7 +14,7 @@
       factory=".namefromtitle.NameFromFullName"
       for="dexterity.membrane.content.member.IOrganizationMember"
       />
- -->     
+    
  	<plone:behavior
 				title="Organization name"
 				description="extension a organization name field"
@@ -22,6 +22,11 @@
 				factory=".org.Org"
 				for="dexterity.membrane.content.member.IOrganizationMember"
 				marker=".org.IOrg"/>
+				 --> 
+	<adapter
+     		factory=".org.Org"
+     		provides=".org.IOrg"
+	/>					 
 	<adapter
      		factory=".roles.OrgDefaultRoles"
      		provides="Products.membrane.interfaces.IMembraneUserRoles"

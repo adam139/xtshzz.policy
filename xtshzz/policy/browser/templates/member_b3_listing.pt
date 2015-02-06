@@ -17,7 +17,7 @@
 
        <section id="profile">
 		<div id="ajaxreq" style="display: none" 
-			tal:attributes="data-ajax-target string:${portal_url}/@@ajaxmemberstate"></div>
+			tal:attributes="data-ajax-target python:context.absolute_url() + '/@@ajaxmemberstate'"></div>
        	
        <div class="page-header">
            <h3 i18n:translate="">Member information</h3>           
@@ -50,8 +50,13 @@
                   <td class="col-md-2"  tal:content="python:lists['register_date']">
                   </td>
                   <td class="col-md-2 handler">
- 					         <input tal:condition="python:str(lists['status'])=='enabled'" type="checkbox" tal:attributes="id python:lists['id']" class="iphone-style-checkbox" checked="checked"/>
-                    <input tal:condition="python:status=='disabled' or status=='pending'" type="checkbox" tal:attributes="id python:lists['id']" class="iphone-style-checkbox" />                                    	
+ 					         <input tal:condition="python:status=='enabled'" type="checkbox" 
+ 					         	tal:attributes="id python:lists['id'];data-state python:status" 
+ 					         	class="iphone-style-checkbox" 
+ 					         	checked="checked"/>
+                    <input tal:condition="python:status=='disabled' or status=='pending'" type="checkbox" 
+                    	tal:attributes="id python:lists['id'];data-state python:status" 
+                    	class="iphone-style-checkbox" />                                    	
                   </td>
                   <td class="col-md-3">
 									<div i18n:domain="plone" class="row">
@@ -90,22 +95,24 @@ $(document).ready(function(){
 		if ($(checkboxID)[0].checked == false) {
 			var action = $("#ajaxreq").attr('data-ajax-target');
 			var id = $(this).siblings('input').attr('id');
-			var state = {'id': id,state: 'disabled'};			
+			var state = $(this).siblings('input').attr('data-state');
+			var states = {'id': id,'state': state};			
 			$(this).animate({backgroundPosition: '0% 100%'});
 			$(checkboxID)[0].checked = true;
 			$(this).removeClass('off').addClass('on');
-			$.post(action, state, function(result){
+			$.post(action, states, function(result){
 				if (result) {}
 				else {return false;}
 			}, 'json');
 		}else {
 			var action = $("#ajaxreq").attr('data-ajax-target');
 			var id = $(this).siblings('input').attr('id');
-			var state = {'id': id, state: 'enabled'};
+			var state = $(this).siblings('input').attr('data-state');
+			var states = {'id': id,'state': state};
 			$(this).animate({backgroundPosition: '100% 0%'});
 			$(checkboxID)[0].checked = false;
 			$(this).removeClass('on').addClass('off');			
-			$.post(action, state, function(result){
+			$.post(action, states, function(result){
 				if (result) {	}
 			else {return false;}
 			}, 'json');

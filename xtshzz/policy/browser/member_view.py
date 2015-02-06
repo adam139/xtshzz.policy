@@ -67,7 +67,24 @@ class MembraneMemberView(grok.View):
         member_id = member.getId()
         member_folder = self.pm().getHomeFolder(member_id)
         return member_folder
-        
+    
+    @memoize    
+    def createSurveyUrl(self):
+        from xtshzz.policy.behaviors.org import IOrg
+
+        member_data = self.pm().getAuthenticatedMember()
+        id = member_data.getUserName()
+        query = {"object_provides":IOrganizationMember.__identifier__,'email':id}
+        bns = self.catalog()(query)
+        if bns:
+            member = bns[0].getObject()
+#            import pdb
+#            pdb.set_trace()
+            path = IOrg(member).getOrgPath()
+            if not path:return ""
+            return "%s/++add++my315ok.socialorgnization.orgnizationsurvey"  % path
+        else:
+            return ""     
     
     def fullname(self):
         context = self.context
