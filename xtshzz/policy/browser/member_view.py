@@ -73,6 +73,8 @@ class MembraneMemberView(grok.View):
         from xtshzz.policy.behaviors.org import IOrg
 
         member_data = self.pm().getAuthenticatedMember()
+        import pdb
+        pdb.set_trace()
         id = member_data.getUserName()
         query = {"object_provides":IOrganizationMember.__identifier__,'email':id}
         bns = self.catalog()(query)

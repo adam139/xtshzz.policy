@@ -15,7 +15,13 @@
     <include package=".behaviors" />        
     <include package=".portlet" />
     <include file="permissions.zcml" />
-      
+
+<subscriber
+    for="dexterity.membrane.content.member.ISponsorMember
+         zope.lifecycleevent.IObjectAddedEvent"
+    handler=".subscriber.updateSponsorOperator"
+    />
+
   <genericsetup:registerProfile
       name="default"
       title="xtshzz.policy"
