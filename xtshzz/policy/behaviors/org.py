@@ -69,7 +69,7 @@ class Org(object):
         
     def getSponsor(self):
         bn = self.getOrgBn()
-        if not bn:return bn.orgnization_supervisor
+        if  bn:return bn.orgnization_supervisor
         return ""        
 
 

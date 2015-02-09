@@ -14,5 +14,8 @@
         <type type_id="dexterity.membrane.organizationmember">
       				<bound-workflow workflow_id="dexterity_membrane_workflow" />
 			</type>
+        <type type_id="dexterity.membrane.sponsormember">
+      				<bound-workflow workflow_id="dexterity_membrane_workflow" />
+			</type>			
     </bindings>
 </object>

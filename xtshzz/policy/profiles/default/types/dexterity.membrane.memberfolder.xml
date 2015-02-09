@@ -14,7 +14,7 @@ i18n:translate="">memberfolder for site member</property>
 <element value="dexterity.membrane.member" />
 <element value="dexterity.membrane.wechatmember" />
 <element value="dexterity.membrane.organizationmember" />
-<element value="dexterity.membrane.conferencemember" />
+<element value="dexterity.membrane.sponsormember" />
 </property>
 <property name="allow_discussion">False</property>
 <!-- schema and class used for content items -->
