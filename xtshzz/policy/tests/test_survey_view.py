@@ -1,4 +1,10 @@
 #-*- coding: UTF-8 -*-
+import json
+import hmac
+from hashlib import sha1 as sha
+from zope.component import getUtility
+from plone.keyring.interfaces import IKeyManager
+
 from Products.CMFCore.utils import getToolByName
 from xtshzz.policy.testing import POLICY_INTEGRATION_TESTING,FunctionalTesting
 
@@ -19,6 +25,7 @@ def getFile(filename):
 class TestProductlView(unittest.TestCase):
     
     layer = POLICY_INTEGRATION_TESTING
+    layer = FunctionalTesting
     def setUp(self):
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ('Manager',))
@@ -111,6 +118,77 @@ class TestProductlView(unittest.TestCase):
         import transaction
         transaction.commit()
         
+    def test_ajax_submit_sponsor(self):
+        request = self.layer['request']        
+        keyManager = getUtility(IKeyManager)
+        secret = keyManager.secret()
+        auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
+        request.form = {
+                        '_authenticator': auth,
+                        'subject': u"请审批",
+
+                                                                       
+                        }
+# Look up and invoke the view via traversal
+        survey = self.portal['orgnizationfolder1']['orgnization1']['survey1']
+        view = survey.restrictedTraverse('@@ajax_submit_sponsor')
+        result = view()
+#        import pdb
+#        pdb.set_trace()
+
+        self.assertEqual(json.loads(result)['result'],True)
+        
+    def test_ajax_submit_agent(self):
+        request = self.layer['request']        
+        keyManager = getUtility(IKeyManager)
+        secret = keyManager.secret()
+        auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
+        request.form = {
+                        '_authenticator': auth,
+                        'subject': u"请审批",
+
+                                                                       
+                        }
+# Look up and invoke the view via traversal
+        survey = self.portal['orgnizationfolder1']['orgnization1']['survey1']
+        view = survey.restrictedTraverse('@@ajax_submit_agent')
+        result = view()
+        self.assertEqual(json.loads(result)['result'],True)
+
+    def test_ajax_sponsor_reject(self):
+        request = self.layer['request']        
+        keyManager = getUtility(IKeyManager)
+        secret = keyManager.secret()
+        auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
+        request.form = {
+                        '_authenticator': auth,
+                        'subject': u"某处有问题",
+
+                                                                       
+                        }
+# Look up and invoke the view via traversal
+        survey = self.portal['orgnizationfolder1']['orgnization1']['survey1']
+        view = survey.restrictedTraverse('@@ajax_sponsor_reject')
+        result = view()
+        self.assertEqual(json.loads(result)['result'],True)
+        
+    def test_ajax_sponsor_agree(self):
+        request = self.layer['request']        
+        keyManager = getUtility(IKeyManager)
+        secret = keyManager.secret()
+        auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
+        request.form = {
+                        '_authenticator': auth,
+                        'subject': u"基本可以",
+
+                                                                       
+                        }
+# Look up and invoke the view via traversal
+        survey = self.portal['orgnizationfolder1']['orgnization1']['survey1']
+        view = survey.restrictedTraverse('@@ajax_sponsor_agree')
+        result = view()
+        self.assertEqual(json.loads(result)['result'],True)        
+        
     def test_draft_view(self):
 
         app = self.layer['app']
@@ -129,10 +207,6 @@ class TestProductlView(unittest.TestCase):
         review_state = wf.getInfoFor(dummy, 'review_state')
         self.assertEqual(review_state,'pending')        
         wf.doActionFor(dummy, 'approve', comment='foo' )
-#        import pdb
-#        pdb.set_trace()
-        
-
 
 #启用监管账号
 
@@ -186,4 +260,25 @@ class TestProductlView(unittest.TestCase):
         outstr = u'民政局'.encode('utf-8')
         
         self.assertTrue(outstr in browser.contents)        
+# sponsor view        
+        page = obj.absolute_url() + '/sponsorview'
+        browser.open(page)
+
+#        监管单位经手
+        outstr = '100@qq.com'
         
+        self.assertTrue(outstr in browser.contents)
+        outstr = u'民政局'.encode('utf-8')
+        
+        self.assertTrue(outstr in browser.contents)        
+# # agent view
+        page = obj.absolute_url() + '/@@agentview'
+        browser.open(page)
+
+#        监管单位经手
+        outstr = '100@qq.com'
+        
+        self.assertTrue(outstr in browser.contents)
+        outstr = u'民政局'.encode('utf-8')
+        
+        self.assertTrue(outstr in browser.contents)
