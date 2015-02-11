@@ -186,10 +186,10 @@ class RegistrationSponsorForm(form.SchemaForm):
 
     def update(self):
         self.request.set('disable_border', True)
-        return super(RegistrationForm, self).update()
+        return super(RegistrationSponsorForm, self).update()
     
     def updateWidgets(self):
-        super(RegistrationForm, self).updateWidgets()
+        super(RegistrationSponsorForm, self).updateWidgets()
 
         self.widgets['privacy'].label = u''        
         self.widgets['privacy'].mode = 'display'
@@ -198,7 +198,7 @@ class RegistrationSponsorForm(form.SchemaForm):
     
     def updateActions(self):
 
-        super(RegistrationForm, self).updateActions()
+        super(RegistrationSponsorForm, self).updateActions()
         self.actions['submit'].addClass("bn-lg btn-primary")
         self.actions['cancel'].addClass("bn-lg btn-default")        
     

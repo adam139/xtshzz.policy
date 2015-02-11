@@ -117,7 +117,8 @@ class memberstate(grok.View):
         data = self.request.form
         id = data['id']
         state = data['state']
-
+#        import pdb
+#        pdb.set_trace()
         
         catalog = getToolByName(self.context, 'portal_catalog')
         obj = catalog({'object_provides': IOrganizationMember.__identifier__,
@@ -128,14 +129,7 @@ class memberstate(grok.View):
         if state == "pending" :
             try:
                 portal_workflow.doActionFor(obj, 'approve')
-
-
-                result = True
-#                IStatusMessage(self.request).addStatusMessage(
-#                        _p(u'account_enabled',
-#                          default=u"Account:${user} has been enabled",
-#                          mapping={u'user': obj.title}),
-#                        type='info')                 
+                result = True              
 
             except:
                 result = False

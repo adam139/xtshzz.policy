@@ -8,8 +8,8 @@ from xtshzz.policy.testing import POLICY_INTEGRATION_TESTING,FunctionalTesting
 from zope.component import getUtility
 from plone.keyring.interfaces import IKeyManager 
 
-from plone.app.testing import TEST_USER_ID, login, TEST_USER_NAME, \
-    TEST_USER_PASSWORD, setRoles
+from plone.app.testing import TEST_USER_ID, login, logout, TEST_USER_NAME, \
+    TEST_USER_PASSWORD,SITE_OWNER_NAME,SITE_OWNER_PASSWORD, setRoles
 from plone.testing.z2 import Browser
 import unittest2 as unittest
 from plone.namedfile.file import NamedImage
@@ -93,7 +93,9 @@ class TestView(unittest.TestCase):
         item = portal['memberfolder1']['member1']
         item.photo = NamedImage(data, 'image/jpg', u'image.jpg')
            
-        self.portal = portal    
+        self.portal = portal
+        import transaction
+        transaction.commit()    
     def test_member_view(self):
 
         app = self.layer['app']
@@ -108,10 +110,26 @@ class TestView(unittest.TestCase):
        
         browser = Browser(app)
         browser.handleErrors = False
-        browser.addHeader('Authorization', 'Basic %s:%s' % ("12@qq.com", "391124",))
-        
+#        browser.addHeader('Authorization', 'Basic %s:%s' % ("12@qq.com", "391124",))
+#        
+#        import transaction
+#        transaction.commit()
+#        self.wf.doActionFor(dummy, 'approve', comment='foo' ) 
+               
+
+#        browser.addHeader('Authorization', 'Basic %s:%s' % (TEST_USER_NAME, TEST_USER_PASSWORD,))
+#        
+#        import transaction
+#        transaction.commit()
+        # login in from login page
+        browser.open(portal.absolute_url() + '/login_form')
+        browser.getControl(name='__ac_name').value = SITE_OWNER_NAME
+        browser.getControl(name='__ac_password').value = SITE_OWNER_PASSWORD        
+#        browser.getControl(name='__ac_name').value = "12@qq.com"
+#        browser.getControl(name='__ac_password').value = "391124"
+        browser.getControl(name='submit').click()
         import transaction
-        transaction.commit()
+        transaction.commit()        
         obj = portal['memberfolder1']['member1'].absolute_url() + '/view'        
 
         browser.open(obj)
@@ -133,7 +151,8 @@ class TestView(unittest.TestCase):
                         'state':'pending', #new created member initial status
                         'id':'member1',                                                                       
                         }
-        view = self.portal.restrictedTraverse('@@ajaxmemberstate')
+        
+        view = self.portal['memberfolder1'].restrictedTraverse('@@ajaxmemberstate')
         result = view()
 
         self.assertEqual(json.loads(result),True)         

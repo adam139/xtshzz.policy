@@ -1,6 +1,6 @@
 #-*- coding: UTF-8 -*-
 from Products.CMFCore.utils import getToolByName
-from xtshzz.policy.testing import POLICY_INTEGRATION_TESTING 
+from xtshzz.policy.testing import POLICY_INTEGRATION_TESTING,FunctionalTesting 
 
 from plone.app.testing import TEST_USER_ID, login, TEST_USER_NAME, \
     TEST_USER_PASSWORD, setRoles,logout
@@ -19,7 +19,7 @@ def getFile(filename):
 
 class TestView(unittest.TestCase):
     
-    layer = POLICY_INTEGRATION_TESTING
+    layer = FunctionalTesting
     def setUp(self):
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ('Manager',))

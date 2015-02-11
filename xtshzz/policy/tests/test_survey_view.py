@@ -30,6 +30,7 @@ class TestProductlView(unittest.TestCase):
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ('Manager',))
         login(portal, TEST_USER_NAME)
+        wf = getToolByName(portal, "portal_workflow")
         portal.invokeFactory('dexterity.membrane.memberfolder', 'memberfolder1')
            # 社团经手人账号     
         portal['memberfolder1'].invokeFactory('dexterity.membrane.organizationmember', 'member1',
@@ -114,7 +115,8 @@ class TestProductlView(unittest.TestCase):
         item.report = namedfile.NamedBlobFile(data,filename=u"demo.txt")
 
                
-        self.portal = portal     
+        self.portal = portal
+        self.wf = wf     
         import transaction
         transaction.commit()
         
@@ -130,8 +132,8 @@ class TestProductlView(unittest.TestCase):
                                                                        
                         }
 # Look up and invoke the view via traversal
-        survey = self.portal['orgnizationfolder1']['orgnization1']['survey1']
-        view = survey.restrictedTraverse('@@ajax_submit_sponsor')
+        context = self.portal['orgnizationfolder1']['orgnization1']['survey1']
+        view = context.restrictedTraverse('@@ajax_submit_sponsor')
         result = view()
 #        import pdb
 #        pdb.set_trace()
@@ -150,8 +152,9 @@ class TestProductlView(unittest.TestCase):
                                                                        
                         }
 # Look up and invoke the view via traversal
-        survey = self.portal['orgnizationfolder1']['orgnization1']['survey1']
-        view = survey.restrictedTraverse('@@ajax_submit_agent')
+        context = self.portal['orgnizationfolder1']['orgnization1']['survey1']
+        
+        view = context.restrictedTraverse('@@ajax_submit_agent')
         result = view()
         self.assertEqual(json.loads(result)['result'],True)
 
@@ -167,8 +170,9 @@ class TestProductlView(unittest.TestCase):
                                                                        
                         }
 # Look up and invoke the view via traversal
-        survey = self.portal['orgnizationfolder1']['orgnization1']['survey1']
-        view = survey.restrictedTraverse('@@ajax_sponsor_reject')
+        context = self.portal['orgnizationfolder1']['orgnization1']['survey1']
+        self.wf.doActionFor(context, 'submit2sponsor', comment=request.form['subject'] )        
+        view = context.restrictedTraverse('@@ajax_sponsor_reject')
         result = view()
         self.assertEqual(json.loads(result)['result'],True)
         
@@ -179,16 +183,85 @@ class TestProductlView(unittest.TestCase):
         auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
         request.form = {
                         '_authenticator': auth,
-                        'subject': u"基本可以",
-
-                                                                       
+                        'subject': u"基本可以",                                                                       
                         }
 # Look up and invoke the view via traversal
-        survey = self.portal['orgnizationfolder1']['orgnization1']['survey1']
-        view = survey.restrictedTraverse('@@ajax_sponsor_agree')
+        context = self.portal['orgnizationfolder1']['orgnization1']['survey1']
+        self.wf.doActionFor(context, 'submit2sponsor', comment=request.form['subject'] )
+        view = context.restrictedTraverse('@@ajax_sponsor_agree')
         result = view()
         self.assertEqual(json.loads(result)['result'],True)        
-        
+
+##    agent reject        
+    def test_ajax_agent_reject(self):
+        request = self.layer['request']        
+        keyManager = getUtility(IKeyManager)
+        secret = keyManager.secret()
+        auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
+        request.form = {
+                        '_authenticator': auth,
+                        'subject': u"基本可以",                                                                       
+                        }
+# Look up and invoke the view via traversal
+        context = self.portal['orgnizationfolder1']['orgnization1']['survey1']
+        self.wf.doActionFor(context, 'submit2agent', comment=request.form['subject'] )
+        view = context.restrictedTraverse('@@ajax_agent_reject')
+        result = view()
+        self.assertEqual(json.loads(result)['result'],True)
+
+##    agent agree     
+    def test_ajax_agent_agree(self):
+        request = self.layer['request']        
+        keyManager = getUtility(IKeyManager)
+        secret = keyManager.secret()
+        auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
+        request.form = {
+                        '_authenticator': auth,
+                        'subject': u"基本可以",
+                        'quality':'hege',                                                                       
+                        }
+# Look up and invoke the view via traversal
+        context = self.portal['orgnizationfolder1']['orgnization1']['survey1']
+        self.wf.doActionFor(context, 'submit2agent', comment=request.form['subject'] )        
+        view = context.restrictedTraverse('@@ajax_agent_agree')
+        result = view()
+        self.assertEqual(json.loads(result)['result'],True)         
+
+##    agent retract     
+    def test_ajax_agent_retract(self):
+        request = self.layer['request']        
+        keyManager = getUtility(IKeyManager)
+        secret = keyManager.secret()
+        auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
+        request.form = {
+                        '_authenticator': auth,
+                        'subject': u"基本可以",                                                                       
+                        }
+# Look up and invoke the view via traversal
+        context = self.portal['orgnizationfolder1']['orgnization1']['survey1']
+        self.wf.doActionFor(context, 'submit2agent', comment=request.form['subject'] )
+        self.wf.doActionFor(context, 'agentagree', comment=request.form['subject'] )        
+        view = context.restrictedTraverse('@@ajax_agent_retract')
+        result = view()
+        self.assertEqual(json.loads(result)['result'],True)         
+    
+##    agent veto     
+    def test_ajax_agent_veto(self):
+        request = self.layer['request']        
+        keyManager = getUtility(IKeyManager)
+        secret = keyManager.secret()
+        auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
+        request.form = {
+                        '_authenticator': auth,
+                        'subject': u"基本可以",                                                                       
+                        }
+# Look up and invoke the view via traversal
+        context = self.portal['orgnizationfolder1']['orgnization1']['survey1']
+        self.wf.doActionFor(context, 'submit2agent', comment=request.form['subject'] )        
+        view = context.restrictedTraverse('@@ajax_agent_veto')
+        result = view()
+        self.assertEqual(json.loads(result)['result'],True) 
+    
     def test_draft_view(self):
 
         app = self.layer['app']
@@ -196,43 +269,44 @@ class TestProductlView(unittest.TestCase):
         
         wf = getToolByName(portal, 'portal_workflow')
 
-        wt = wf.dexterity_membrane_workflow
+        wt = self.wf.dexterity_membrane_workflow
         dummy = portal['memberfolder1']['member1']
 
-        wf.notifyCreated(dummy)
+        self.wf.notifyCreated(dummy)
 
-        chain = wf.getChainFor(dummy)
+        chain = self.wf.getChainFor(dummy)
         self.failUnless(chain[0] =='dexterity_membrane_workflow')
 
-        review_state = wf.getInfoFor(dummy, 'review_state')
+        review_state = self.wf.getInfoFor(dummy, 'review_state')
         self.assertEqual(review_state,'pending')        
-        wf.doActionFor(dummy, 'approve', comment='foo' )
+        self.wf.doActionFor(dummy, 'approve', comment='foo' )
 
 #启用监管账号
 
         dummy = portal['memberfolder1']['100']
 
-        wf.notifyCreated(dummy)
+        self.wf.notifyCreated(dummy)
 
-        chain = wf.getChainFor(dummy)
+        chain = self.wf.getChainFor(dummy)
         self.failUnless(chain[0] =='dexterity_membrane_workflow')
 
-        review_state = wf.getInfoFor(dummy, 'review_state')
+        review_state = self.wf.getInfoFor(dummy, 'review_state')
         self.assertEqual(review_state,'pending')        
-        wf.doActionFor(dummy, 'approve', comment='foo' )                
+        self.wf.doActionFor(dummy, 'approve', comment='foo' )            
+
 
 #启用民政局经手账号
 
         dummy = portal['memberfolder1']['200']
 
-        wf.notifyCreated(dummy)
+        self.wf.notifyCreated(dummy)
 
-        chain = wf.getChainFor(dummy)
+        chain = self.wf.getChainFor(dummy)
         self.failUnless(chain[0] =='dexterity_membrane_workflow')
 
-        review_state = wf.getInfoFor(dummy, 'review_state')
+        review_state = self.wf.getInfoFor(dummy, 'review_state')
         self.assertEqual(review_state,'pending')        
-        wf.doActionFor(dummy, 'approve', comment='foo' ) 
+        self.wf.doActionFor(dummy, 'approve', comment='foo' ) 
                
         browser = Browser(app)
         browser.handleErrors = False
@@ -282,3 +356,15 @@ class TestProductlView(unittest.TestCase):
         outstr = u'民政局'.encode('utf-8')
         
         self.assertTrue(outstr in browser.contents)
+        
+# # published view
+        page = obj.absolute_url() + '/@@publishedview'
+        browser.open(page)
+
+#        监管单位经手
+        outstr = 'id="review-history"'
+        
+        self.assertTrue(outstr in browser.contents)
+        outstr = u'民政局'.encode('utf-8')
+        
+        self.assertTrue(outstr in browser.contents)        

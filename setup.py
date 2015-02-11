@@ -26,6 +26,7 @@ setup(name='xtshzz.policy',
       install_requires=[
           'setuptools',
           'Products.CMFPlone',
+          'collective.indexing',
           'Products.membrane>=2.0.2',          
           'five.grok',
           'collective.wtf',
@@ -35,7 +36,7 @@ setup(name='xtshzz.policy',
           'my315ok.portlet.embediframe',
           'my315ok.socialorgnization',
           'collective.diazotheme.bootstrap',
-          'Products.ContentWellPortlets',
+#          'Products.ContentWellPortlets',
           'collective.autopermission',
                                                                      
           # -*- Extra requirements: -*-

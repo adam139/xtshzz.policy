@@ -14,7 +14,14 @@
     attribute="jsonConfiguration"
     layer=".interfaces.IXtshzzThemeSpecific"
     />
-    
+  
+  <browser:viewlet
+    name="xtshzz.policy.reviewhistory"
+    manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+    class=".review_history.ReviewViewlet"
+    layer=".interfaces.IXtshzzThemeSpecific"
+    permission="zope2.View"
+/>  
  	<browser:resourceDirectory
   name="xtshzz.policy"
   directory="static" />

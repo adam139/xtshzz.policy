@@ -30,5 +30,12 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   <!-- -*- extra stuff goes here -*- -->
-  
+  <genericsetup:upgradeStep
+      title="Update profile"
+      description="update step to add government department data."
+      source="1000"
+      destination="1001"
+      handler="xtshzz.policy.migration.init_governmentdepartment"
+      profile="my315ok.socialorgnization:default"/>
+
 </configure>
