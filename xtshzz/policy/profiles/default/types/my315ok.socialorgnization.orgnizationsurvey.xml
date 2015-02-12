@@ -30,10 +30,13 @@
  </property>
 
   <!-- View information -->
-  <property name="default_view">view</property>
+  <property name="default_view">draftview</property>
   <property name="default_view_fallback">False</property>
   <property name="view_methods">
-    <element value="base_view" />
+    <element value="draftview" />
+    <element value="agentview" />
+    <element value="sponsorview" />    
+    <element value="publishedview" />        
   </property>
 
   <!-- Method aliases -->

@@ -10,6 +10,7 @@ from z3c.form import form, field
 from Products.CMFCore.utils import getToolByName
 from dexterity.membrane.content.memberfolder import IMemberfolder 
 from dexterity.membrane.content.member import IOrganizationMember
+from dexterity.membrane.content.member import IMember
 from Products.CMFCore import permissions 
 
 from plone.app.layout.navigation.interfaces import INavigationRoot
@@ -68,7 +69,7 @@ class MemberFolderView(grok.View):
     def getMemberBrains(self):
 
         catalog = getToolByName(self.context, "portal_catalog")
-        memberbrains = catalog(object_provides=IOrganizationMember.__identifier__, 
+        memberbrains = catalog(object_provides=IMember.__identifier__, 
                                 path="/".join(self.context.getPhysicalPath()),
                                               sort_order="reverse",
                                               sort_on="created")
@@ -82,11 +83,17 @@ class MemberFolderView(grok.View):
 
         for brain in memberbrains:
            
-            row = {'id':'', 'name':'', 'url':'','roles':'',
+            row = {'id':'', 'name':'', 'type':'', 'url':'','roles':'',
                     'email':'', 'register_date':'', 'status':'', 'editurl':'',
                     'delurl':''}
             row['id'] = brain.id
             row['name'] = brain.Title
+            if brain.portal_type == 'dexterity.membrane.organizationmember':
+
+                row['type'] = u"社会组织关联账号"
+            else:
+                row['type'] = u"监管单位关联账号"
+               
             row['url'] = brain.getURL()
 
 
@@ -121,7 +128,7 @@ class memberstate(grok.View):
 #        pdb.set_trace()
         
         catalog = getToolByName(self.context, 'portal_catalog')
-        obj = catalog({'object_provides': IOrganizationMember.__identifier__,
+        obj = catalog({'object_provides': IMember.__identifier__,
                        'path':"/".join(self.context.getPhysicalPath()), 
                        "id":id})[0].getObject()        
         portal_workflow = getToolByName(self.context, 'portal_workflow')

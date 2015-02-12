@@ -7,6 +7,7 @@ from zope import schema
 from z3c.form import form, field
 from Products.CMFCore.utils import getToolByName
 from dexterity.membrane.content.member import IOrganizationMember
+from dexterity.membrane.content.member import IMember
 from zope.interface import Interface
  
 from plone.memoize.instance import memoize
@@ -31,7 +32,7 @@ class MemberUrlView(grok.View):
         catalog = getToolByName(self.context,'portal_catalog')
         email = userobj.getUserName()
         try:
-            member = catalog({'object_provides': IOrganizationMember.__identifier__, "email":email})[0].getObject()
+            member = catalog({'object_provides': IMember.__identifier__, "email":email})[0].getObject()
             return member.absolute_url()
         except:
             return ""      
@@ -39,7 +40,7 @@ class MemberUrlView(grok.View):
 
 
 class MembraneMemberView(grok.View):
-    grok.context(IOrganizationMember)     
+    grok.context(IMember)     
     grok.template('member_b3_view')
     grok.name('view')
     grok.layer(IThemeSpecific)    
@@ -77,12 +78,11 @@ class MembraneMemberView(grok.View):
             id = member_data.getUserName()
         except:
             return ""
-        query = {"object_provides":IOrganizationMember.__identifier__,'email':id}
+        query = {"object_provides":IMember.__identifier__,'email':id}
         bns = self.catalog()(query)
         if bns:
             member = bns[0].getObject()
-#            import pdb
-#            pdb.set_trace()
+
             path = IOrg(member).getOrgPath()
             if not path:return ""
             return "%s/++add++my315ok.socialorgnization.orgnizationsurvey"  % path
@@ -111,7 +111,7 @@ class MembraneMemberView(grok.View):
     
 class EditProfile(dexterity.EditForm):
     grok.name('edit-baseinfo')
-    grok.context(IOrganizationMember)
+    grok.context(IMember)
     grok.layer(IThemeSpecific)        
     label = _(u'Base information')
 # avoid autoform functionality
@@ -119,11 +119,11 @@ class EditProfile(dexterity.EditForm):
         pass
     @property
     def fields(self):
-        return field.Fields(IOrganizationMember).select('title','description','email')
+        return field.Fields(IMember).select('title','description','email')
 
 class EditProfilePassword(dexterity.EditForm):
     grok.name('edit-password')
-    grok.context(IOrganizationMember)
+    grok.context(IMember)
     grok.layer(IThemeSpecific)        
     label = _(u'Update password')
 # avoid autoform functionality
@@ -135,7 +135,7 @@ class EditProfilePassword(dexterity.EditForm):
 
 class EditProfileNetworking(dexterity.EditForm):
     grok.name('edit-networking')
-    grok.context(IOrganizationMember)
+    grok.context(IMember)
     grok.layer(IThemeSpecific)        
     label = _(u'Network information')
 # avoid autoform functionality
@@ -143,5 +143,5 @@ class EditProfileNetworking(dexterity.EditForm):
         pass
     @property
     def fields(self):
-        return field.Fields(IOrganizationMember).select('homepage',)
+        return field.Fields(IMember).select('homepage',)
         

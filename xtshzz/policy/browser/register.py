@@ -124,9 +124,10 @@ class RegistrationForm(form.SchemaForm):
         for k, v in data.items():
             setattr(obj, k, v)
         
+        obj.reindexObject()
         urltool = getToolByName(self.context, 'portal_url')
         portal = urltool.getPortalObject()
-        self.request.response.redirect(portal.absolute_url())
+        self.request.response.redirect(portal.absolute_url() + "/login_form")
         email = data.get('email', '')
         IStatusMessage(self.request).addStatusMessage(
                         _p(u'create_membrane_account_succesful_pending_audit',
@@ -220,9 +221,10 @@ class RegistrationSponsorForm(form.SchemaForm):
         for k, v in data.items():
             setattr(obj, k, v)
         
+        obj.reindexObject()
         urltool = getToolByName(self.context, 'portal_url')
         portal = urltool.getPortalObject()
-        self.request.response.redirect(portal.absolute_url())
+        self.request.response.redirect(portal.absolute_url() + "/login_form")
         email = data.get('email', '')
         IStatusMessage(self.request).addStatusMessage(
                         _p(u'create_membrane_account_succesful_pending_audit',
