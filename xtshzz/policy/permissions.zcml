@@ -3,7 +3,8 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="xtshzz.policy">
 
-    <!-- Define new permissions -->
+    <!-- Define new permissions --> 
+  		<include package="collective.autopermission" />   
     
     <permission
 			id="my315ok.socialorgnization.add.anualreport"

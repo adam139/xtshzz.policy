@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xtshzz.policy\n"
-"POT-Creation-Date: 2013-10-04 07:37+0000\n"
-"PO-Revision-Date: 2013-10-04 15:38+0800\n"
+"POT-Creation-Date: 2015-02-13 13:55+0000\n"
+"PO-Revision-Date: 2015-02-13 22:03+0800\n"
 "Last-Translator: adam <yuejun.tang@gmail.com>\n"
 "Language-Team: 315ok.org <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,51 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
+#: ./browser/register.py:58
+msgid "Agree this?"
+msgstr "同意该协议？"
+
+#: ./browser/member_view.py:116
+msgid "Base information"
+msgstr "基本信息"
+
+#: ./browser/member_view.py:140
+msgid "Network information"
+msgstr "网络信息"
+
+#: ./browser/register.py:187
+msgid "Register a sponsor account"
+msgstr "注册一个监管账号"
+
+#: ./browser/register.py:90
+msgid "Register for site member"
+msgstr "注册站点会员"
+
+#: ./profiles/default/actions.xml
+msgid "Register sponsor account"
+msgstr "注册监管账号"
+
+#: ./browser/member_view.py:128
+msgid "Update password"
+msgstr "更新口令"
+
+#: ./browser/register.py:141
+msgid "cancel"
+msgstr "取消"
+
+#: ./profiles/default/actions.xml
+msgid "government organization"
+msgstr "政府部门"
+
 #: ./profiles/default/actions.xml
 msgid "organization"
 msgstr "社会组织"
+
+#: ./browser/register.py:54
+msgid "privacy"
+msgstr "私有政策"
+
+#: ./browser/register.py:111
+msgid "submit"
+msgstr "创建"
 
