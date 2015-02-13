@@ -50,11 +50,13 @@ def updateSponsorOperator(obj,event):
     
     catalog = getToolByName(obj,'portal_catalog')
 
+#    import pdb
+#    pdb.set_trace()
     bns = catalog.unrestrictedSearchResults({'object_provides': IOrgnization.__identifier__,
-                                             'orgnization_supervisor':obj.orgname})
+                                             'id':obj.orgname})
     if bns:
         org = bns[0].getObject()
-        org.operator = obj.mail
+        org.operator = obj.email
         org.reindexObject()
     else:
         pass

@@ -1,4 +1,7 @@
 #-*- coding: UTF-8 -*-
+
+from zope import event
+from zope.lifecycleevent import IObjectAddedEvent, ObjectAddedEvent
 from Products.CMFCore.utils import getToolByName
 from xtshzz.policy.testing import POLICY_INTEGRATION_TESTING ,FunctionalTesting
 
@@ -56,7 +59,19 @@ class TestView(unittest.TestCase):
                                                    legal_person=u"张建明",
                                                    passDate =datetime.datetime.today(),
                                                    belondto_area='xiangtanshi', 
-                                                   )          
+                                                   ) 
+        portal['orgnizationfolder1'].invokeFactory('my315ok.socialorgnization.governmentorgnization','government1',
+                                                   title=u"商务局",
+                                                   description=u"运输业",
+                                                   address=u"建设北路",
+                                                   register_code="834100",
+                                                   supervisor=u"交通局",
+                                                   operator = "tyj@qq.com",
+                                                   organization_type="minfei",
+                                                   legal_person=u"张建明",
+                                                   passDate =datetime.datetime.today(),
+                                                   belondto_area='xiangtanshi', 
+                                                   )                  
         portal['orgnizationfolder1']['orgnization1'].invokeFactory('my315ok.socialorgnization.orgnizationsurvey','orgnizationsurvey1',
                                                    title=u"宝庆商会1",
                                                    description=u"运输业",
@@ -76,7 +91,17 @@ class TestView(unittest.TestCase):
                              homepae = 'http://315ok.org/',
                              orgname = 'orgnization1',
                              description="I am member1")     
-
+        
+        portal['memberfolder1'].invokeFactory('dexterity.membrane.sponsormember', '568066794',
+                             email="568066794@qq.com",
+                             last_name=u"唐",
+                             first_name=u"岳军",
+                             title = u"tangyuejun",
+                             password="391124",
+                             confirm_password ="391124",
+                             homepae = 'http://315ok.org/',
+                             orgname = 'government1',
+                             description="I am member1")  
 
         data = getFile('image.jpg').read()
         item = portal['memberfolder1']['member1']
@@ -84,6 +109,12 @@ class TestView(unittest.TestCase):
            
         self.portal = portal
     
+    def test_update_operator(self):
+        item = self.portal['memberfolder1']['568066794']
+        event.notify(ObjectAddedEvent(item,self.portal['memberfolder1'],'568066794'))
+        sorg = self.portal['orgnizationfolder1']['government1']
+        self.assertEqual(sorg.operator,"568066794@qq.com") 
+        
     def test_org_adapter(self):
         from xtshzz.policy.behaviors.org import IOrg
         app = self.layer['app']
