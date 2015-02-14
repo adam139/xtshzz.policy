@@ -1,4 +1,4 @@
-<div class="reviewHistory"
+<div class="reviewHistory col-md-12"
      id="review-history"
      i18n:domain="plone"
      tal:define="history view/workflowHistory;">
@@ -15,7 +15,7 @@
     </div>
         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 
-        <div class="panel-body">
+        <div class="">
         	<table class="table table-bordered" summary="Review History"
                i18n:attributes="summary summary_review_history;">
 

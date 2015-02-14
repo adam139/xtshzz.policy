@@ -8,6 +8,7 @@ from z3c.form import form, field
 from Products.CMFCore.utils import getToolByName
 from dexterity.membrane.content.member import IOrganizationMember
 from dexterity.membrane.content.member import IMember
+from dexterity.membrane.content.member import ISponsorMember
 from zope.interface import Interface
  
 from plone.memoize.instance import memoize
@@ -105,7 +106,10 @@ class MembraneMemberView(grok.View):
                                                   default="translate")
         return title
     
-
+class SponsorMemberView(MembraneMemberView):
+    grok.context(ISponsorMember)     
+    grok.template('sponsor_member_b3_view')
+   
 
       
     

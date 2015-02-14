@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-02-13 13:55+0000\n"
+"POT-Creation-Date: 2015-02-14 00:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,6 +49,10 @@ msgstr ""
 msgid "cancel"
 msgstr ""
 
+#: ./html_template.py:18
+msgid "draft"
+msgstr ""
+
 #: ./profiles/default/actions.xml
 msgid "government organization"
 msgstr ""
@@ -57,8 +61,20 @@ msgstr ""
 msgid "organization"
 msgstr ""
 
+#: ./html_template.py:19
+msgid "pendingsponsor"
+msgstr ""
+
+#: ./html_template.py:20
+msgid "pengdingagent"
+msgstr ""
+
 #: ./browser/register.py:54
 msgid "privacy"
+msgstr ""
+
+#: ./html_template.py:17
+msgid "published"
 msgstr ""
 
 #: ./browser/register.py:111

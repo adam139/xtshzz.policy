@@ -224,7 +224,7 @@ class RegistrationSponsorForm(form.SchemaForm):
             setattr(obj, k, v)
         
         obj.reindexObject()
-        event.notify(ObjectAddedEvent(obj,self.context,data['id']))
+#        event.notify(ObjectAddedEvent(obj,self.context,data['id']))
         urltool = getToolByName(self.context, 'portal_url')
         portal = urltool.getPortalObject()
         self.request.response.redirect(portal.absolute_url() + "/login_form")

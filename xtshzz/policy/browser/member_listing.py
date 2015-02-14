@@ -1,5 +1,7 @@
 #-*- coding: UTF-8 -*-
 from five import grok
+from zope import event
+from zope.lifecycleevent import ObjectAddedEvent
 import json
 from Acquisition import aq_inner
 from zope.component import getMultiAdapter
@@ -11,6 +13,8 @@ from Products.CMFCore.utils import getToolByName
 from dexterity.membrane.content.memberfolder import IMemberfolder 
 from dexterity.membrane.content.member import IOrganizationMember
 from dexterity.membrane.content.member import IMember
+from dexterity.membrane.content.member import ISponsorMember
+
 from Products.CMFCore import permissions 
 
 from plone.app.layout.navigation.interfaces import INavigationRoot
@@ -133,9 +137,12 @@ class memberstate(grok.View):
                        "id":id})[0].getObject()        
         portal_workflow = getToolByName(self.context, 'portal_workflow')
 # obj current status        
-        if state == "pending" :
+        if state == "pending" : # this is a new account
             try:
                 portal_workflow.doActionFor(obj, 'approve')
+                # is sponsor member?  send event update relative government department update operator
+                if ISponsorMember.providedBy(obj):event.notify(ObjectAddedEvent(obj,self.context,obj.id))
+                    
                 result = True              
 
             except:
@@ -149,6 +156,7 @@ class memberstate(grok.View):
         else:
             try:
                 portal_workflow.doActionFor(obj, 'disable')
+                # to do remove the account form government department's operators list 
                 result = True
             except:
                 result = False            

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xtshzz.policy\n"
-"POT-Creation-Date: 2015-02-13 13:55+0000\n"
+"POT-Creation-Date: 2015-02-14 00:52+0000\n"
 "PO-Revision-Date: 2015-02-13 22:03+0800\n"
 "Last-Translator: adam <yuejun.tang@gmail.com>\n"
 "Language-Team: 315ok.org <LL@li.org>\n"
@@ -46,6 +46,10 @@ msgstr "更新口令"
 msgid "cancel"
 msgstr "取消"
 
+#: ./html_template.py:18
+msgid "draft"
+msgstr ""
+
 #: ./profiles/default/actions.xml
 msgid "government organization"
 msgstr "政府部门"
@@ -54,9 +58,21 @@ msgstr "政府部门"
 msgid "organization"
 msgstr "社会组织"
 
+#: ./html_template.py:19
+msgid "pendingsponsor"
+msgstr ""
+
+#: ./html_template.py:20
+msgid "pengdingagent"
+msgstr ""
+
 #: ./browser/register.py:54
 msgid "privacy"
 msgstr "私有政策"
+
+#: ./html_template.py:17
+msgid "published"
+msgstr ""
 
 #: ./browser/register.py:111
 msgid "submit"
