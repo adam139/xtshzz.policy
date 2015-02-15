@@ -34,3 +34,6 @@ msgstr "已发布"
 msgid "Agree"
 msgstr "同意"
 
+#: ./html_template.py:27
+msgid "Veto"
+msgstr "收回"
