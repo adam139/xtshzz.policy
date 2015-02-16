@@ -37,3 +37,14 @@ msgstr "同意"
 #: ./html_template.py:27
 msgid "Veto"
 msgstr "收回"
+
+#: rolemap.xml
+msgid "Social Organization"
+msgstr "社会组织负责人"
+
+msgid "Sponsor"
+msgstr "主管单位负责人"
+
+msgid "Civil Agent"
+msgstr "民政局专员"
+

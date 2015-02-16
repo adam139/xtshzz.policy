@@ -8,7 +8,7 @@
 "Id:","draft",,,,,,,,,,,,
 "Title:","Draft",,,,,,,,,,,,
 "Description:","The report is being drafted.",,,,,,,,,,,,
-"Transitions","submit2agent, submit2sponsor",,,,,,,,,,,
+"Transitions","submit2agent, submit2sponsor, publish",,,,,,,,,,,
 "Permissions","Acquire","Anonymous","Authenticated","Member","Manager","Owner","Editor","Reader","Contributor","Reviewer","Social Organization","Sponsor","Civil Agent"
 "View","N",,,,"Y","Y","Y","Y",,,,"Y","Y"
 "Access contents information","N",,,,"Y","Y","Y","Y",,,,,
@@ -51,6 +51,13 @@
 "View","N","Y",,,"Y","Y","Y","Y",,,"Y","Y","Y"
 "Access contents information","N","Y",,,"Y","Y","Y","Y",,,"Y","Y","Y"
 "Modify portal content","N",,,,"Y","Y","Y",,,,,,
+,,,,,,,,,,,,,
+"[Transition]",,,,,,,,,,,,,
+"Id:","publish",,,,,,,,,,,,
+"Title:","Publish",,,,,,,,,,,,
+"Description:","Publish the report for everyone may read",,,,,,,,,,,,
+"Target state:","published",,,,,,,,,,,,
+"Guard permission:","Manage portal",,,,,,,,,,,,
 ,,,,,,,,,,,,,
 "[Transition]",,,,,,,,,,,,,
 "Id:","submit2sponsor",,,,,,,,,,,,

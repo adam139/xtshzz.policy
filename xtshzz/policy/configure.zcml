@@ -31,11 +31,27 @@
       />
   <!-- -*- extra stuff goes here -*- -->
   <genericsetup:upgradeStep
-      title="Update profile"
+      title="Add government department data profile"
       description="update step to add government department data."
       source="1000"
       destination="1001"
       handler="xtshzz.policy.migration.init_governmentdepartment"
       profile="my315ok.socialorgnization:default"/>
+      
+  <genericsetup:upgradeStep
+      title="Update organization annual survey"
+      description="update step for publish organization annual survey to published status ."
+      source="1000"
+      destination="1001"
+      handler="xtshzz.policy.migration.publish_survey"
+      profile="my315ok.socialorgnization:default"/>
+
+  <genericsetup:upgradeStep
+      title="Update organization profile"
+      description="update step for publish organization to published status ."
+      source="1000"
+      destination="1001"
+      handler="xtshzz.policy.migration.publish_organization"
+      profile="my315ok.socialorgnization:default"/>      
 
 </configure>

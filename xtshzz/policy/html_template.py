@@ -25,3 +25,8 @@ dummy = _p("draft")
 dummy = _p("pendingsponsor")
 dummy = _p("Agree")
 dummy = _p("Veto")
+
+# translate customize roles name. them are come form rolemap.xml
+#dummy = _p("Social Organization")
+#dummy = _p("Sponsor")
+#dummy = _p("Civil Agent")
