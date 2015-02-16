@@ -12,14 +12,15 @@ message = """<html>
 </html>
 """
 # dummy i18n helper for workflow states
-from zope.i18nmessageid import MessageFactory
-_p = MessageFactory('plone')
+#from zope.i18nmessageid import MessageFactory
+from Products.CMFPlone import PloneMessageFactory as _p
+#_p = MessageFactory('plone')
 dummy = _p("published")
 dummy = _p("draft")
 dummy = _p("pendingsponsor")
 dummy = _p("pendingagent")
 
-_p = MessageFactory('plone')
+#_p = MessageFactory('plone')
 dummy = _p("published")
 dummy = _p("draft")
 dummy = _p("pendingsponsor")

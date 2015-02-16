@@ -1,5 +1,5 @@
 #-*- coding: UTF-8 -*-
-from Products.CMFPlone import PloneMessageFactory as _
+from Products.CMFPlone import PloneMessageFactory as _p
 from plone.app.layout.viewlets.content import WorkflowHistoryViewlet
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Acquisition import aq_inner
@@ -39,7 +39,7 @@ class ReviewViewlet(WorkflowHistoryViewlet):
                 review_history = list(review_history)
 
             portal_type = context.portal_type
-            anon = _(u'label_anonymous_user', default=u'Anonymous User')
+            anon = _p(u'label_anonymous_user', default=u'Anonymous User')
 
             for r in review_history:
                 r['type'] = 'workflow'

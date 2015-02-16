@@ -23,7 +23,8 @@ from zope.component import getMultiAdapter
 
 
 from Products.statusmessages.interfaces import IStatusMessage
-from dexterity.membrane import _
+from xtshzz.policy import MessageFactory as _
+from dexterity.membrane import _ as _dm
 from Products.CMFPlone import PloneMessageFactory as _p
 from xtshzz.policy.browser.interfaces import IXtshzzThemeSpecific as IThemeSpecific
 
@@ -51,11 +52,11 @@ defaultvalue = u"""
 class IRegistrationForm(IOrganizationMember):
 
     privacy = RichText(
-            title=_(u"privacy"),
+            title=_dm(u"privacy"),
             default=defaultvalue,
         )       
     agree = schema.Bool(
-            title=_(u"Agree this?"),
+            title=_dm(u"Agree this?"),
             default = True,
             required=False)
     
@@ -87,7 +88,7 @@ class RegistrationForm(form.SchemaForm):
     grok.layer(IThemeSpecific)    
     schema = IRegistrationForm
     ignoreContext = True
-    label = _(u"Register for site member")
+    label = _dm(u"Register for site member")
 
 
     def update(self):
@@ -113,7 +114,7 @@ class RegistrationForm(form.SchemaForm):
         data, errors = self.extractData() 
 
         if not(data['agree']):
-            self.status = "must agree this private policy"
+            self.status = _(u"must agree this private policy")
             return       
         inc = str(int(getattr(self.context, 'registrant_increment', '0')) + 1)
         data['id'] = '%s' % inc
@@ -148,11 +149,11 @@ class RegistrationForm(form.SchemaForm):
 class IRegistrationSponsorForm(ISponsorMember):
 
     privacy = RichText(
-            title=_(u"privacy"),
+            title=_dm(u"privacy"),
             default=defaultvalue,
         )       
     agree = schema.Bool(
-            title=_(u"Agree this?"),
+            title=_dm(u"Agree this?"),
             default = True,
             required=False)
     
