@@ -44,7 +44,7 @@ class ReviewViewlet(WorkflowHistoryViewlet):
             for r in review_history:
                 r['type'] = 'workflow'
                 r['transition_title'] = workflow.getTitleForTransitionOnType(
-                    r['action'], portal_type) or _("Create")
+                    r['action'], portal_type) or _p("Create")
                 r['state_title'] = workflow.getTitleForStateOnType(
                     r['review_state'], portal_type)
                 actorid = r['actor']

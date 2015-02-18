@@ -6,8 +6,8 @@ from dexterity.membrane.content.member import ISponsorMember
 from zope.component import adapter
 from zope.interface import implementer
 
-DEFAULT_ORG_ROLES = ['Social Organization']
-DEFAULT_SPR_ROLES = ['Sponsor']
+DEFAULT_ORG_ROLES = ['Social Organization','Reviewer']
+DEFAULT_SPR_ROLES = ['Sponsor','Reviewer']
 
 @implementer(IMembraneUserRoles)
 @adapter(IOrganizationMember)
