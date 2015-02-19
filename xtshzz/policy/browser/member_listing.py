@@ -42,14 +42,14 @@ class MemberFolderView(grok.View):
         context = self.context
         return context.title
     
-    def tranVoc(self,value):
+    def tranVoc(self,value,domain="dexterity.membrane",target_language="zh_CN"):
         """ translate vocabulary value to title"""
         translation_service = getToolByName(self.context,'translation_service')
         title = translation_service.translate(
                                                   value,
-                                                  domain='dexterity.membrane',
+                                                  domain= domain,
                                                   mapping={},
-                                                  target_language='zh_CN',
+                                                  target_language=target_language,
                                                   context=self.context,
                                                   default="translate")
         return title
@@ -66,7 +66,7 @@ class MemberFolderView(grok.View):
             groups = member.getGroups()
         except:
             return ""
-        roles = [role for role in member.getRoles() if role != 'Authenticated']
+        roles = [self.tranVoc(role, domain="plone")  for role in member.getRoles() if role != 'Authenticated']
         roles = ','.join(roles)
         return roles
         
