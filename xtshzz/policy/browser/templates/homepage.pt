@@ -32,7 +32,7 @@
         		<a href="#"
            	class="tile"
            	tal:attributes="href obj/getURL;title obj/Description">
-           	<span tal:replace="python:view.cropTitle(ttl, 16)">
+           	<span tal:replace="python:view.cropTitle(ttl, 15)">
              Title
             </span>
             <span class="portletItemDetails"
@@ -52,7 +52,7 @@
            	class="tile"
            	tal:attributes="href obj/getURL;
                            title obj/Description">            
-            <span tal:replace="python:view.cropTitle(ttl, 16)">
+            <span tal:replace="python:view.cropTitle(ttl, 15)">
              Title
             </span>
             <span class="portletItemDetails"                  
@@ -72,7 +72,7 @@
            	class="tile"
            	tal:attributes="href obj/getURL;
                            title obj/Description">            
-            <span tal:replace="python:view.cropTitle(ttl, 16)">
+            <span tal:replace="python:view.cropTitle(ttl, 15)">
              Title
             </span>
             <span class="portletItemDetails"                  
@@ -94,7 +94,7 @@
 				<p><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/nianjianbaogaoshu/@@view'"><span>年检报告书</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/shehuituanti/shekuaituantifenzhijigoubanli/@@view'"><span>分支/代表机构</span></a></p>
 				</div>
 				<div class="qrcode col-xs-5">
-				<div class="photo "text-center"">
+				<div class="photo">
 					<img alt="二维码" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode.jpg"/>
 				</div>
 				<div class="text-center">
@@ -154,13 +154,13 @@
          </div>         
        </div>
        <div class="col-xs-12 col-md-4 col-last">
-			<dl class="portlet portletSearch"><dt class="portletHeader">
+			<div class="portlet portletSearch"><h4 class="portletHeader">
       <span class="portletTopLeft"></span>
       <a tal:attributes="href python:context.absolute_url() +'/@@allorgnization_listings'" class="tile">
 			<span class="actived">快捷查询</span></a>
       <span class="portletTopRight"></span>
-  		</dt>
-    <dd id="ajax" class="portletItem" tal:attributes="data-js-target python:context.absolute_url()"> 
+  		</h4>
+    <div id="ajax" class="portletItem" tal:attributes="data-js-target python:context.absolute_url()"> 
 		<form id="quicksearch">
           <input type="text" placeholder="社会组织名称" title="社会组织名称" size="15" name="SearchableText" class="searchField portlet-search-gadget" id="search_input">
           <input type="button" value="搜索" class="searchButton">
@@ -183,7 +183,7 @@
 		return false;}
 		});
 		</script>
-    </dd>
+    </div>
 			<div class="right-ad">
 			<a tal:attributes="href python:context.absolute_url() +'/@@allorgnization_listings'">
 				<img src="http://images.315ok.org/xtshzz/images/cujinhuibar.png" class="top img-responsive" alt="社会组织促进会">					
@@ -192,8 +192,8 @@
 					<img src="http://images.315ok.org/xtshzz/images/pinggubar.png" class="down img-responsive" alt="社会组织评估">						
 			</a>
 			</div>
-    
-		</dl>
+    </div>  
+		
        </div>	       	
        </div>
        <div class="row row-3">        
@@ -234,9 +234,9 @@
     <td class="nopadding">
     	<table class="table table-bordered">
 			<tbody><tr class="theader">
-			  <td width="50%" valign="middle" height="25" bgcolor="#ededed" align="center">社会组织名称</td>
-			  <td width="25%" valign="middle" bgcolor="#ededed" align="center">许可事项</td>
-			  <td width="25%" valign="middle" bgcolor="#ededed" align="center">许可结果</td>
+			  <td class="title">社会组织名称</td>
+			  <td class="item">许可事项</td>
+			  <td class="result">许可结果</td>
 			</tr>
 			</tbody>
 		</table>
@@ -244,10 +244,10 @@
 	  <div id="oRollV1">
     <table class="table table-bordered">                  
         <tbody tal:content="structure python: view.getable('orgnizations_administrative')" >
-        	<tr style="font-size:12px;"> 
-          <td width="50%" height="28" bgcolor="#FFFFFF" align="left">中国中亚友好协会</td>
-          <td width="25%" bgcolor="#FFFFFF" align="center">2013</td>
-          <td width="25%" bgcolor="#FFFFFF" align="center">合格</td>
+        	<tr> 
+          <td>中国中亚友好协会</td>
+          <td>2013</td>
+          <td>合格</td>
         </tr></tbody>
     </table>
     </div>
@@ -273,9 +273,9 @@
     <td class="nopadding">
     	<table class="table table-bordered">
 			<tbody><tr class="theader">
-			  <td width="50%" valign="middle" height="25" bgcolor="#ededed" align="center">社会组织名称</td>
-			  <td width="25%" valign="middle" bgcolor="#ededed" align="center">年度</td>
-			  <td width="25%" valign="middle" bgcolor="#ededed" align="center">年检结果</td>
+			  <td class="title">社会组织名称</td>
+			  <td class="item">年度</td>
+			  <td class="result">年检结果</td>
 			</tr>
 			</tbody>
 		</table>
@@ -283,10 +283,10 @@
 	  <div id="sRollV1">
     <table class="table table-bordered">                 
         <tbody tal:content="structure python: view.getable('orgnizations_survey')" >
-        	<tr style="font-size:12px;"> 
-          <td width="50%" height="28" bgcolor="#FFFFFF" align="left">中国中亚友好协会</td>
-          <td width="25%" bgcolor="#FFFFFF" align="center">2013</td>
-          <td width="25%" bgcolor="#FFFFFF" align="center">合格</td>
+        	<tr> 
+          <td>中国中亚友好协会</td>
+          <td>2013</td>
+          <td>合格</td>
         </tr></tbody>
     </table>
     </div>
@@ -336,7 +336,7 @@
 <li><a title="钢材深加工产业协会" href="http://www.tspa.org.cn/">钢材深加工产业协会</a></li>
 <li><a title="市出租汽车行业协会" href="http://www.xtstaxi.com">市出租汽车行业协会</a></li>
 <li><a title="湘潭担保与信用行业协会" href="http://xtgca.com/">湘潭担保与信用行业协会</a></li>
-<li><a title="宝庆商会" href="http://WWW.XTSYSH.COM/">宝庆商会</a></li>
+<li><a title="宝庆商会" href="http://www.xtsysh.com/">宝庆商会</a></li>
 <li><a title="摄影家协会" href="http://xt.image1.cn/subsite/site_5/index.html">摄影家协会</a></li>
 <li><a title="湘潭市浙江商会" href="http://www.xtzjsh.com/">湘潭市浙江商会</a></li>
 <li class="last"><a title="湘潭市国学研究会" href="http://www.xtguoxue.org/">湘潭市国学研究会</a></li>
@@ -346,10 +346,10 @@
      </div>
      <div  class="container">
  <!-- FOOTER -->
-      <footer class="col-xs-12">
+      <div class="col-xs-12">
         <p class="pull-right"><a href="#">返回顶部</a></p>
         <p>&copy; 2010-<span tal:content="python:view.getCurrentYear()">2015</span>&middot;湘潭市社会组织促进会 &middot; <a href="http://www.miibeian.gov.cn/">湘ICP备07003419</a></p>
-      </footer>
+      </div>
     </div>
 <div id="scripts">
 	<script type="text/javascript" src="http://images.315ok.org/ajaxfetchimg.min.js"></script>
@@ -359,18 +359,12 @@
 		$('.dropdown-toggle').dropdown();
 		StartRollV();
 		StartRollVs();
-		$("#mobile-entry").mouseover(function(){
-  $("#sn-qrcode").show();
-}); 
-	$("#mobile-entry").mouseout(function(){
-  $("#sn-qrcode").hide();
-}); 
-		$("#follow-entry").mouseover(function(){
-  $("#follow-qrcode").show();
-}); 
-	$("#follow-entry").mouseout(function(){
-  $("#follow-qrcode").hide();
-}); 	
+				//big-ad redirect
+		$(".big-ad").on("click",function(){
+			var base = $("#ajax").attr('data-js-target');
+    		window.location.href = base + "/dangjiangongzuo/dangdequnzhongluxianjiaoyoshijianhuodong";
+			return false;		
+		});		
 	</script>
 	
 </div>
