@@ -120,7 +120,6 @@
    </property>
    <property name="visible">True</property>
   </object>
- </object>
  <object name="joinsponsor" meta_type="CMF Action" i18n:domain="xtshzz.policy">
    <property name="title" i18n:translate="">Register sponsor account</property>
    <property name="description" i18n:translate=""></property>
@@ -133,6 +132,7 @@
     <element value="Add portal member"/>
    </property>
    <property name="visible">True</property>
-  </object>
+  </object>  
+ </object>
  </object>  
 
