@@ -7,6 +7,19 @@ from my315ok.socialorgnization.content.orgnizationfolder import IOrgnizationFold
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.component import getUtility
 
+def set_defaultview(context):
+    "将旧的社会组织年检数据设置默认视图view"
+    pc = getToolByName(context, "portal_catalog")
+#    wf = getToolByName(context, 'portal_workflow')
+    query = {"object_provides":IOrgnization_annual_survey.__identifier__}
+    bns = pc(query)
+    for bn in bns:
+        if bn.review_state  == "published":  # after modify workflow and add directly publish transition.
+            ob = bn.getObject()
+            ob.setLayout("view")
+
+#            wf.doActionFor(ob, 'publish', comment='迁移数据，将原始年检直接标记为发布状态。' )
+
 def publish_survey(context):
     "将旧的社会组织年检数据直接发布为published状态"
     pc = getToolByName(context, "portal_catalog")

@@ -86,15 +86,15 @@
          <div class="col-xs-12 col-md-4 col-last staticPortlet">
 				<h2 class="kuputab-tab-definer-default">办事指南</h2>
 				<div class="row">
-				<div class="shortcutlink col-xs-7">
+				<div class="shortcutlink col-sm-7 col-xs-12 text-center">
 				<p><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/minbanfeiqiye/@@view'"><span>民办非企业单位</span></a><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/shehuituanti/@@view'"><span>社会团体</span></a></p>
 				<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweichenglidengji/@@view'"><span>成立登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/shehuituanti/shekuaituantichenglidengji/@@view'"><span>成立登记</span></a></p>
 				<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweibiangengdengji/@@view'"><span>变更登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/shehuituanti/shekuaituantibiangengdengji/@@view'"><span>变更登记</span></a></p>
 				<p><a href="banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweizhuxiaodengji/@@view'"><span>注销登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/shehuituanti/shekuaituantizhuxiaodengji/@@view'"><span>注销登记</span></a></p>
 				<p><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/nianjianbaogaoshu/@@view'"><span>年检报告书</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/shehuituanti/shekuaituantifenzhijigoubanli/@@view'"><span>分支/代表机构</span></a></p>
 				</div>
-				<div class="qrcode col-xs-5">
-				<div class="photo">
+				<div class="qrcode col-sm-5 hidden-xs">
+				<div class="photo text-center">
 					<img alt="二维码" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode.jpg"/>
 				</div>
 				<div class="text-center">
@@ -104,14 +104,14 @@
 			  </div>
 				<h2 class="kuputab-tab-definer">表格下载</h2>
 				<div class="row">
-				<div class="shortcutlink col-xs-7">
+				<div class="shortcutlink col-sm-7 col-xs-12 text-center">
 				<p><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/minbanfeiqiye/@@view'"><span>民办非企业单位</span></a><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/@@view'"><span>社会团体</span></a></p>
 				<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/minbanfeiqiye/chengli/@@view'"><span>成立文件</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/chengli/@@view'"><span>成立登记</span></a></p>
 				<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/minbanfeiqiye/biangeng/@@view'"><span>变更登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/biangeng/@@view'"><span>变更登记</span></a></p>
 				<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/minbanfeiqiye/zhuxiao/@@view'"><span>注销登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/zhuxiao/@@view'"><span>注销登记</span></a></p>
 				<p><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/nianjianbaogaoshu/@@view'"><span>年检报告书</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/fenzhijigou/@@view'"><span>分支/代表机构</span></a></p>
 				</div>
-				<div class="qrcode col-xs-5">
+				<div class="qrcode col-sm-5 hidden-xs">
 				<div class="photo text-center">
 					<img alt="二维码" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode.jpg"/>
 				</div>
@@ -329,7 +329,7 @@
 <li><a title="中国湘潭网" href="http://www.xiangtan.gov.cn/new/index.html">中国湘潭网</a></li>
 <li><a title="湖南民间组织信息网" href="http://hunanmjzz.mca.gov.cn/">湖南民间组织信息网</a></li>
 <li><a title="中国社会组织" href="http://www.chinanpo.gov.cn/index.html">中国社会组织</a></li>
-<li><a title="湘潭在线" href="http:/www.xtol.cn/">湘潭在线</a></li>
+<li><a title="湘潭在线" href="http://www.xtol.cn/">湘潭在线</a></li>
 <li><a title="红网论坛" href="http://bbs.rednet.cn/forum.php?fid=69&amp;mod=forumdisplay">红网论坛</a></li>
 <li class="last"><a title="常德社会组织" href="http://www.changdenpo.org/">常德社会组织</a></li>
 </ul><ul class="orglink"><li class="first"><a title="协会网站" href="#">协会网站：</a></li>
@@ -346,14 +346,13 @@
      </div>
      <div  class="container">
  <!-- FOOTER -->
-      <div class="col-xs-12">
+      <div class="col-xs-12 footer">
         <p class="pull-right"><a href="#">返回顶部</a></p>
         <p>&copy; 2010-<span tal:content="python:view.getCurrentYear()">2015</span>&middot;湘潭市社会组织促进会 &middot; <a href="http://www.miibeian.gov.cn/">湘ICP备07003419</a></p>
       </div>
     </div>
 <div id="scripts">
 	<script type="text/javascript" src="http://images.315ok.org/ajaxfetchimg.min.js"></script>
-
 	<script tal:content="structure python:view.outputjs()"></script>
 	<script>
 		$('.dropdown-toggle').dropdown();

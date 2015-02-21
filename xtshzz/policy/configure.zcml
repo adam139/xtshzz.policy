@@ -47,6 +47,14 @@
       profile="my315ok.socialorgnization:default"/>
 
   <genericsetup:upgradeStep
+      title="Update organization annual survey view"
+      description="update step for survey set default view to view ."
+      source="1000"
+      destination="1001"
+      handler="xtshzz.policy.migration.set_defaultview"
+      profile="my315ok.socialorgnization:default"/> 
+
+  <genericsetup:upgradeStep
       title="Update organization profile"
       description="update step for publish organization to published status ."
       source="1000"
