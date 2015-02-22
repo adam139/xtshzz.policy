@@ -6,6 +6,16 @@
    <include package="plone.behavior" file="meta.zcml" />
    <include package="plone.directives.form" file="meta.zcml" />
    <include package="plone.directives.form" />
+   
+<plone:behavior
+    title="Name from  year"
+    description="generates a name from  preview year"
+    for="plone.dexterity.interfaces.IDexterityContent"
+    provides=".year2id.INameFromYear"
+    />
+
+<adapter factory=".year2id.NameFromYear" />
+
 <!--
   <plone:behavior
       title="Name from full name"

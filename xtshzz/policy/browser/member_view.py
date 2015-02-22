@@ -1,7 +1,7 @@
 from five import grok
 from Acquisition import aq_inner
 from zope.component import getMultiAdapter
-
+import datetime
 from plone.directives import form
 from zope import schema
 from z3c.form import form, field
@@ -9,6 +9,7 @@ from Products.CMFCore.utils import getToolByName
 from dexterity.membrane.content.member import IOrganizationMember
 from dexterity.membrane.content.member import IMember
 from dexterity.membrane.content.member import ISponsorMember
+from my315ok.socialorgnization.content.orgnization import IOrgnization_annual_survey
 from zope.interface import Interface
  
 from plone.memoize.instance import memoize
@@ -69,6 +70,42 @@ class MembraneMemberView(grok.View):
         member_id = member.getId()
         member_folder = self.pm().getHomeFolder(member_id)
         return member_folder
+
+    @memoize    
+    def SurveyUrl(self):
+        "return current annual survey url"
+        from xtshzz.policy.behaviors.org import IOrg
+
+        member_data = self.pm().getAuthenticatedMember()
+        try:
+            id = member_data.getUserName()
+        except:
+            return ""
+        query = {"object_provides":IMember.__identifier__,'email':id}
+        bns = self.catalog()(query)
+        try:
+            bn = bns[0]
+        except:
+            return ""
+                
+
+        member = bn.getObject()
+
+        orgbn = IOrg(member).getOrgBn()
+        if not orgbn:return ""
+        org = orgbn.getObject()
+        id = (datetime.datetime.today() + datetime.timedelta(-365)).strftime("%Y")
+            # see if org container contain id object
+        try:
+            survey = getattr(org, id, None)
+            if survey ==None:return ""
+        except:
+            return ""
+
+        path = IOrg(member).getOrgPath()
+        if not path:return ""
+        return "%s/%s"  % (path,id)
+        
     
     @memoize    
     def createSurveyUrl(self):
@@ -88,6 +125,17 @@ class MembraneMemberView(grok.View):
                 
         if bn.review_state =="enabled":
             member = bn.getObject()
+
+            orgbn = IOrg(member).getOrgBn()
+            if not orgbn:return ""
+            org = orgbn.getObject()
+            id = (datetime.datetime.today() + datetime.timedelta(-365)).strftime("%Y")
+            # see if org container contain id object
+            try:
+                survey = getattr(org, id, None)
+                if survey !=None:return ""
+            except:
+                return ""
 
             path = IOrg(member).getOrgPath()
             if not path:return ""

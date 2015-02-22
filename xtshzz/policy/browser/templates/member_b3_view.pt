@@ -58,7 +58,7 @@
       		</div>
       	</div>
       	<div class="col-md-3">
-      		<div tal:define="curl python:view.createSurveyUrl()">
+      		<div tal:define="curl python:view.SurveyUrl()">
       		<a tal:condition="curl" class="btn btn-primary" title="查看年检报告" tal:attributes="href python:curl">
       			查看年检报告
       		</a>

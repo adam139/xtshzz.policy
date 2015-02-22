@@ -24,8 +24,10 @@
 -->
  <property name="add_permission">my315ok.socialorgnization.add.anualreport</property>
  <property name="behaviors">
+    <element value="xtshzz.policy.behaviors.year2id.INameFromYear" />
+<!-- 
     <element value="plone.app.content.interfaces.INameFromTitle" />
-<!--     <element value="my315ok.socialorgnization.behavior.customizetitle.INameFromParentId" />  
+    <element value="my315ok.socialorgnization.behavior.customizetitle.INameFromParentId" />  
      <element value="plone.app.dexterity.behaviors.metadata.IBasic"/> -->
  </property>
 
