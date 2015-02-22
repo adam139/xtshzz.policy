@@ -81,8 +81,13 @@ class MembraneMemberView(grok.View):
             return ""
         query = {"object_provides":IMember.__identifier__,'email':id}
         bns = self.catalog()(query)
-        if bns:
-            member = bns[0].getObject()
+        try:
+            bn = bns[0]
+        except:
+            return ""
+                
+        if bn.review_state =="enabled":
+            member = bn.getObject()
 
             path = IOrg(member).getOrgPath()
             if not path:return ""
