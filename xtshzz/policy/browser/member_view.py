@@ -71,6 +71,73 @@ class MembraneMemberView(grok.View):
         member_folder = self.pm().getHomeFolder(member_id)
         return member_folder
 
+    
+    def currentUserEmail(self):
+        "return current user's login name:email"
+        member_data = self.pm().getAuthenticatedMember()
+        try:
+            id = member_data.getUserName()
+            if "@" in id:return id
+            return ""
+        except:
+            return ""
+
+    def isOrgAccount(self):
+        "see current user if is a organization account"
+        id = self.currentUserEmail()
+        if id =="":return False
+        query = {"object_provides":IOrganizationMember.__identifier__,'email':id}
+        bns = self.catalog()(query)
+        return len(bns)        
+        
+    def isSponsor(self):
+        "see current user if is a sponsor account"
+        id = self.currentUserEmail()
+        if id =="":return False
+        query = {"object_provides":ISponsorMember.__identifier__,'email':id}
+        bns = self.catalog()(query)
+        try:
+            bn = bns[0]
+            return True
+        except:
+            return False
+        
+    def isAgentOperator(self):
+        "see current user if is a civil agent operator account"
+        id = self.currentUserEmail()
+        if id =="":return False
+        # search civil agent object
+        from my315ok.socialorgnization.content.governmentdepartment import IOrgnization
+        query = {"object_provides":IOrgnization.__identifier__,'id':"minzhengju"}
+        bns = self.catalog()(query)
+        return (bns[0].getObject().operator == id) and self.isSponsor()    
+    
+    def pendingsurvey(self):
+        "return all annual survey that pending current user review,return value should be list that item is dic"
+#        import pdb
+#        pdb.set_trace()
+        if self.isOrgAccount():
+            return []
+        elif self.isAgentOperator():
+            query = {"object_provides":IOrgnization_annual_survey.__identifier__,'review_state':"pendingagent"}
+            bns = self.catalog()(query)           
+            return bns
+        else:
+            query = {"object_provides":IOrgnization_annual_survey.__identifier__,'review_state':"pendingsponsor"}
+            bns = self.catalog()(query)
+            email = self.currentUserEmail()
+            pending = []
+            for bn in bns:
+                ob = bn.getObject()
+                dview = getMultiAdapter((ob, self.request),name=u"sponsorview")
+                op = dview.getSponsorOperatorEmail()
+                if op == email:
+                    pending.append(bn)
+                    continue
+                else:
+                    continue      
+            return pending
+        
     @memoize    
     def SurveyUrl(self):
         "return current annual survey url"
