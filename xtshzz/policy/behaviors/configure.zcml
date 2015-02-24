@@ -13,8 +13,16 @@
     for="plone.dexterity.interfaces.IDexterityContent"
     provides=".year2id.INameFromYear"
     />
+<plone:behavior
+    title="Name from  year and day"
+    description="generates a name from  current year and day"
+    for="plone.dexterity.interfaces.IDexterityContent"
+    provides=".year2id.INameFromAdminYear"
+    />
 
 <adapter factory=".year2id.NameFromYear" />
+
+<adapter factory=".year2id.NameFromAdminYear" />
 
 <!--
   <plone:behavior
