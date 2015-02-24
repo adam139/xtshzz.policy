@@ -46,7 +46,7 @@
        </div>
           <div class="col-md-2 buttonOverlay">
           	<a class="btn btn-default" tal:attributes="href python:context.absolute_url() + '/@@edit-baseinfo'" i18n:domain="plone" i18n:translate="" title="Edit">Edit</a>
-          	<br />
+          	<p></p>
           	<a class="btn btn-default" tal:attributes="href python:context.absolute_url() + '/@@edit-password'"  i18n:translate="" title="change password">change password</a>          	
           	</div>       
       </div>
