@@ -112,6 +112,21 @@ class MembraneMemberView(grok.View):
         bns = self.catalog()(query)
         return (bns[0].getObject().operator == id) and self.isSponsor()    
     
+    
+    def canRead(self):
+        "see if current user can read this page"
+        from AccessControl import getSecurityManager
+        from Products.CMFCore.permissions import ModifyPortalContent
+        context = self.context
+        sm = getSecurityManager()
+        id = self.currentUserEmail()
+        if id == context.email:return True
+        elif not sm.checkPermission(ModifyPortalContent, context):return False
+        else:
+            return True
+        
+        
+    @memoize
     def pendingsurvey(self):
         "return all annual survey that pending current user review,return value should be list that item is dic"
 #        import pdb

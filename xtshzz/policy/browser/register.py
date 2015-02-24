@@ -101,6 +101,9 @@ class RegistrationForm(form.SchemaForm):
         self.widgets['privacy'].label = u''        
         self.widgets['privacy'].mode = 'display'
         self.widgets['privacy'].autoresize = True
+        self.widgets['email'].addClass("form-control")
+        self.widgets['title'].addClass("form-control")
+        self.widgets['orgname'].addClass("form-control")                        
         self.widgets['agree'].addClass("checkbox")
     
     def updateActions(self):
@@ -128,9 +131,9 @@ class RegistrationForm(form.SchemaForm):
             setattr(obj, k, v)
         
         obj.reindexObject()
-        urltool = getToolByName(self.context, 'portal_url')
-        portal = urltool.getPortalObject()
-        self.request.response.redirect(portal.absolute_url() + "/login_form")
+#        urltool = getToolByName(self.context, 'portal_url')
+#        portal = urltool.getPortalObject()
+#        self.request.response.redirect(portal.absolute_url() + "/login_form")
         email = data.get('email', '')
         IStatusMessage(self.request).addStatusMessage(
                         _p(u'create_membrane_account_succesful_pending_audit',
@@ -198,6 +201,9 @@ class RegistrationSponsorForm(form.SchemaForm):
         self.widgets['privacy'].label = u''        
         self.widgets['privacy'].mode = 'display'
         self.widgets['privacy'].autoresize = True
+        self.widgets['email'].addClass("form-control")
+        self.widgets['title'].addClass("form-control")
+        self.widgets['orgname'].addClass("form-control")         
         self.widgets['agree'].addClass("checkbox")
     
     def updateActions(self):
@@ -226,9 +232,9 @@ class RegistrationSponsorForm(form.SchemaForm):
         
         obj.reindexObject()
 #        event.notify(ObjectAddedEvent(obj,self.context,data['id']))
-        urltool = getToolByName(self.context, 'portal_url')
-        portal = urltool.getPortalObject()
-        self.request.response.redirect(portal.absolute_url() + "/login_form")
+#        urltool = getToolByName(self.context, 'portal_url')
+#        portal = urltool.getPortalObject()
+#        self.request.response.redirect(portal.absolute_url() + "/login_form")
         email = data.get('email', '')
         IStatusMessage(self.request).addStatusMessage(
                         _p(u'create_membrane_account_succesful_pending_audit',

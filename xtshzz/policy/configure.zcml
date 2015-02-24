@@ -30,6 +30,22 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   <!-- -*- extra stuff goes here -*- -->
+  
+  <genericsetup:registerProfile
+      name="post"
+      title="xtshzz.policy post steps"
+      directory="profiles/post"
+      description="some clear and post steps after initial the site"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />  
+  <genericsetup:registerProfile
+      name="init"
+      title="xtshzz.policy initial site"
+      directory="profiles/init"
+      description="some initial steps"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />  
+  
   <genericsetup:upgradeStep
       title="Add government department data profile"
       description="update step to add government department data."

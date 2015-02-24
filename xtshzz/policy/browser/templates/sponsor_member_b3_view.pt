@@ -13,9 +13,10 @@
 <body>
 <metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="main" 
-    	tal:define="text_to_html nocall:here/@@xtshzz-policy-macros/text_to_html">
+    	tal:define="text_to_html nocall:context/@@xtshzz-policy-macros/text_to_html;canread python:view.canRead()">
 
-       <section id="profile">
+       <div tal:condition= "python:not(canread)" class="text-warning">对不起，你没有权限查看此页面！</div>
+       <section id="profile" tal:condition="canread">
        <div class="page-header">
            <h3 i18n:translate="">Base information</h3>           
        </div>  
@@ -27,7 +28,7 @@
         <div class="col-md-7">
           <dl class="dl-horizontal">                      	
             <dt i18n:translate="">Email</dt>
-            <dd tal:content="python:(context.email or '').replace('@',' (at) ')">vader@empire.com</dd>
+            <dd tal:content="python:(context.email or '')">vader@empire.com</dd>
             <tal:block condition="context/title">
             <dt>姓名</dt>
             <dd tal:content="context/title"></dd>
