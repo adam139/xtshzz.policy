@@ -51,14 +51,14 @@ defaultvalue = u"""
 """
 class IRegistrationForm(IOrganizationMember):
 
-    privacy = RichText(
-            title=_dm(u"privacy"),
-            default=defaultvalue,
-        )       
-    agree = schema.Bool(
-            title=_dm(u"Agree this?"),
-            default = True,
-            required=False)
+#    privacy = RichText(
+#            title=_dm(u"privacy"),
+#            default=defaultvalue,
+#        )       
+#    agree = schema.Bool(
+#            title=_dm(u"Agree this?"),
+#            default = True,
+#            required=False)
     
     form.widget(captcha=CaptchaFieldWidget)
     captcha = schema.TextLine(title=u"",
@@ -98,34 +98,35 @@ class RegistrationForm(form.SchemaForm):
     def updateWidgets(self):
         super(RegistrationForm, self).updateWidgets()
 
-        self.widgets['privacy'].label = u''        
-        self.widgets['privacy'].mode = 'display'
-        self.widgets['privacy'].autoresize = True
+#        self.widgets['privacy'].label = u''        
+#        self.widgets['privacy'].mode = 'display'
+#        self.widgets['privacy'].autoresize = True
         self.widgets['email'].addClass("form-control")
         self.widgets['title'].addClass("form-control")
         self.widgets['orgname'].addClass("form-control")                        
-        self.widgets['agree'].addClass("checkbox")
+        self.widgets['captcha'].addClass("form-control")        
+#        self.widgets['agree'].addClass("checkbox")
     
     def updateActions(self):
 
         super(RegistrationForm, self).updateActions()
-        self.actions['submit'].addClass("bn-lg btn-primary")
-        self.actions['cancel'].addClass("bn-lg btn-default")        
+        self.actions['submit'].addClass("btn-primary btn-block btn-lg")
+        self.actions['cancel'].addClass("btn-default btn-block btn-lg")       
     
     @button.buttonAndHandler(_(u"submit"))
     def submit(self, action):        
         data, errors = self.extractData() 
 
-        if not(data['agree']):
-            self.status = _(u"must agree this private policy")
-            return       
+#        if not(data['agree']):
+#            self.status = _(u"must agree this private policy")
+#            return       
         inc = str(int(getattr(self.context, 'registrant_increment', '0')) + 1)
         data['id'] = '%s' % inc
         self.context.registrant_increment = inc
         obj = _createObjectByType("dexterity.membrane.organizationmember", 
                 self.context, data['id'])
 
-        del data['agree']        
+#        del data['agree']        
 
         for k, v in data.items():
             setattr(obj, k, v)
@@ -151,14 +152,14 @@ class RegistrationForm(form.SchemaForm):
 ## sponsor member register
 class IRegistrationSponsorForm(ISponsorMember):
 
-    privacy = RichText(
-            title=_dm(u"privacy"),
-            default=defaultvalue,
-        )       
-    agree = schema.Bool(
-            title=_dm(u"Agree this?"),
-            default = True,
-            required=False)
+#    privacy = RichText(
+#            title=_dm(u"privacy"),
+#            default=defaultvalue,
+#        )       
+#    agree = schema.Bool(
+#            title=_dm(u"Agree this?"),
+#            default = True,
+#            required=False)
     
     form.widget(captcha=CaptchaFieldWidget)
     captcha = schema.TextLine(title=u"",
@@ -198,34 +199,35 @@ class RegistrationSponsorForm(form.SchemaForm):
     def updateWidgets(self):
         super(RegistrationSponsorForm, self).updateWidgets()
 
-        self.widgets['privacy'].label = u''        
-        self.widgets['privacy'].mode = 'display'
-        self.widgets['privacy'].autoresize = True
+#        self.widgets['privacy'].label = u''        
+#        self.widgets['privacy'].mode = 'display'
+#        self.widgets['privacy'].autoresize = True
         self.widgets['email'].addClass("form-control")
         self.widgets['title'].addClass("form-control")
-        self.widgets['orgname'].addClass("form-control")         
-        self.widgets['agree'].addClass("checkbox")
+        self.widgets['orgname'].addClass("form-control")
+        self.widgets['captcha'].addClass("form-control")                   
+#        self.widgets['agree'].addClass("checkbox")
     
     def updateActions(self):
 
         super(RegistrationSponsorForm, self).updateActions()
-        self.actions['submit'].addClass("bn-lg btn-primary")
-        self.actions['cancel'].addClass("bn-lg btn-default")        
+        self.actions['submit'].addClass("btn-primary btn-block btn-lg")
+        self.actions['cancel'].addClass("btn-default btn-block btn-lg")         
     
     @button.buttonAndHandler(_(u"submit"))
     def submit(self, action):        
         data, errors = self.extractData() 
 
-        if not(data['agree']):
-            self.status = "must agree this private policy"
-            return       
+#        if not(data['agree']):
+#            self.status = "must agree this private policy"
+#            return       
         inc = str(int(getattr(self.context, 'registrant_increment', '0')) + 1)
         data['id'] = '%s' % inc
         self.context.registrant_increment = inc
         obj = _createObjectByType("dexterity.membrane.sponsormember", 
                 self.context, data['id'])
 
-        del data['agree']        
+#        del data['agree']        
 
         for k, v in data.items():
             setattr(obj, k, v)
