@@ -136,10 +136,16 @@ class memberstate(grok.View):
                        'path':"/".join(self.context.getPhysicalPath()), 
                        "id":id})[0].getObject()        
         portal_workflow = getToolByName(self.context, 'portal_workflow')
+        registration = getToolByName(self.context, 'portal_registration')
 # obj current status        
         if state == "pending" : # this is a new account
             try:
                 portal_workflow.doActionFor(obj, 'approve')
+                try:
+                    response = registration.registeredNotify(obj.email)
+                except:
+                    raise 
+                
                 # is sponsor member?  send event update relative government department update operator
                 if ISponsorMember.providedBy(obj):event.notify(ObjectAddedEvent(obj,self.context,obj.id))
                     
