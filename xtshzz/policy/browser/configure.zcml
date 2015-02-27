@@ -37,6 +37,7 @@
  		widget="collective.z3cform.datetimewidget.interfaces.IDateWidget"        
  		layer=".interfaces.IXtshzzThemeSpecific"
  		template="templates/date_input.pt" />
+ 		
    <z3c:widgetTemplate
         mode="input"
  		widget="plone.formwidget.captcha.interfaces.ICaptchaWidget"        
