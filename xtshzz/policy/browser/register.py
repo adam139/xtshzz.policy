@@ -117,9 +117,9 @@ class RegistrationForm(form.SchemaForm):
     def submit(self, action):        
         data, errors = self.extractData() 
 
-#        if not(data['agree']):
-#            self.status = _(u"must agree this private policy")
-#            return       
+        if errors:
+            self.status = _(u"Please correct errors")
+            return       
         inc = str(int(getattr(self.context, 'registrant_increment', '0')) + 1)
         data['id'] = '%s' % inc
         self.context.registrant_increment = inc
@@ -218,9 +218,9 @@ class RegistrationSponsorForm(form.SchemaForm):
     def submit(self, action):        
         data, errors = self.extractData() 
 
-#        if not(data['agree']):
-#            self.status = "must agree this private policy"
-#            return       
+        if errors:
+            self.status = _(u"Please correct errors")
+            return         
         inc = str(int(getattr(self.context, 'registrant_increment', '0')) + 1)
         data['id'] = '%s' % inc
         self.context.registrant_increment = inc

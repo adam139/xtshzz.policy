@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-02-16 12:51+0000\n"
+"POT-Creation-Date: 2015-02-27 12:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: xtshzz.policy\n"
 
-#: ./browser/member_view.py:120
+#: ./browser/member_view.py:255
 msgid "Base information"
 msgstr ""
 
-#: ./browser/review_history.py:47
-msgid "Create"
-msgstr ""
-
-#: ./browser/member_view.py:144
+#: ./browser/member_view.py:279
 msgid "Network information"
 msgstr ""
 
-#: ./browser/register.py:188
+#: ./browser/register.py:121
+msgid "Please correct errors"
+msgstr ""
+
+#: ./browser/register.py:192
 msgid "Register a sponsor account"
 msgstr ""
 
@@ -37,11 +37,11 @@ msgstr ""
 msgid "Register sponsor account"
 msgstr ""
 
-#: ./browser/member_view.py:132
+#: ./browser/member_view.py:267
 msgid "Update password"
 msgstr ""
 
-#: ./browser/register.py:142
+#: ./browser/register.py:146
 msgid "cancel"
 msgstr ""
 
@@ -49,15 +49,11 @@ msgstr ""
 msgid "government organization"
 msgstr ""
 
-#: ./browser/register.py:117
-msgid "must agree this private policy"
-msgstr ""
-
 #: ./profiles/default/actions.xml
 msgid "organization"
 msgstr ""
 
-#: ./browser/register.py:112
+#: ./browser/register.py:116
 msgid "submit"
 msgstr ""
 
