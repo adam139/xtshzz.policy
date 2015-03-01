@@ -165,24 +165,6 @@
           <input type="text" placeholder="社会组织名称" title="社会组织名称" size="15" name="SearchableText" class="searchField portlet-search-gadget" id="search_input">
           <input type="button" value="搜索" class="searchButton">
     </form>
-
-			<script type="text/javascript">
-			$(".searchButton").on("click",function() {
-     	var a = $("#search_input").val();
-			var b2 = encodeURIComponent(a);
-			var base = $("#ajax").attr('data-js-target');
-    		window.location.href = base + "/@@allorgnization_listings?orgname=" + b2;
-			return false;
-   			 });
-		$("#search_input").keypress(function(event) {
-    if (event.which == 13) {
-     var a = $("#search_input").val();
-		var b2 = encodeURIComponent(a);
-		var base = $("#ajax").attr('data-js-target');
-    window.location.href = base + "/@@allorgnization_listings?orgname=" + b2;
-		return false;}
-		});
-		</script>
     </div>
 			<div class="right-ad">
 			<a tal:attributes="href python:context.absolute_url() +'/@@allorgnization_listings'">
@@ -352,20 +334,7 @@
       </div>
     </div>
 <div id="scripts">
-	<script type="text/javascript" src="http://images.315ok.org/ajaxfetchimg.min.js"></script>
-	<script tal:content="structure python:view.outputjs()"></script>
-	<script>
-		$('.dropdown-toggle').dropdown();
-		StartRollV();
-		StartRollVs();
-				//big-ad redirect
-		$(".big-ad").on("click",function(){
-			var base = $("#ajax").attr('data-js-target');
-    		window.location.href = base + "/dangjiangongzuo/dangdequnzhongluxianjiaoyoshijianhuodong/@@view";
-			return false;		
-		});		
-	</script>
-	
+	<script tal:content="structure python:view.outputjs()"></script>	
 </div>
     </tal:main-macro>
 </metal:main>   
