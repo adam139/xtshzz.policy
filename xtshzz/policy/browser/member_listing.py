@@ -79,6 +79,22 @@ class MemberFolderView(grok.View):
                                               sort_on="created")
         return memberbrains        
         
+    
+    def getOrgFromId(self,Intf,id):
+        "search organization through id"
+        catalog = getToolByName(self.context, "portal_catalog")
+        brains = catalog(object_provides=Intf.__identifier__,id = id)
+        if len(brains) == 0: return {'url':'#','name':u"缺失关联"}
+        title = brains[0].Title
+        url = brains[0].getURL()
+        org = {}
+        org['url'] = url
+        org['name'] = title
+        return org
+
+#        return u"""< a href="%s">%s</a>""" % (url,title)         
+        
+        
     def getMemberList(self):
         """获取会员列表"""
         mlist = []
@@ -92,11 +108,17 @@ class MemberFolderView(grok.View):
                     'delurl':''}
             row['id'] = brain.id
             row['name'] = brain.Title
+            id = brain.getObject().orgname
+#            import pdb
+#            pdb.set_trace()
+#            row['type'] = 
             if brain.portal_type == 'dexterity.membrane.organizationmember':
+                exec("from my315ok.socialorgnization.content.orgnization import IOrgnization as Intf")
 
-                row['type'] = u"社会组织关联账号"
+                row['type'] = self.getOrgFromId(Intf,id)
             else:
-                row['type'] = u"监管单位关联账号"
+                exec("from my315ok.socialorgnization.content.governmentdepartment import IOrgnization as Intf")                
+                row['type'] = self.getOrgFromId(Intf,id)
                
             row['url'] = brain.getURL()
 
