@@ -361,7 +361,7 @@
 				//big-ad redirect
 		$(".big-ad").on("click",function(){
 			var base = $("#ajax").attr('data-js-target');
-    		window.location.href = base + "/dangjiangongzuo/dangdequnzhongluxianjiaoyoshijianhuodong/@view";
+    		window.location.href = base + "/dangjiangongzuo/dangdequnzhongluxianjiaoyoshijianhuodong/@@view";
 			return false;		
 		});		
 	</script>
