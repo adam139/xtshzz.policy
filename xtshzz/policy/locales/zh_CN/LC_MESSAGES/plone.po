@@ -41,6 +41,8 @@ msgstr "同意"
 msgid "Veto"
 msgstr "收回"
 
+msgid "Pending sponsor review"
+msgstr "待主管审核"
 #: rolemap.xml
 msgid "Social Organization"
 msgstr "社会组织负责人"
