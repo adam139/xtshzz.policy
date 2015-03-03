@@ -18,7 +18,7 @@
        <div tal:condition= "python:not(canread)" class="text-warning">对不起，你没有权限查看此页面！</div>
        <section id="profile" tal:condition="canread">
        <div class="page-header">
-           <h3 i18n:translate="">Base information</h3>           
+           <h2 i18n:translate="">Base information</h2>           
        </div>  
        <div class="row">
           <div class="col-md-1">&nbsp;</div>
@@ -66,9 +66,7 @@
       		</div>
       	</div>      	
       </div>
-      </section>
-
-     
+      </section>     
     </tal:main-macro>
 </metal:main>
 <metal:js fill-slot="javascript_bottom_slot">
@@ -84,7 +82,6 @@ jq(document).ready(function(){
 		subtype: 'ajax',
 		filter: '#content>*',
 		formselector: '#content-core > form',
-//		noform: 'close',
 		noform: 'reload',
 		closeselector: '[name=form.buttons.cancel]',
 		});

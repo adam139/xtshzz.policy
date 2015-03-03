@@ -211,5 +211,6 @@ class FrontpageView(baseview):
         context = self.getOrgnizationFolder()
         fview = getMultiAdapter((context,self.request),name=view)
         # call getMemberList function output table
-        return fview.getMemberList()
+        # fetch 20 items roll
+        return fview.getMemberList(start=0,size=20,)
             

@@ -258,7 +258,7 @@ class EditProfile(dexterity.EditForm):
         pass
     @property
     def fields(self):
-        return field.Fields(IMember).select('title','description','email')
+        return field.Fields(IMember).select('title','description')
 
 class EditProfilePassword(dexterity.EditForm):
     grok.name('edit-password')

@@ -60,7 +60,7 @@
                 </span>
               </td>
 
-              <td>
+              <td class="text-left">
                 <span tal:condition="rhComments">
                   <span tal:replace="rhComments"> some comments </span>
                 </span>
