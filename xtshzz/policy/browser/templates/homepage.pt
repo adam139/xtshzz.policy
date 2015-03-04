@@ -160,10 +160,16 @@
 			<span class="actived">快捷查询</span></a>
       <span class="portletTopRight"></span>
   		</h4>
-    <div id="ajax" class="portletItem" tal:attributes="data-js-target python:context.absolute_url()"> 
-		<form id="quicksearch">
-          <input type="text" placeholder="社会组织名称" title="社会组织名称" size="15" name="SearchableText" class="searchField portlet-search-gadget" id="search_input">
-          <input type="button" value="搜索" class="searchButton">
+    <div id="ajax" class="portletItem" tal:attributes="data-js-target python:context.absolute_url()">		
+		<form id="quicksearch" class="form-inline">
+			<div class="form-group">
+	<!--			<label for="search_input">社会组织名称</label> -->
+          <input type="text" placeholder="社会组织名称（可模糊查找）"  name="SearchableOrg" class="form-control" id="search_input">
+   <!--       <input type="button" value="搜索" class="searchButton"> -->
+    		</div>
+    		<button type="submit" class="searchButton btn btn-default">
+    			<span class="glyphicon glyphicon-search"></span>
+    		</button>
     </form>
     </div>
 			<div class="right-ad">
