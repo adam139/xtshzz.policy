@@ -4,12 +4,16 @@
     i18n_domain="my315ok.socialorgnization">
     
     <include package="z3c.caching" file="meta.zcml" />
-    
-
+     <cache:ruleset
+        for=".member_view.MembraneMemberView"
+        ruleset="plone.content.itemView"
+        />     
+    <cache:ruleset
+        for=".member_listing.MemberFolderB3View"
+        ruleset="plone.content.folderView"
+        />
     <cache:ruleset
         for=".homepage.FrontpageView"
         ruleset="plone.content.folderView"
-        />
-
-    
+        />    
 </configure>
