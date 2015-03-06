@@ -6,6 +6,7 @@
     i18n_domain="xtshzz.policy">
     
   <grok:grok package="." />
+  <include file="caching.zcml" />   
   <browser:page
     for="*"
     name="tinymce-jsonconfiguration"
@@ -43,11 +44,5 @@
  		widget="plone.formwidget.captcha.interfaces.ICaptchaWidget"        
  		layer=".interfaces.IXtshzzThemeSpecific"
  		template="templates/captcha_input.pt" /> 		
-<!-- 		
-<include package="z3c.jbot" file="meta.zcml" />
-
-<browser:jbot
-    directory="overrides"
-    layer=".interfaces.IXtshzzThemeSpecific" />
--->    
+ 
 </configure>

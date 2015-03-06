@@ -33,10 +33,9 @@ setup(name='xtshzz.policy',
           'dexterity.membrane',          
           'collective.quickupload',
           'collective.monkeypatcher',
-          'my315ok.portlet.embediframe',
           'my315ok.socialorgnization',
           'collective.diazotheme.bootstrap',
-#          'Products.ContentWellPortlets',
+          'z3c.caching',
           'collective.autopermission',
                                                                      
           # -*- Extra requirements: -*-
