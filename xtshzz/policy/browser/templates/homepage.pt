@@ -32,7 +32,7 @@
         		<a href="#"
            	class="tile"
            	tal:attributes="href obj/getURL;title obj/Description">
-           	<span tal:replace="python:view.cropTitle(ttl, 16)">
+           	<span tal:replace="python:view.cropTitle(ttl, 15)">
              Title
             </span>
             <span class="portletItemDetails"
@@ -52,7 +52,7 @@
            	class="tile"
            	tal:attributes="href obj/getURL;
                            title obj/Description">            
-            <span tal:replace="python:view.cropTitle(ttl, 16)">
+            <span tal:replace="python:view.cropTitle(ttl, 15)">
              Title
             </span>
             <span class="portletItemDetails"                  
@@ -72,7 +72,7 @@
            	class="tile"
            	tal:attributes="href obj/getURL;
                            title obj/Description">            
-            <span tal:replace="python:view.cropTitle(ttl, 16)">
+            <span tal:replace="python:view.cropTitle(ttl, 15)">
              Title
             </span>
             <span class="portletItemDetails"                  
