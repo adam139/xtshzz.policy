@@ -161,15 +161,15 @@
       <span class="portletTopRight"></span>
   		</h4>
     <div id="ajax" class="portletItem" tal:attributes="data-js-target python:context.absolute_url()">		
-		<form id="quicksearch" class="form-inline">
-			<div class="form-group">
-	<!--			<label for="search_input">社会组织名称</label> -->
+		<form id="quicksearch" class="form-inline row">
+			<div class="form-group col-xs-9">
           <input type="text" placeholder="社会组织名称（可模糊查找）"  name="SearchableOrg" class="form-control" id="search_input">
-   <!--       <input type="button" value="搜索" class="searchButton"> -->
     		</div>
+    		<div class="col-xs-3">
     		<button type="submit" class="searchButton btn btn-default">
     			<span class="glyphicon glyphicon-search"></span>
     		</button>
+    		</div>
     </form>
     </div>
 			<div class="right-ad">
