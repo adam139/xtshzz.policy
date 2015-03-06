@@ -16,8 +16,7 @@
 					</div>
        </div>
     <div id="homepage" 
-    	class="container container-header"> 
-      	
+    	class="container container-header">      	
        <div class="row row-1" tal:define="plone_view context/@@plone;
        	toLocalizedTime nocall:plone_view/toLocalizedTime;">
          <div class="col-xs-12 col-md-4">
@@ -95,7 +94,7 @@
 				</div>
 				<div class="qrcode col-sm-5 hidden-xs">
 				<div class="photo text-center">
-					<img alt="二维码" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode.jpg"/>
+					<img alt="二维码" width="156" height="156" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode.jpg"/>
 				</div>
 				<div class="text-center">
 					<span>扫一扫，关注我们</span>
@@ -113,7 +112,7 @@
 				</div>
 				<div class="qrcode col-sm-5 hidden-xs">
 				<div class="photo text-center">
-					<img alt="二维码" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode.jpg"/>
+					<img alt="二维码" width="156" height="156" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode.jpg"/>
 				</div>
 				<div class="text-center">
 					<span>扫一扫，关注我们</span>
