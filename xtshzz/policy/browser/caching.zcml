@@ -14,6 +14,6 @@
         />
     <cache:ruleset
         for=".homepage.FrontpageView"
-        ruleset="plone.content.folderView"
+        ruleset="plone.content.itemView"
         />    
 </configure>
