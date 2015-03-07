@@ -21,7 +21,8 @@ from zope.component import getUtility
 
 #from Products.CMFCore.Expression import Expression
 #from Products.CMFPlone.PloneBaseTool import getExprContext
-from Products.PlonePAS.interfaces.events import IUserInitialLoginInEvent
+#from Products.PlonePAS.interfaces.events import IUserInitialLoginInEvent
+from Products.PluggableAuthService.interfaces.events import IUserLoggedInEvent
 
 from zope.interface import Interface
 from ZODB.POSException import ConflictError
@@ -105,10 +106,14 @@ def CreateMembraneEvent(event):
         return
     
 #@grok.subscribe(Interface, IUserInitialLoginInEvent)
-def userInitialLogin(obj, event):
-    """Redirects initially logged in users to getting started wizard"""  
+def userLoginedIn(event):
+    """Redirects  logged in users to getting started wizard"""  
     # get portal object
-    portal = getSite()  
+    portal = getSite()
+#    import pdb
+#    pdb.set_trace() 
+    user = event.object
+    if "@" not in user.getUserName():return
     # check if we have an access to request object
     request = getattr(portal, 'REQUEST', None)
     if not request:
@@ -119,7 +124,7 @@ def userInitialLogin(obj, event):
         member_url_view = getMultiAdapter((portal, request),name=u"member_url") 
         url = member_url_view()
     except Exception, e:
-        logException(u'Error during user initial login redirect')
+        logException(u'Error during user login in redirect')
         return
     else:
         # check if came_from is not empty, then clear it up, otherwise further

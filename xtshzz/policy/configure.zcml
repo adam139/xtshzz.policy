@@ -21,6 +21,10 @@
          zope.lifecycleevent.IObjectAddedEvent"
     handler=".subscriber.updateSponsorOperator"
     />
+<subscriber
+    for="Products.PluggableAuthService.interfaces.events.IUserLoggedInEvent"
+    handler=".subscriber.userLoginedIn"
+    />
 
   <genericsetup:registerProfile
       name="default"

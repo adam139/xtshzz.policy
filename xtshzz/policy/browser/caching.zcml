@@ -6,7 +6,7 @@
     <include package="z3c.caching" file="meta.zcml" />
      <cache:ruleset
         for=".member_view.MembraneMemberView"
-        ruleset="plone.content.itemView"
+        ruleset="plone.content.feed"
         />     
     <cache:ruleset
         for=".member_listing.MemberFolderB3View"
