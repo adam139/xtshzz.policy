@@ -8,10 +8,10 @@
 "Id:","draft",,,,,,,,,,,,
 "Title:","Draft",,,,,,,,,,,,
 "Description:","The report is being drafted.",,,,,,,,,,,,
-"Transitions","submit2agent, submit2sponsor, publish",,,,,,,,,,,
+"Transitions","submit2agent, submit2sponsor, publish",,,,,,,,,,
 "Permissions","Acquire","Anonymous","Authenticated","Member","Manager","Owner","Editor","Reader","Contributor","Reviewer","Social Organization","Sponsor","Civil Agent"
 "View","N",,,,"Y","Y","Y","Y",,,,"Y","Y"
-"Access contents information","N",,,,"Y","Y","Y","Y",,,,,
+"Access contents information","N",,,,"Y","Y","Y","Y",,,,"Y","Y"
 "Modify portal content","N",,,,"Y","Y","Y",,,,,,
 ,,,,,,,,,,,,,
 "[State]",,,,,,,,,,,,,
@@ -25,7 +25,7 @@
 "Permissions","Acquire","Anonymous","Authenticated","Member","Manager","Owner","Editor","Reader","Contributor","Reviewer","Social Organization","Sponsor","Civil Agent"
 "View","N",,,,"Y","Y","Y","Y",,"Y","Y","Y","Y"
 "Access contents information","N",,,,"Y","Y","Y","Y",,"Y","Y","Y","Y"
-"Modify portal content","N",,,,"Y",,"Y",,,"Y",,,"Y"
+"Modify portal content","N",,,,"Y",,"Y",,,,,,"Y"
 "my315ok.socialorgnization:Review lastly anual report","N",,,,"Y",,,,,,,,"Y"
 ,,,,,,,,,,,,,
 "[State]",,,,,,,,,,,,,
@@ -39,7 +39,7 @@
 "Permissions","Acquire","Anonymous","Authenticated","Member","Manager","Owner","Editor","Reader","Contributor","Reviewer","Social Organization","Sponsor","Civil Agent"
 "View","N",,,,"Y","Y","Y","Y",,"Y","Y","Y","Y"
 "Access contents information","N",,,,"Y","Y","Y","Y",,"Y","Y","Y","Y"
-"Modify portal content","N",,,,"Y",,"Y",,,"Y",,"Y",
+"Modify portal content","N",,,,"Y",,"Y",,,,,"Y",
 "my315ok.socialorgnization:Review anual report","N",,,,"Y",,,,,,,"Y",
 ,,,,,,,,,,,,,
 "[State]",,,,,,,,,,,,,
@@ -50,7 +50,7 @@
 "Permissions","Acquire","Anonymous","Authenticated","Member","Manager","Owner","Editor","Reader","Contributor","Reviewer","Social Organization","Sponsor","Civil Agent"
 "View","N","Y",,,"Y","Y","Y","Y",,,"Y","Y","Y"
 "Access contents information","N","Y",,,"Y","Y","Y","Y",,,"Y","Y","Y"
-"Modify portal content","N",,,,"Y","Y","Y",,,,,,
+"Modify portal content","N",,,,"Y",,,,,,,,
 ,,,,,,,,,,,,,
 "[Transition]",,,,,,,,,,,,,
 "Id:","publish",,,,,,,,,,,,
