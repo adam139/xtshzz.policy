@@ -1,49 +1,15 @@
 #-*- coding: UTF-8 -*-
 from five import grok
-import json
-import datetime
-from Acquisition import aq_inner
-from Products.CMFCore.utils import getToolByName
-
 from plone.memoize.instance import memoize
-
-from zope.i18n.interfaces import ITranslationDomain
-from zope.component import queryUtility
 from zope.component import getMultiAdapter
-
 from Products.CMFCore.interfaces import ISiteRoot
-from Products.Five.browser import BrowserView
-from plone.app.layout.navigation.interfaces import INavigationRoot
-
 from my315ok.socialorgnization import _
-
 from my315ok.products.product import Iproduct
+from my315ok.socialorgnization.content.orgnizationfolder import IOrgnizationFolder
+from collective.diazotheme.bootstrap.browser.homepage import HomepageView as baseview
+from xtshzz.policy.browser.interfaces import IXtshzzThemeSpecific
 
-from plone.memoize.instance import memoize
-
-fmt = '%Y/%m/%d %H:%M:%S'
-import re
-from datetime import datetime,timedelta
-import socket
-import time
-import urllib2
-try:
-    from BeautifulSoup import BeautifulSoup,SoupStrainer
-except:
-    print "ERROR: could not import BeautifulSoup Python module"
-    print
-    print "You can download BeautifulSoup from the Python Cheese Shop at"
-    print "http://cheeseshop.python.org/pypi/BeautifulSoup/"
-    print "or directly from http://www.crummy.com/software/BeautifulSoup/"
-    print
-    raise
-from my315ok.portlet.fetchouterhtml.fetchouterportlet import FetchOutWebPage
-from collective.diazotheme.bootstrap.browser.homepage import HomepageView as baseview 
-
-from Products.CMFCore import permissions
-from xtshzz.policy.browser.interfaces import IXtshzzThemeSpecific 
-grok.templatedir('templates') 
-
+grok.templatedir('templates')
 
 class FrontpageView(baseview):
      
@@ -198,7 +164,7 @@ class FrontpageView(baseview):
         
 # roll table output
     def getOrgnizationFolder(self):
-        from my315ok.socialorgnization.content.orgnizationfolder import IOrgnizationFolder
+        
         brains = self.catalog()({'object_provides':IOrgnizationFolder.__identifier__})
         context = brains[0].getObject()
         return context        

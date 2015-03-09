@@ -1,25 +1,23 @@
 #-*- coding: UTF-8 -*-
 from five import grok
+from zope import schema
+from zope.component import getMultiAdapter
 from zope import event
 from zope.lifecycleevent import ObjectAddedEvent
-import json
-from Acquisition import aq_inner
-from zope.component import getMultiAdapter
-
-from plone.directives import form
-from zope import schema
 from z3c.form import form, field
 from Products.CMFCore.utils import getToolByName
+from Products.CMFCore import permissions 
+import json
+from Acquisition import aq_inner
+from plone.directives import form
+from plone.directives import dexterity
+from plone.app.layout.navigation.interfaces import INavigationRoot
+
 from dexterity.membrane.content.memberfolder import IMemberfolder 
 from dexterity.membrane.content.member import IOrganizationMember
 from dexterity.membrane.content.member import IMember
 from dexterity.membrane.content.member import ISponsorMember
-
-from Products.CMFCore import permissions 
-
-from plone.app.layout.navigation.interfaces import INavigationRoot
 from dexterity.membrane import _
-from plone.directives import dexterity
 from xtshzz.policy.browser.interfaces import IXtshzzThemeSpecific as IThemeSpecific
 
 grok.templatedir('templates')

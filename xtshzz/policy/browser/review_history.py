@@ -7,6 +7,7 @@ from Products.CMFPlone.utils import log
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.WorkflowCore import WorkflowException
 import logging
+
 class ReviewViewlet(WorkflowHistoryViewlet):
     render = ViewPageTemplateFile("templates/review_history.pt")
     

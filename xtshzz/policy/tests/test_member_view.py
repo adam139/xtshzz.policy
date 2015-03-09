@@ -95,7 +95,8 @@ class TestView(unittest.TestCase):
            
         self.portal = portal
         import transaction
-        transaction.commit()    
+        transaction.commit()
+            
     def test_member_view(self):
 
         app = self.layer['app']
@@ -123,10 +124,10 @@ class TestView(unittest.TestCase):
 #        transaction.commit()
         # login in from login page
         browser.open(portal.absolute_url() + '/login_form')
-        browser.getControl(name='__ac_name').value = SITE_OWNER_NAME
-        browser.getControl(name='__ac_password').value = SITE_OWNER_PASSWORD        
-#        browser.getControl(name='__ac_name').value = "12@qq.com"
-#        browser.getControl(name='__ac_password').value = "391124"
+#        browser.getControl(name='__ac_name').value = SITE_OWNER_NAME
+#        browser.getControl(name='__ac_password').value = SITE_OWNER_PASSWORD        
+        browser.getControl(name='__ac_name').value = "12@qq.com"
+        browser.getControl(name='__ac_password').value = "391124"
         browser.getControl(name='submit').click()
         import transaction
         transaction.commit()        

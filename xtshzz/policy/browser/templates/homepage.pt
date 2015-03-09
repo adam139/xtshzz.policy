@@ -160,7 +160,7 @@
       <span class="portletTopRight"></span>
   		</h4>
     <div id="ajax" class="portletItem" tal:attributes="data-js-target python:context.absolute_url()">		
-		<form id="quicksearch" class="form-inline row">
+		<form id="quicksearch" class="form-inline row" style="margin-bottom:0px;">
 			<div class="form-group col-xs-9">
           <input type="text" placeholder="社会组织名称（可模糊查找）"  name="SearchableOrg" class="form-control" id="search_input">
     		</div>

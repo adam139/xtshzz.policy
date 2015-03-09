@@ -1,5 +1,4 @@
 #-*- coding:utf-8 -*-
-
 from types import ClassType, FileType, StringType, UnicodeType
 from webdav.common import rfc1123_date
 from plone.app.blob.download import handleIfModifiedSince, handleRequestRange

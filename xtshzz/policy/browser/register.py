@@ -1,31 +1,26 @@
 #-*- coding: UTF-8 -*-
 from five import grok
-from zope import event
-from zope.lifecycleevent import ObjectAddedEvent
-from dexterity.membrane.content.member import IOrganizationMember
-from dexterity.membrane.content.member import ISponsorMember
-from dexterity.membrane.content.memberfolder import IMemberfolder
+from zope.component import getMultiAdapter
+from zope.component.hooks import getSite
+from zope.globalrequest import getRequest
+from zope import schema
+from z3c.form.interfaces import IEditForm
+from z3c.form.error import ErrorViewSnippet
+from z3c.form import field, button, interfaces
+from Products.CMFPlone.utils import _createObjectByType
+from Products.CMFCore.utils import getToolByName
+from Products.statusmessages.interfaces import IStatusMessage
+from Products.CMFPlone import PloneMessageFactory as _p
 from plone.formwidget.captcha import CaptchaFieldWidget
 from plone.formwidget.captcha.validator import CaptchaValidator
 from plone.dexterity.utils import createContentInContainer
 from plone.directives import form
-from z3c.form.interfaces import IEditForm
-from plone.app.textfield import RichText
-from zope.component.hooks import getSite
-from zope.globalrequest import getRequest
-from zope import schema
-from z3c.form.error import ErrorViewSnippet
-from z3c.form import field, button, interfaces
 
-from Products.CMFPlone.utils import _createObjectByType
-from Products.CMFCore.utils import getToolByName
-from zope.component import getMultiAdapter
-
-
-from Products.statusmessages.interfaces import IStatusMessage
-from xtshzz.policy import MessageFactory as _
+from dexterity.membrane.content.member import IOrganizationMember
+from dexterity.membrane.content.member import ISponsorMember
+from dexterity.membrane.content.memberfolder import IMemberfolder
 from dexterity.membrane import _ as _dm
-from Products.CMFPlone import PloneMessageFactory as _p
+from xtshzz.policy import MessageFactory as _
 from xtshzz.policy.browser.interfaces import IXtshzzThemeSpecific as IThemeSpecific
 
 defaultvalue = u"""
@@ -233,10 +228,7 @@ class RegistrationSponsorForm(form.SchemaForm):
             setattr(obj, k, v)
         
         obj.reindexObject()
-#        event.notify(ObjectAddedEvent(obj,self.context,data['id']))
-#        urltool = getToolByName(self.context, 'portal_url')
-#        portal = urltool.getPortalObject()
-#        self.request.response.redirect(portal.absolute_url() + "/login_form")
+
         email = data.get('email', '')
         IStatusMessage(self.request).addStatusMessage(
                         _p(u'create_membrane_account_succesful_pending_audit',

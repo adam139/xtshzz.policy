@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from Products.membrane.interfaces import IMembraneUserRoles
 from dexterity.membrane.behavior.membraneuser import DxUserObject
 from dexterity.membrane.behavior.membraneuser import IMembraneUser

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from zope.interface import alsoProvides, implements
 from zope.interface import Interface
 from zope.interface import implementer
 from zope.component import adapter
@@ -26,7 +25,6 @@ class NameFromYear(object):
         title = u'%s' % (year)
         inst = super(NameFromYear, cls).__new__(cls)
         inst.title = title
-#        context.setTitle(title)
         return inst
 
 @implementer(INameFromTitle)

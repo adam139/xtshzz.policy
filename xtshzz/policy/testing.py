@@ -26,7 +26,6 @@ def getFile(filename):
     return open(filename, 'r')
 
 class SitePolicy(PloneSandboxLayer):
-
     defaultBases = (PLONE_FIXTURE,)
     
     def setUpZope(self, app, configurationContext):
@@ -58,8 +57,7 @@ class SitePolicy(PloneSandboxLayer):
         applyProfile(portal, 'dexterity.membrane:default')
 #        applyProfile(portal, 'dexterity.membrane.content:example')
 
-class IntegrationSitePolicy(SitePolicy):   
-       
+class IntegrationSitePolicy(SitePolicy):      
         
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'xtshzz.policy:default')
@@ -152,15 +150,11 @@ class IntegrationSitePolicy(SitePolicy):
 
                                                    )        
 
-
         data = getFile('demo.txt').read()
         item = portal['orgnizationfolder1']['orgnization1']['survey1']
         item.image = NamedImage(data, 'image/gif', u'image.gif')
-        item.report = namedfile.NamedBlobFile(data,filename=u"demo.txt")
-
-               
-        self.portal = portal     
- 
+        item.report = namedfile.NamedBlobFile(data,filename=u"demo.txt")               
+        self.portal = portal 
 
 POLICY_FIXTURE = SitePolicy()
 POLICY_INTEGRATION_FIXTURE = IntegrationSitePolicy()
