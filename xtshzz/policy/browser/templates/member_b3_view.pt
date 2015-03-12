@@ -69,25 +69,5 @@
       </section>     
     </tal:main-macro>
 </metal:main>
-<metal:js fill-slot="javascript_bottom_slot">
-			  <script type="text/javascript">
-   	var jq=jQuery.noConflict();
-jq(document).ready(function(){
-   	//load overlay effect
-// No overlays for IE6
-	if (!jq.browser.msie ||
-	parseInt(jq.browser.version, 10) >= 7) {
-		// Set up overlays
-		jq(".buttonOverlay > a").prepOverlay({
-		subtype: 'ajax',
-		filter: '#content>*',
-		formselector: '#content-core > form',
-		noform: 'reload',
-		closeselector: '[name=form.buttons.cancel]',
-		});
-	}
-	})
-</script>	
-</metal:js>
 </body>
 </html>

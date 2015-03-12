@@ -35,7 +35,7 @@
 "Worklist:","Pending review",,,,,,,,,,,,
 "Worklist label:","organization anual  report pending sponsor review",,,,,,,,,,,,
 "Worklist guard permission:","Review portal content",,,,,,,,,,,,
-"Transitions:","sponsorreject, sponsoragree",,,,,,,,,,,
+"Transitions:","sponsorreject, sponsoragree, sponsorveto",,,,,,,,,,,
 "Permissions","Acquire","Anonymous","Authenticated","Member","Manager","Owner","Editor","Reader","Contributor","Reviewer","Social Organization","Sponsor","Civil Agent"
 "View","N",,,,"Y","Y","Y","Y",,"Y","Y","Y","Y"
 "Access contents information","N",,,,"Y","Y","Y","Y",,"Y","Y","Y","Y"
@@ -107,6 +107,13 @@
 "Description:","Civil agent veto the report and published it",,,,,,,,,,,,
 "Target state:","published",,,,,,,,,,,,
 "Guard permission:","my315ok.socialorgnization:Review lastly anual report",,,,,,,,,,,,
+,,,,,,,,,,,,,
+"[Transition]",,,,,,,,,,,,,
+"Id:","sponsorveto",,,,,,,,,,,,
+"Title:","Veto",,,,,,,,,,,,
+"Description:","sponsor veto the report and submit to civil agent",,,,,,,,,,,,
+"Target state:","pendingagent",,,,,,,,,,,,
+"Guard permission:","my315ok.socialorgnization:Review anual report",,,,,,,,,,,,
 ,,,,,,,,,,,,,
 "[Transition]",,,,,,,,,,,,,
 "Id:","retract",,,,,,,,,,,,

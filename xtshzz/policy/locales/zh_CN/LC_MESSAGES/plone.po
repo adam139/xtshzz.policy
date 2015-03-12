@@ -39,7 +39,7 @@ msgstr "同意"
 
 #: ./html_template.py:27
 msgid "Veto"
-msgstr "收回"
+msgstr "否决"
 
 msgid "Pending sponsor review"
 msgstr "待主管审核"

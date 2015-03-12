@@ -59,7 +59,7 @@ class IRegistrationForm(IOrganizationMember):
     captcha = schema.TextLine(title=u"",
                             required=True)
 
-    form.omitted('description','homepage','bio','last_name','first_name')
+    form.omitted('description','homepage','bio','last_name','first_name','photo')
 
     form.no_omit(IEditForm, 'description','homepage')
   
@@ -160,7 +160,7 @@ class IRegistrationSponsorForm(ISponsorMember):
     captcha = schema.TextLine(title=u"",
                             required=True)
 
-    form.omitted('description','homepage','bio','last_name','first_name')
+    form.omitted('description','homepage','bio','last_name','first_name','photo')
 
     form.no_omit(IEditForm, 'description','homepage')
   

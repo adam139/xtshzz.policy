@@ -1,3 +1,4 @@
+#-*- coding: UTF-8 -*-
 from five import grok
 from Acquisition import aq_inner
 from zope import schema
