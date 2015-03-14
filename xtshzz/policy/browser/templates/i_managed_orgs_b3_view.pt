@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"      
+      i18n:domain="dexterity.membrane">        
+      <head>
+   		<metal:block fill-slot="style_slot">
+      	<metal:block use-macro="here/@@xtshzz-policy-macros/macros/styles"/>
+   		</metal:block>
+		</head>
+<body>
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main" 
+    	tal:define="text_to_html nocall:context/@@xtshzz-policy-macros/text_to_html;canread python:view.canRead()">
+
+      <div class="page-header">
+           <h3><span class="text-info" tal:content="python:view.getSponsorOrgName()"></span>直辖社会组织年检简表</h3>           
+      </div>
+      <div tal:condition= "python:not(canread)" class="text-warning">对不起，你没有权限查看此页面！</div>
+
+      <div tal:condition="canread" tal:omit-tag="" tal:define="lists python:view.getManaged_orgs_view()">
+      <section class="orglistes" tal:condition="lists">
+			<div class="row">
+				<table class="table table-striped table-bordered table-condensed col-md-12">
+	        <thead>
+          	<tr class="row">
+            <th class="col-md-9">社会组织</th>
+            <th class="col-md-3">年检状态</th>                  
+          	</tr>
+        		</thead>
+        		<tbody>
+           <tal:block tal:repeat="bn python:lists">
+             <tr class="row">
+                  <td class="col-md-9 text-left">
+                      <a tal:attributes="href python:bn.getURL()">
+                         <span tal:content="python:bn.Title"></span>
+                      </a>
+                  </td>
+                  <td class="col-md-3" >
+                      <span  tal:content="python:view.isSurveyed(bn)">已年检</span>
+                  </td>                   
+             </tr>
+           </tal:block>
+        </tbody>
+      </table>      
+      </div>   	
+      	
+      </section>
+      </div>     
+    </tal:main-macro>
+</metal:main>
+</body>
+</html>

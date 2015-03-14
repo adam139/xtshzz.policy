@@ -6,6 +6,7 @@ from Products.CMFCore.utils import getToolByName
 
 from my315ok.socialorgnization.content.orgnization import IOrgnization
 from dexterity.membrane.content.member import IOrganizationMember
+from dexterity.membrane.content.member import ISponsorMember
 from xtshzz.policy import MessageFactory as _
 
 class IOrg(Interface):
@@ -51,4 +52,34 @@ class Org(object):
         bn = self.getOrgBn()
         if  bn:return bn.orgnization_supervisor
         return ""        
+
+class ISponsor(Interface):
+    "adapte ISponsorMember to support this interface"
+
+    def getSponsorBn():
+        """get relative organization brain
+        """
+
+
+@implementer(ISponsor)
+@adapter(ISponsorMember)
+class Sponsor(object):
+    """member adapter,adapte ISponsorMember to support ISponsor"""
+    
+    def __init__(self, context):
+        self.context = context      
+    
+    def getSponsorBn(self):
+        "get sponsor"
+        from my315ok.socialorgnization.content.governmentdepartment import IOrgnization
+        orgid = self.context.orgname
+        if not orgid:return None
+        catalog = getToolByName(self.context,"portal_catalog")
+        query = {"object_provides":IOrgnization.__identifier__,'id':orgid}
+        bs = catalog(query)
+        return bs[0]    
+    
+
+    
+     
       

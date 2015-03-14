@@ -16,6 +16,7 @@ from dexterity.membrane.content.member import IMember
 from dexterity.membrane.content.member import ISponsorMember
 from dexterity.membrane.behavior.membranepassword import IProvidePasswords 
 from dexterity.membrane import _
+from my315ok.socialorgnization.content.orgnization import IOrgnization
 from my315ok.socialorgnization.content.orgnization import IOrgnization_annual_survey
 from xtshzz.policy.browser.interfaces import IXtshzzThemeSpecific as IThemeSpecific
 import datetime
@@ -72,7 +73,7 @@ class MembraneMemberView(grok.View):
         member_folder = self.pm().getHomeFolder(member_id)
         return member_folder
 
-    
+    @memoize
     def currentUserEmail(self):
         "return current user's login name:email"
         member_data = self.pm().getAuthenticatedMember()
@@ -89,8 +90,26 @@ class MembraneMemberView(grok.View):
         if id =="":return False
         query = {"object_provides":IOrganizationMember.__identifier__,'email':id}
         bns = self.catalog()(query)
-        return len(bns)        
-        
+        return len(bns)
+            
+    @memoize 
+    def getSponsorOrgName(self):
+        "return current sponsormember's sponsor name"
+        from xtshzz.policy.behaviors.org import ISponsor
+        id = self.currentUserEmail()
+        if id =="":return False
+        query = {"object_provides":ISponsorMember.__identifier__,'email':id}
+        bns = self.catalog()(query)
+        try:
+            bn = bns[0]
+        except:
+            return ""                
+
+        member = bn.getObject()
+        orgbn = ISponsor(member).getSponsorBn()
+        if not orgbn:return ""
+        return orgbn.Title
+    
     def isSponsor(self):
         "see current user if is a sponsor account"
         id = self.currentUserEmail()
@@ -113,7 +132,7 @@ class MembraneMemberView(grok.View):
         bns = self.catalog()(query)
         return (bns[0].getObject().operator == id) and self.isSponsor()    
     
-    
+    @memoize
     def canRead(self):
         "see if current user can read this page"
         from AccessControl import getSecurityManager
@@ -130,14 +149,15 @@ class MembraneMemberView(grok.View):
     @memoize
     def pendingsurvey(self):
         "return all annual survey that pending current user review,return value should be list that item is dic"
-#        import pdb
-#        pdb.set_trace()
+# is normal organization
         if self.isOrgAccount():
             return []
+# is civil agent         
         elif self.isAgentOperator():
             query = {"object_provides":IOrgnization_annual_survey.__identifier__,'review_state':"pendingagent"}
             bns = self.catalog()(query)           
             return bns
+# is sponsor :government department        
         else:
             query = {"object_provides":IOrgnization_annual_survey.__identifier__,'review_state':"pendingsponsor"}
             bns = self.catalog()(query)
@@ -169,14 +189,13 @@ class MembraneMemberView(grok.View):
         try:
             bn = bns[0]
         except:
-            return ""
-                
+            return ""                
 
         member = bn.getObject()
-
         orgbn = IOrg(member).getOrgBn()
         if not orgbn:return ""
         org = orgbn.getObject()
+        # last year's number as annual survey id 
         id = (datetime.datetime.today() + datetime.timedelta(-365)).strftime("%Y")
             # see if org container contain id object
         try:
@@ -193,7 +212,6 @@ class MembraneMemberView(grok.View):
     @memoize    
     def createSurveyUrl(self):
         from xtshzz.policy.behaviors.org import IOrg
-
         member_data = self.pm().getAuthenticatedMember()
         try:
             id = member_data.getUserName()
@@ -208,7 +226,6 @@ class MembraneMemberView(grok.View):
                 
         if bn.review_state =="enabled":
             member = bn.getObject()
-
             orgbn = IOrg(member).getOrgBn()
             if not orgbn:return ""
             org = orgbn.getObject()
@@ -246,7 +263,31 @@ class SponsorMemberView(MembraneMemberView):
     grok.context(ISponsorMember)     
     grok.template('sponsor_member_b3_view')
    
-
+class ManagedOrgsView(MembraneMemberView):
+    grok.context(ISponsorMember)
+    grok.name("managed_orgs_b3_view")     
+    grok.template('i_managed_orgs_b3_view')
+    
+    @memoize
+    def getManaged_orgs_view(self):
+        "return I managed all organizations"
+        sponsor = self.getSponsorOrgName()
+        query = {"object_provides":IOrgnization.__identifier__,'orgnization_supervisor':sponsor}
+        bns = self.catalog()(query)
+        return bns
+    
+    def isSurveyed(self,bn):
+        "bn is organization brain,return this bn if has been surveyed"
+        org = bn.getObject()
+        id = (datetime.datetime.today() + datetime.timedelta(-365)).strftime("%Y")
+            # see if org container contain last year survey report
+        try:
+            survey = getattr(org, id, None)
+            if survey ==None:return u"未提交年检报告"
+            else:
+                return u"已提交年检报告"
+        except:
+            return u"未指定"        
       
     
 class EditProfile(dexterity.EditForm):
