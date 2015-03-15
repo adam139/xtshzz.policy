@@ -325,4 +325,15 @@ class EditProfileNetworking(dexterity.EditForm):
     @property
     def fields(self):
         return field.Fields(IMember).select('homepage',)
-        
+
+class EditProfileOrgName(dexterity.EditForm):
+    grok.name('edit-orgname')
+    grok.context(IOrganizationMember)
+    grok.layer(IThemeSpecific)        
+    label = u'更新所属社会组织'
+# avoid autoform functionality
+    def updateFields(self):
+        pass
+    @property
+    def fields(self):
+        return field.Fields(IOrganizationMember).select('orgname',)        
