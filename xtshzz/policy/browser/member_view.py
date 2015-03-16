@@ -10,7 +10,7 @@ from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.directives import dexterity
 from plone.directives import form
 from plone.memoize.instance import memoize
-
+import json
 from dexterity.membrane.content.member import IOrganizationMember
 from dexterity.membrane.content.member import IMember
 from dexterity.membrane.content.member import ISponsorMember
@@ -268,13 +268,45 @@ class ManagedOrgsView(MembraneMemberView):
     grok.name("managed_orgs_b3_view")     
     grok.template('i_managed_orgs_b3_view')
     
-    @memoize
-    def getManaged_orgs_view(self):
+    def pendingDefault(self):
+        "计算缺省情况下，还剩多少条"
+        total = len(self.allitems())
+        if total > 10:
+            return total -10
+        else:
+            return 0      
+    
+    @memoize    
+    def allitems(self):        
+
         "return I managed all organizations"
         sponsor = self.getSponsorOrgName()
         query = {"object_provides":IOrgnization.__identifier__,'orgnization_supervisor':sponsor}
         bns = self.catalog()(query)
-        return bns
+        return bns  
+    
+    @memoize
+    def getManaged_orgs_list(self,start=0,size=0):
+        "return I managed all organizations"
+#        sponsor = self.getSponsorOrgName()
+#        query = {"object_provides":IOrgnization.__identifier__,'orgnization_supervisor':sponsor}
+#        bns = self.catalog()(query)
+#        return bns
+    
+        if size == 0:
+            braindata = self.allitems()
+#            return self.outputList(braindata)      
+
+        else:
+            sponsor = self.getSponsorOrgName()
+            braindata = self.catalog()({"object_provides":IOrgnization.__identifier__, 
+                                'orgnization_supervisor':sponsor,
+                             'sort_order': 'reverse',
+                             'sort_on': 'created',
+                             'b_start':start,
+                             'b_size':size})
+            
+        return self.outputList(braindata)     
     
     def isSurveyed(self,bn):
         "bn is organization brain,return this bn if has been surveyed"
@@ -288,8 +320,59 @@ class ManagedOrgsView(MembraneMemberView):
                 return u"已提交年检报告"
         except:
             return u"未指定"        
-      
+
+    def outputList(self,braindata):
+        outhtml = ""
+        brainnum = len(braindata)        
+        for i in braindata:
+            objurl =  i.getURL()
+            objtitle = i.Title
+            status = self.isSurveyed(i)                        
+            out = """ <tr class="row">
+                  <td class="col-md-9 text-left">
+                      <a href="%(url)s">
+                         <span>%(Title)s</span>
+                      </a>
+                  </td>
+                  <td class="col-md-3" >
+                      <span>%(survey_status)s</span>
+                  </td>                   
+             </tr>""" % dict(url=objurl,Title=objtitle,survey_status=status)
+          
+            outhtml = outhtml + out
+        return outhtml      
     
+class ManagedOrgMore(grok.View):
+    """I managed all organizations list view AJAX action for click more.
+    """
+    
+    grok.context(ISponsorMember)
+    grok.name('managed_org_more')
+    grok.require('zope2.View')            
+    
+    def render(self):
+#        self.portal_state = getMultiAdapter((self.context, self.request), name=u"plone_portal_state")        
+        form = self.request.form
+        formst = form['formstart']
+        formstart = int(formst)*10 
+        nextstart = formstart + 10                
+        favorite_view = getMultiAdapter((self.context, self.request),name=u"managed_orgs_b3_view")
+        favoritenum = len(favorite_view.allitems())
+        
+        if nextstart >= favoritenum :
+            ifmore =  1
+            pending = 0
+        else :
+            ifmore = 0  
+            pending = favoritenum - nextstart          
+
+        pending = "%s" % (pending)          
+        outhtml = favorite_view.getManaged_orgs_list(formstart,10)            
+        data = {'outhtml': outhtml,'pending':pending,'ifmore':ifmore}
+    
+        self.request.response.setHeader('Content-Type', 'application/json')
+        return json.dumps(data)
+
 class EditProfile(dexterity.EditForm):
     grok.name('edit-baseinfo')
     grok.context(IMember)
