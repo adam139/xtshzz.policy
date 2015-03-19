@@ -4,7 +4,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="here/main_template/macros/master"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"      
-      i18n:domain="collective.conference">        
+      i18n:domain="xtshzz.policy">        
 
 <body>	
 <metal:main fill-slot="homepage">
@@ -110,27 +110,69 @@
 			</div> <!-- tabPortlet end-->
 			<div class="col-xs-12 col-md-4 col-last staticPortlet">
 				<div role="tabpanel" class="kuputab-container">
-
   				<!-- Nav tabs -->
   				<ul  class="nav nav-tabs kuputab-selectors row" role="tablist">
     				<li role="presentation" class="active col-xs-6">
-    					<a data-target="#guides" href="http://www.xsgs998.com/" aria-controls="guides" role="tab" data-toggle="tab">办事指南</a>
+    					<a data-target="#guides" href="#guides" aria-controls="guides" role="tab" data-toggle="tab">办事指南</a>
     				</li>
     				<li role="presentation" class="col-xs-6">
     					<a data-target="#downloads" href="#downloads" aria-controls="downloads" role="tab" data-toggle="tab">表格下载</a>
     				</li>
   				</ul>
-
   					<!-- Tab panes -->
-  				<div class="tab-content">   			
+  				<div class="tab-content" tal:define="p python:context.absolute_url()">   			
     			<div role="tabpanel" class="tab-pane active col-xs-12" id="guides">
          <div class="row">
 				<div class="shortcutlink col-sm-8 col-xs-12 text-center">
-				<p><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/minbanfeiqiye/@@view'"><span>民办非企业单位</span></a><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/shehuituanti/@@view'"><span>社会团体</span></a></p>
-				<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweichenglidengji/@@view'"><span>成立登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/shehuituanti/shekuaituantichenglidengji/@@view'"><span>成立登记</span></a></p>
-				<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweibiangengdengji/@@view'"><span>变更登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/shehuituanti/shekuaituantibiangengdengji/@@view'"><span>变更登记</span></a></p>
-				<p><a href="banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweizhuxiaodengji/@@view'"><span>注销登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/shehuituanti/shekuaituantizhuxiaodengji/@@view'"><span>注销登记</span></a></p>
-				<p><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/nianjianbaogaoshu/@@view'"><span>年检报告书</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/shehuituanti/shekuaituantifenzhijigoubanli/@@view'"><span>分支/代表机构</span></a></p>
+					<p>
+						<a class="btn btn-primary btn-xs" role="button"  
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/minbanfeiqiye/@@view'">
+							民办非企业单位
+						</a>
+						<a class="btn btn-primary btn-xs" role="button" 
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/@@view'">
+							社会团体
+						</a>
+					</p>
+					<p>
+						<a class="btn btn-default btn-xs" role="button"  
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweichenglidengji/@@view'">
+							成立登记
+						</a>
+						<a class="btn btn-default btn-xs" role="button"  
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantichenglidengji/@@view'">
+								成立登记
+						</a>
+					</p>
+					<p>
+						<a class="btn btn-default btn-xs" role="button"  
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweibiangengdengji/@@view'">
+							变更登记
+						</a>
+						<a class="btn btn-default btn-xs" role="button"  
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantibiangengdengji/@@view'">
+								变更登记
+						</a>
+					</p>
+					<p>
+						<a class="btn btn-default btn-xs" role="button"  
+							href="banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweizhuxiaodengji/@@view'">
+							注销登记</a>
+						<a class="btn btn-default btn-xs" role="button"  
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantizhuxiaodengji/@@view'">
+							注销登记
+						</a>
+					</p>
+					<p>
+						<a class="btn btn-primary btn-xs" role="button"  
+							tal:attributes="href python:p +'/banshidating/biaogexiazai/nianjianbaogaoshu/@@view'">
+							年检报告书
+						</a>
+						<a class="btn btn-default btn-xs" role="button"  
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantifenzhijigoubanli/@@view'">
+								分支/代表机构
+						</a>
+					</p>
 				</div>
 				<div class="qrcode col-sm-4 hidden-xs">
 				<div class="photo text-center">
@@ -145,11 +187,26 @@
     			<div role="tabpanel" class="tab-pane col-xs-12" id="downloads">
 				<div class="row">
 					<div class="shortcutlink col-sm-8 col-xs-12 text-center">
-						<p><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/minbanfeiqiye/@@view'"><span>民办非企业单位</span></a><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/@@view'"><span>社会团体</span></a></p>
-						<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/minbanfeiqiye/chengli/@@view'"><span>成立文件</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/chengli/@@view'"><span>成立登记</span></a></p>
-						<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/minbanfeiqiye/biangeng/@@view'"><span>变更登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/biangeng/@@view'"><span>变更登记</span></a></p>
-						<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/minbanfeiqiye/zhuxiao/@@view'"><span>注销登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/zhuxiao/@@view'"><span>注销登记</span></a></p>
-						<p><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/nianjianbaogaoshu/@@view'"><span>年检报告书</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/fenzhijigou/@@view'"><span>分支/代表机构</span></a></p>
+						<p><a class="btn btn-primary btn-xs" role="button" 
+							tal:attributes="href python:p +'/banshidating/biaogexiazai/minbanfeiqiye/@@view'">民办非企业单位</a>
+							<a class="btn btn-primary btn-xs" role="button" 
+								tal:attributes="href python:p +'/banshidating/biaogexiazai/shehuituanti/@@view'"><span>社会团体</span></a></p>
+						<p><a class="btn btn-default btn-xs" role="button" 
+							tal:attributes="href python:p +'/banshidating/biaogexiazai/minbanfeiqiye/chengli/@@view'"><span>成立文件</span></a>
+							<a class="btn btn-default btn-xs" role="button" 
+								tal:attributes="href python:p +'/banshidating/biaogexiazai/shehuituanti/chengli/@@view'">成立登记</a></p>
+						<p><a class="btn btn-default btn-xs" role="button" 
+							tal:attributes="href python:p +'/banshidating/biaogexiazai/minbanfeiqiye/biangeng/@@view'">变更登记</a>
+							<a class="btn btn-default btn-xs" role="button" 
+								tal:attributes="href python:p +'/banshidating/biaogexiazai/shehuituanti/biangeng/@@view'">变更登记</a></p>
+						<p><a class="btn btn-default btn-xs" role="button" 
+							tal:attributes="href python:p +'/banshidating/biaogexiazai/minbanfeiqiye/zhuxiao/@@view'">注销登记</a>
+							<a class="btn btn-default btn-xs" role="button" 
+								tal:attributes="href python:p +'/banshidating/biaogexiazai/shehuituanti/zhuxiao/@@view'">注销登记</a></p>
+						<p><a class="btn btn-primary btn-xs" role="button" 
+							tal:attributes="href python:p +'/banshidating/biaogexiazai/nianjianbaogaoshu/@@view'">年检报告书</a>
+							<a class="btn btn-default btn-xs" role="button" 
+								tal:attributes="href python:p +'/banshidating/biaogexiazai/shehuituanti/fenzhijigou/@@view'">分支/代表机构</a></p>
 					</div>
 					<div class="qrcode col-sm-4 hidden-xs">
 						<div class="photo text-center">
@@ -165,34 +222,29 @@
 			</div>				
      	</div>     
        </div>
-                    
+                           
        <div class="row row-2">        
          <div class="col-xs-12 col-md-4">
          	<div class="portlet rolltext_portlet">
-         		<h4 class="portletHeader text-center">
+         		<h4 class="portletHeader">
          			<a tal:attributes="href python:view.collection_url('hudongjiaoliu')" >
-         				<span class="actived">互动交流</span>
+         				<button type="button" class="btn btn-default btn-active">互动交流</button>
          				<span class="portletTopRight">更多&gt;&gt;</span>
          			</a>
-         		</h4>
-	<!-- ul's parent div must be set css code {display:inline;float:left;overflow:hidden;height or width;} 
-	li must be set height or width.
-	-->
-	
+         		</h4>	
 	           <div tal:content="structure python: view.rollresult(collection='hudongjiaoliu')">	           	
 	           </div>
 	         </div>
          </div>
          <div class="col-xs-12 col-md-4">
     				<div class="portlet rolltext_portlet">
-	  				<h4  class="portletHeader text-center">
+	  				<h4  class="portletHeader">
          	<a tal:attributes="href python:view.collection_url('zhengcefagui')">
-            <span class="actived">政策法规</span>
+            <button type="button" class="btn btn-default btn-active">政策法规</button>
             <span class="portletTopRight">更多&gt;&gt;</span>
        		</a>
     				</h4>
-    				<div    tal:content="structure python: view.rollresult(collection='zhengcefagui')">
-    				<!--<div id="outhtml" tal:content="structure python: view.outhtmlresult()">outer</div> -->	
+    				<div tal:content="structure python: view.rollresult(collection='zhengcefagui')">
     				</div>
          </div>         
        </div>
@@ -200,7 +252,9 @@
 			<div class="portlet portletSearch"><h4 class="portletHeader">
       <span class="portletTopLeft"></span>
       <a tal:attributes="href python:context.absolute_url() +'/@@allorgnization_listings'" class="tile">
-			<span class="actived">快捷查询</span></a>
+<!--			<span class="actived">快捷查询</span> -->
+				<button type="button" class="btn btn-default btn-active">快捷查询</button>
+			</a>
       <span class="portletTopRight"></span>
   		</h4>
     <div id="ajax" tal:attributes="data-js-target python:context.absolute_url()">		
@@ -223,10 +277,10 @@
 					<img src="http://images.315ok.org/xtshzz/images/pinggubar.png" class="down img-responsive" alt="社会组织评估">						
 			</a>
 			</div>
-    </div>  
-		
+    </div>		
        </div>	       	
        </div>
+       
        <div class="row row-3">        
          <div class="hidden-xs col-md-8">       
        	<div class="big-ad">
@@ -237,24 +291,27 @@
 				</div>
 				<div class="col-xs-12 col-md-4 col-last">       
          	<div class="portlet rolltext_portlet">
-         		<h4 class="portletHeader text-center">
+         		<h4 class="portletHeader">
          			<a tal:attributes="href python:view.collection_url('fuwuxinxi')" >
-         				<span class="actived">服务信息</span>
+<!--         				<span class="actived">服务信息</span> -->
+				<button type="button" class="btn btn-default btn-active">服务信息</button>
          				<span class="portletTopRight">更多&gt;&gt;</span> 
          			</a>
-         		</h4>
-	
+         		</h4>	
 	           <div  tal:content="structure python: view.rollresult(collection='fuwuxinxi')">	           	
 	           </div>
 	         </div>
          </div>
 				</div>
+				
 				<div class="row row-4">
 					<div class="col-md-4 col-xs-12">
 						<!-- 行政许可公告-->
 						<div class="portlet">
 							<div class="portletHeader">
-								<a tal:attributes="href python:context.absolute_url() + '/socialorganizations/@@orgnizations_administrative_fullview'"><span class="actived">行政许可公告</span><span class="portletTopRight">更多&gt;&gt;</span></a>
+								<a tal:attributes="href python:context.absolute_url() + '/socialorganizations/@@orgnizations_administrative_fullview'">
+									<button type="button" class="btn btn-default btn-active">行政许可公告</button>
+									<span class="portletTopRight">更多&gt;&gt;</span></a>
 							</div>
 							<div class="rolltables">
 								<table class="table">
@@ -293,58 +350,59 @@
 						<!-- 年检-->
 						<div class="portlet">
 							<div class="portletHeader">
-								<a tal:attributes="href python:context.absolute_url() + '/socialorganizations/@@orgnizations_survey_fullview'"><span class="actived">年检结果公告</span><span class="portletTopRight">更多&gt;&gt;</span></a>
+								<a tal:attributes="href python:context.absolute_url() + '/socialorganizations/@@orgnizations_survey_fullview'">
+									<button type="button" class="btn btn-default btn-active">年检结果公告</button>
+									<span class="portletTopRight">更多&gt;&gt;</span></a>
 							</div>
 							<div class="rolltables">
 								<table class="table">
-  <tbody><tr> 
-    <td class="nopadding">
-    	<table class="table table-bordered">
-			<tbody><tr class="theader">
-			  <td class="title">社会组织名称</td>
-			  <td class="item">年度</td>
-			  <td class="result">年检结果</td>
-			</tr>
-			</tbody>
-		</table>
-    <div id="sRollV">
-	  <div id="sRollV1">
-    <table class="table table-bordered">                 
-        <tbody tal:content="structure python: view.getable('orgnizations_survey')" >
-        	<tr> 
-          <td>中国中亚友好协会</td>
-          <td>2013</td>
-          <td>合格</td>
-        </tr></tbody>
-    </table>
-    </div>
-	  <div id="sRollV2"><!--roll placeholder-->
-    </div>    
-    </div>
-    </td>
-  </tr>
-</tbody>
-</table>
+  									<tbody><tr> 
+    									<td class="nopadding">
+    										<table class="table table-bordered">
+												<tbody><tr class="theader">
+			  										<td class="title">社会组织名称</td>
+			  										<td class="item">年度</td>
+			  										<td class="result">年检结果</td>
+												</tr>
+												</tbody>
+											</table>
+    										<div id="sRollV">
+	  											<div id="sRollV1">
+    												<table class="table table-bordered">                 
+        											<tbody tal:content="structure python: view.getable('orgnizations_survey')" >
+        											<tr> 
+          											<td>中国中亚友好协会</td>
+          											<td>2013</td>
+          											<td>合格</td>
+        											</tr>
+        											</tbody>
+    												</table>
+    											</div>
+	  											<div id="sRollV2"><!--roll placeholder-->
+    										</div>    
+    									</div>
+    									</td>
+  									</tr>
+								</tbody>
+							</table>
 							</div>
 						</div>						
 					</div>	
 					<div class="col-xs-12 col-md-4 col-last">
          	<div class="portlet rolltext_portlet">
-         		<h4 class="portletHeader text-center">
+         		<h4 class="portletHeader">
          			<a tal:attributes="href python:view.collection_url('chachujieguogonggao')" >
-         				<span class="actived">行政处罚公告</span>
+         				<button type="button" class="btn btn-default btn-active">行政处罚公告</button>
          				<span class="portletTopRight">更多&gt;&gt;</span> 
          			</a>
          		</h4>
 	<!-- ul's parent div must be set css code {display:inline;float:left;overflow:hidden;height or width;} 
 	li must be set height or width.
-	-->
-	
+	-->	
 	           <div tal:content="structure python: view.rollresult(collection='chachujieguogonggao',limit=3)">	           	
 	           </div>
 	         </div>
-         </div>						
-			
+         </div>			
 				</div>  
      </div>
    
@@ -374,10 +432,9 @@
 				</ul>
 				</div>
 			</div>
-
      </div>
      <div  class="container">
- <!-- FOOTER -->
+ 			<!-- FOOTER -->
       <div class="col-xs-12 footer">
         <p class="pull-right"><a href="#">返回顶部</a></p>
         <p>&copy; 2010-<span tal:content="python:view.getCurrentYear()">2015</span>&middot;湘潭市社会组织促进会 &middot; <a href="http://www.miibeian.gov.cn/">湘ICP备07003419</a></p>
