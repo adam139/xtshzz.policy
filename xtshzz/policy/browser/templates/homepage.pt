@@ -11,115 +11,159 @@
     <tal:main-macro metal:define-macro="main">
     		<div id="portal-top"            
             tal:condition="not:ajax_load">
-					<div class="cell width-full position-0">
+				<div class="cell width-full position-0">
             <div tal:replace="structure provider:plone.portaltop" />
-					</div>
+				</div>
        </div>
-    <div id="homepage" 
-    	class="container container-header">      	
+    <div id="homepage" class="container container-header">      	
        <div class="row row-1" tal:define="plone_view context/@@plone;
        	toLocalizedTime nocall:plone_view/toLocalizedTime;">
          <div class="col-xs-12 col-md-4">
          	<div tal:content="structure python: view.carouselresult()">outer</div>        	
          </div>          
-         <div class="col-xs-12 col-md-4 groupPortlet">
-         	<h2 class="kuputab-tab-definer-default">通知公告</h2>         	
-         	<tal:group tal:repeat="obj python:view.collection('tongzhigonggao',7)">
-    				<div class="portletItem"
+         <div class="col-xs-12 col-md-4 tabPortlet">
+				<div role="tabpanel" class="kuputab-container">
+  				<!-- Nav tabs -->
+  				<ul  class="nav nav-tabs kuputab-selectors row" role="tablist">
+    				<li role="presentation" class="active col-xs-4">
+    					<a href="#tongzhi" aria-controls="tongzhi" role="tab" data-toggle="tab">通知公告</a>
+    				</li>
+    				<li role="presentation" class="col-xs-4">
+    					<a href="#fengcai" aria-controls="fengcai" role="tab" data-toggle="tab">社团风采</a>
+    				</li>
+    				<li role="presentation" class="col-xs-4">
+    					<a href="#work" aria-controls="work" role="tab" data-toggle="tab">工作动态</a></li>
+  				</ul>
+  					<!-- Tab panes start-->
+  				<div class="tab-content">
+   				<div role="tabpanel" class="tab-pane active" id="tongzhi">
+         		<ul class="tabcontent-lists">
+         		<tal:group tal:repeat="obj python:view.collection('tongzhigonggao',7)">    				
+    						<li class="portletItem"
+        					tal:define="oddrow repeat/obj/odd;ttl obj/Title"
+        					tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
+        					<span>
+        						<a href="#"
+           					class="tile"
+           					tal:attributes="href obj/getURL;title obj/Description">
+           					<span tal:replace="python:view.cropTitle(ttl, 15)">
+             						Title
+            					</span>
+        						</a>
+        					</span>
+            			<span class="portletItemDetails"
+            				tal:content="python:toLocalizedTime(obj.Date)">
+                		Date
+            			</span>        		
+    						</li>    				
+    					</tal:group>
+    					</ul>    	
+    				</div>
+    			<div role="tabpanel" class="tab-pane" id="fengcai">
+         	<ul class="tabcontent-lists">    	
+         	<tal:group tal:repeat="obj python:view.collection('shehuizuzhidongtai',7)">
+    				<li class="portletItem"
         		tal:define="oddrow repeat/obj/odd;ttl obj/Title"
         		tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
+        		<span>
         		<a href="#"
            	class="tile"
            	tal:attributes="href obj/getURL;title obj/Description">
            	<span tal:replace="python:view.cropTitle(ttl, 15)">
              Title
             </span>
+        		</a>
+        		</span>
             <span class="portletItemDetails"
             	tal:content="python:toLocalizedTime(obj.Date)">
                 Date
-            </span>
-        		</a>
-    				</div>
+            </span>        		
+    				</li> 
     				</tal:group>
-					<h2 class="kuputab-tab-definer">社会组织风采</h2>         	
-         	<tal:group tal:repeat="obj python:view.collection('shehuizuzhidongtai',7)">
-    				<div class="portletItem"
-        		tal:define="oddrow repeat/obj/odd;                    
-                    ttl obj/Title"
-        		tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
-        		<a href="#"
-           	class="tile"
-           	tal:attributes="href obj/getURL;
-                           title obj/Description">            
-            <span tal:replace="python:view.cropTitle(ttl, 15)">
-             Title
-            </span>
-            <span class="portletItemDetails"                  
-                  tal:content="python:toLocalizedTime(obj.Date)">
-                Date
-            </span>
-        		</a>
-    				</div>
-    				</tal:group>
-					<h2 class="kuputab-tab-definer">工作动态</h2>         	
+    				</ul>    				    	
+    			</div>
+    			<div role="tabpanel" class="tab-pane" id="work">
+         	<ul class="tabcontent-lists">    	
          	<tal:group tal:repeat="obj python:view.collection('gongzuodongtai',7)">
-    				<div class="portletItem"
-        		tal:define="oddrow repeat/obj/odd;                    
-                    ttl obj/Title"
+    				<li class="portletItem"
+        		tal:define="oddrow repeat/obj/odd;ttl obj/Title"
         		tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
+        		<span>
         		<a href="#"
            	class="tile"
-           	tal:attributes="href obj/getURL;
-                           title obj/Description">            
-            <span tal:replace="python:view.cropTitle(ttl, 15)">
+           	tal:attributes="href obj/getURL;title obj/Description">
+           	<span tal:replace="python:view.cropTitle(ttl, 15)">
              Title
             </span>
-            <span class="portletItemDetails"                  
-                  tal:content="python:toLocalizedTime(obj.Date)">
+        		</a>
+        		</span>
+            <span class="portletItemDetails"
+            	tal:content="python:toLocalizedTime(obj.Date)">
                 Date
-            </span>
-        	</a>
-    			</div>
+            </span>        		
+    				</li> 
     			</tal:group>
-    			</div>
-         <div class="col-xs-12 col-md-4 col-last staticPortlet">
-				<h2 class="kuputab-tab-definer-default">办事指南</h2>
-				<div class="row">
-				<div class="shortcutlink col-sm-7 col-xs-12 text-center">
+    			</ul>    			     	
+    		</div>
+  			</div> <!--Tab panes end -->
+			</div>
+			</div> <!-- tabPortlet end-->
+			<div class="col-xs-12 col-md-4 col-last staticPortlet">
+				<div role="tabpanel" class="kuputab-container">
+
+  				<!-- Nav tabs -->
+  				<ul  class="nav nav-tabs kuputab-selectors row" role="tablist">
+    				<li role="presentation" class="active col-xs-6">
+    					<a data-target="#guides" href="http://www.xsgs998.com/" aria-controls="guides" role="tab" data-toggle="tab">办事指南</a>
+    				</li>
+    				<li role="presentation" class="col-xs-6">
+    					<a data-target="#downloads" href="#downloads" aria-controls="downloads" role="tab" data-toggle="tab">表格下载</a>
+    				</li>
+  				</ul>
+
+  					<!-- Tab panes -->
+  				<div class="tab-content">   			
+    			<div role="tabpanel" class="tab-pane active col-xs-12" id="guides">
+         <div class="row">
+				<div class="shortcutlink col-sm-8 col-xs-12 text-center">
 				<p><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/minbanfeiqiye/@@view'"><span>民办非企业单位</span></a><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/shehuituanti/@@view'"><span>社会团体</span></a></p>
 				<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweichenglidengji/@@view'"><span>成立登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/shehuituanti/shekuaituantichenglidengji/@@view'"><span>成立登记</span></a></p>
 				<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweibiangengdengji/@@view'"><span>变更登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/shehuituanti/shekuaituantibiangengdengji/@@view'"><span>变更登记</span></a></p>
 				<p><a href="banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweizhuxiaodengji/@@view'"><span>注销登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/shehuituanti/shekuaituantizhuxiaodengji/@@view'"><span>注销登记</span></a></p>
 				<p><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/nianjianbaogaoshu/@@view'"><span>年检报告书</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/banshiguicheng/shehuituanti/shekuaituantifenzhijigoubanli/@@view'"><span>分支/代表机构</span></a></p>
 				</div>
-				<div class="qrcode col-sm-5 hidden-xs">
+				<div class="qrcode col-sm-4 hidden-xs">
 				<div class="photo text-center">
-					<img alt="二维码" width="156" height="156" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode.jpg"/>
+					<img alt="二维码" width="120" height="120" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode.jpg"/>
 				</div>
 				<div class="text-center">
 					<span>扫一扫，关注我们</span>
 				</div>	
 			  </div>
-			  </div>
-				<h2 class="kuputab-tab-definer">表格下载</h2>
+			  </div>   				    	
+    			</div>
+    			<div role="tabpanel" class="tab-pane col-xs-12" id="downloads">
 				<div class="row">
-				<div class="shortcutlink col-sm-7 col-xs-12 text-center">
-				<p><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/minbanfeiqiye/@@view'"><span>民办非企业单位</span></a><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/@@view'"><span>社会团体</span></a></p>
-				<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/minbanfeiqiye/chengli/@@view'"><span>成立文件</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/chengli/@@view'"><span>成立登记</span></a></p>
-				<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/minbanfeiqiye/biangeng/@@view'"><span>变更登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/biangeng/@@view'"><span>变更登记</span></a></p>
-				<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/minbanfeiqiye/zhuxiao/@@view'"><span>注销登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/zhuxiao/@@view'"><span>注销登记</span></a></p>
-				<p><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/nianjianbaogaoshu/@@view'"><span>年检报告书</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/fenzhijigou/@@view'"><span>分支/代表机构</span></a></p>
-				</div>
-				<div class="qrcode col-sm-5 hidden-xs">
-				<div class="photo text-center">
-					<img alt="二维码" width="156" height="156" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode.jpg"/>
-				</div>
-				<div class="text-center">
-					<span>扫一扫，关注我们</span>
-				</div>	
-			  </div>	
-			  </div>			         	
-         </div>         
+					<div class="shortcutlink col-sm-8 col-xs-12 text-center">
+						<p><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/minbanfeiqiye/@@view'"><span>民办非企业单位</span></a><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/@@view'"><span>社会团体</span></a></p>
+						<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/minbanfeiqiye/chengli/@@view'"><span>成立文件</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/chengli/@@view'"><span>成立登记</span></a></p>
+						<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/minbanfeiqiye/biangeng/@@view'"><span>变更登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/biangeng/@@view'"><span>变更登记</span></a></p>
+						<p><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/minbanfeiqiye/zhuxiao/@@view'"><span>注销登记</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/zhuxiao/@@view'"><span>注销登记</span></a></p>
+						<p><a class="heightlight" tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/nianjianbaogaoshu/@@view'"><span>年检报告书</span></a><a tal:attributes="href python:context.absolute_url() +'/banshidating/biaogexiazai/shehuituanti/fenzhijigou/@@view'"><span>分支/代表机构</span></a></p>
+					</div>
+					<div class="qrcode col-sm-4 hidden-xs">
+						<div class="photo text-center">
+							<img alt="二维码" width="120" height="120" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode.jpg"/>
+						</div>
+						<div class="text-center">
+							<span>扫一扫，关注我们</span>
+						</div>	
+			  		</div>	
+			  </div>	   			     	
+    		</div>
+  			</div>
+			</div>				
+     	</div>     
        </div>
                     
        <div class="row row-2">        
@@ -159,7 +203,7 @@
 			<span class="actived">快捷查询</span></a>
       <span class="portletTopRight"></span>
   		</h4>
-    <div id="ajax" class="portletItem" tal:attributes="data-js-target python:context.absolute_url()">		
+    <div id="ajax" tal:attributes="data-js-target python:context.absolute_url()">		
 		<form id="quicksearch" class="form-inline row" style="margin-bottom:0px;">
 			<div class="form-group col-xs-9">
           <input type="text" placeholder="社会组织名称（可模糊查找）"  name="SearchableOrg" class="form-control" id="search_input">
@@ -199,9 +243,6 @@
          				<span class="portletTopRight">更多&gt;&gt;</span> 
          			</a>
          		</h4>
-	<!-- ul's parent div must be set css code {display:inline;float:left;overflow:hidden;height or width;} 
-	li must be set height or width.
-	-->
 	
 	           <div  tal:content="structure python: view.rollresult(collection='fuwuxinxi')">	           	
 	           </div>
@@ -306,30 +347,34 @@
 			
 				</div>  
      </div>
-     
+   
      <div class="container">
      	<div id="friendly-link" class="row hidden-xs">
      		<div class="friendlybg col-sm-12 col-last" >
-<div class="linkzone">
-<ul class="govlink"><li class="first"><a title="政府网站" href="#">政府网站：</a></li>
-<li><a title="湖南湘潭民政" href="http://xiangtan.mca.gov.cn/">湖南湘潭民政</a></li>
-<li><a title="中国湘潭网" href="http://www.xiangtan.gov.cn/new/index.html">中国湘潭网</a></li>
-<li><a title="湖南民间组织信息网" href="http://hunanmjzz.mca.gov.cn/">湖南民间组织信息网</a></li>
-<li><a title="中国社会组织" href="http://www.chinanpo.gov.cn/index.html">中国社会组织</a></li>
-<li><a title="湘潭在线" href="http://www.xtol.cn/">湘潭在线</a></li>
-<li><a title="红网论坛" href="http://bbs.rednet.cn/forum.php?fid=69&amp;mod=forumdisplay">红网论坛</a></li>
-<li class="last"><a title="常德社会组织" href="http://www.changdenpo.org/">常德社会组织</a></li>
-</ul><ul class="orglink"><li class="first"><a title="协会网站" href="#">协会网站：</a></li>
-<li><a title="钢材深加工产业协会" href="http://www.tspa.org.cn/">钢材深加工产业协会</a></li>
-<li><a title="市出租汽车行业协会" href="http://www.xtstaxi.com">市出租汽车行业协会</a></li>
-<li><a title="湘潭担保与信用行业协会" href="http://xtgca.com/">湘潭担保与信用行业协会</a></li>
-<li><a title="宝庆商会" href="http://www.xtsysh.com/">宝庆商会</a></li>
-<li><a title="摄影家协会" href="http://xt.image1.cn/subsite/site_5/index.html">摄影家协会</a></li>
-<li><a title="湘潭市浙江商会" href="http://www.xtzjsh.com/">湘潭市浙江商会</a></li>
-<li class="last"><a title="湘潭市国学研究会" href="http://www.xtguoxue.org/">湘潭市国学研究会</a></li>
-</ul></div>
-</div>
-     	</div>
+				<div class="linkzone">
+				<ul class="govlink">
+					<li class="first"><a title="政府网站" href="#">政府网站：</a></li>
+					<li><a title="湖南湘潭民政" href="http://xiangtan.mca.gov.cn/">湖南湘潭民政</a></li>
+					<li><a title="中国湘潭网" href="http://www.xiangtan.gov.cn/new/index.html">中国湘潭网</a></li>
+					<li><a title="湖南民间组织信息网" href="http://hunanmjzz.mca.gov.cn/">湖南民间组织信息网</a></li>
+					<li><a title="中国社会组织" href="http://www.chinanpo.gov.cn/index.html">中国社会组织</a></li>
+					<li><a title="湘潭在线" href="http://www.xtol.cn/">湘潭在线</a></li>
+					<li><a title="红网论坛" href="http://bbs.rednet.cn/forum.php?fid=69&amp;mod=forumdisplay">红网论坛</a></li>
+					<li class="last"><a title="常德社会组织" href="http://www.changdenpo.org/">常德社会组织</a></li>
+				</ul>
+				<ul class="orglink">
+					<li class="first"><a title="协会网站" href="#">协会网站：</a></li>
+					<li><a title="钢材深加工产业协会" href="http://www.tspa.org.cn/">钢材深加工产业协会</a></li>
+					<li><a title="市出租汽车行业协会" href="http://www.xtstaxi.com">市出租汽车行业协会</a></li>
+					<li><a title="湘潭担保与信用行业协会" href="http://xtgca.com/">湘潭担保与信用行业协会</a></li>
+					<li><a title="宝庆商会" href="http://www.xtsysh.com/">宝庆商会</a></li>
+					<li><a title="摄影家协会" href="http://xt.image1.cn/subsite/site_5/index.html">摄影家协会</a></li>
+					<li><a title="湘潭市浙江商会" href="http://www.xtzjsh.com/">湘潭市浙江商会</a></li>
+					<li class="last"><a title="湘潭市国学研究会" href="http://www.xtguoxue.org/">湘潭市国学研究会</a></li>
+				</ul>
+				</div>
+			</div>
+
      </div>
      <div  class="container">
  <!-- FOOTER -->
@@ -338,10 +383,16 @@
         <p>&copy; 2010-<span tal:content="python:view.getCurrentYear()">2015</span>&middot;湘潭市社会组织促进会 &middot; <a href="http://www.miibeian.gov.cn/">湘ICP备07003419</a></p>
       </div>
     </div>
-<div id="scripts">
-	<script tal:content="structure python:view.outputjs()"></script>	
-</div>
-    </tal:main-macro>
+	<div id="scripts">
+	<script tal:content="structure python:view.outputjs()"></script>
+	<script>
+$('.nav-tabs a').mouseover(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})		
+	</script>	
+	</div>
+  </tal:main-macro>
 </metal:main>   
 </body>
 </html>
