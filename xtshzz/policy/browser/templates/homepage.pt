@@ -15,7 +15,7 @@
             <div tal:replace="structure provider:plone.portaltop" />
 				</div>
        </div>
-    <div id="homepage" class="container container-header"
+    <div id="homepage" class="container"
     			tal:define="p python:context.absolute_url()">      	
        <div class="row row-1" 
        	tal:define="plone_view context/@@plone;
@@ -113,7 +113,7 @@
   			</div> <!--Tab panes end -->
 			</div>
 			</div> <!-- tabPortlet end-->
-			<div class="col-xs-12 col-md-4 col-last staticPortlet">
+			<div class="col-xs-12 col-md-4 staticPortlet">
 				<div role="tabpanel" class="kuputab-container">
   				<!-- Nav tabs -->
   				<ul  class="nav nav-tabs kuputab-selectors row" role="tablist">
@@ -255,7 +255,7 @@
     				</div>
          </div>         
        </div>
-       <div class="col-xs-12 col-md-4 col-last">
+       <div class="col-xs-12 col-md-4">
 			<div class="portlet portletSearch"><h4 class="portletHeader">
       <span class="portletTopLeft"></span>
       <a tal:attributes="href python:p +'/@@allorgnization_listings'" class="tile">
@@ -295,7 +295,7 @@
 				<a tal:attributes="href python:p +'/dangjiangongzuo/dangdequnzhongluxianjiaoyoshijianhuodong'" class="hidden">hide</a>
 				</div>
 				</div>
-				<div class="col-xs-12 col-md-4 col-last">       
+				<div class="col-xs-12 col-md-4">       
          	<div class="portlet rolltext_portlet">
          		<h4 class="portletHeader">
          			<a tal:attributes="href python:view.collection_url('fuwuxinxi')" >
@@ -392,7 +392,7 @@
 							</div>
 						</div>						
 					</div>	
-					<div class="col-xs-12 col-md-4 col-last">
+					<div class="col-xs-12 col-md-4">
          	<div class="portlet rolltext_portlet">
          		<h4 class="portletHeader">
          			<a tal:attributes="href python:view.collection_url('chachujieguogonggao')" >
@@ -412,7 +412,7 @@
    
      <div class="container">
      	<div id="friendly-link" class="row hidden-xs">
-     		<div class="friendlybg col-sm-12 col-last" >
+     		<div class="friendlybg col-sm-12" >
 				<div class="linkzone">
 				<ul class="govlink">
 					<li class="first"><a title="政府网站" href="#">政府网站：</a></li>
