@@ -6,7 +6,11 @@
     i18n_domain="xtshzz.policy">
     
   <grok:grok package="." />
-  <include file="caching.zcml" />   
+  <include file="caching.zcml" />
+  
+    <include package="z3c.form" file="meta.zcml" />
+    <include package="z3c.form" />  
+     
   <browser:page
     for="*"
     name="tinymce-jsonconfiguration"
@@ -39,6 +43,12 @@
  		layer=".interfaces.IXtshzzThemeSpecific"
  		template="templates/date_input.pt" />
  		
+   <z3c:widgetTemplate
+        mode="input"
+ 		widget="plone.formwidget.namedfile.interfaces.INamedFileWidget"        
+ 		layer=".interfaces.IXtshzzThemeSpecific"
+ 		template="templates/file_input.pt" />
+ 		 		
    <z3c:widgetTemplate
         mode="input"
  		widget="plone.formwidget.captcha.interfaces.ICaptchaWidget"        
