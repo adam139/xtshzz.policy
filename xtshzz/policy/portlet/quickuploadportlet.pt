@@ -4,9 +4,8 @@
     <dt class="portletHeader"
         tal:define="ptitle view/data/title"
         tal:condition="ptitle">
-        <span class="portletTopLeft"></span>
-        <span class="tile" tal:content="ptitle" />
-        <span class="portletTopRight"></span>
+        <button class="btn btn-default btn-active" type="button" 
+					tal:content="ptitle" >Navigation</button></a>
     </dt>
 
     <dd class="portletItem odd lastItem">

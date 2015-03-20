@@ -15,9 +15,11 @@
             <div tal:replace="structure provider:plone.portaltop" />
 				</div>
        </div>
-    <div id="homepage" class="container container-header">      	
-       <div class="row row-1" tal:define="plone_view context/@@plone;
-       	toLocalizedTime nocall:plone_view/toLocalizedTime;">
+    <div id="homepage" class="container container-header"
+    			tal:define="p python:context.absolute_url()">      	
+       <div class="row row-1" 
+       	tal:define="plone_view context/@@plone;
+       						toLocalizedTime nocall:plone_view/toLocalizedTime">
          <div class="col-xs-12 col-md-4">
          	<div tal:content="structure python: view.carouselresult()">outer</div>        	
          </div>          
@@ -26,13 +28,16 @@
   				<!-- Nav tabs -->
   				<ul  class="nav nav-tabs kuputab-selectors row" role="tablist">
     				<li role="presentation" class="active col-xs-4">
-    					<a href="#tongzhi" aria-controls="tongzhi" role="tab" data-toggle="tab">通知公告</a>
+    					<a href="#tongzhi" aria-controls="tongzhi" role="tab" data-toggle="tab"
+    						tal:attributes="data-js-target python:p + '/xinxigongkai/tongzhigonggao/@@view'">通知公告</a>
     				</li>
     				<li role="presentation" class="col-xs-4">
-    					<a href="#fengcai" aria-controls="fengcai" role="tab" data-toggle="tab">社团风采</a>
+    					<a href="#fengcai" aria-controls="fengcai" role="tab" data-toggle="tab"
+    						tal:attributes="data-js-target python:p + '/xinwenzhongxin/shehuizuzhifengcai/@@view'">社团风采</a>
     				</li>
     				<li role="presentation" class="col-xs-4">
-    					<a href="#work" aria-controls="work" role="tab" data-toggle="tab">工作动态</a></li>
+    					<a href="#work" aria-controls="work" role="tab" data-toggle="tab"
+    						tal:attributes="data-js-target python:p + '/xinwenzhongxin/guanligongzuodongtai/@@view'">工作动态</a></li>
   				</ul>
   					<!-- Tab panes start-->
   				<div class="tab-content">
@@ -113,14 +118,16 @@
   				<!-- Nav tabs -->
   				<ul  class="nav nav-tabs kuputab-selectors row" role="tablist">
     				<li role="presentation" class="active col-xs-6">
-    					<a data-target="#guides" href="#guides" aria-controls="guides" role="tab" data-toggle="tab">办事指南</a>
+    					<a href="#guides" aria-controls="guides" role="tab" data-toggle="tab"
+    						tal:attributes="data-js-target python:p + '/banshidating/banshiguicheng/@@view'">办事指南</a>
     				</li>
     				<li role="presentation" class="col-xs-6">
-    					<a data-target="#downloads" href="#downloads" aria-controls="downloads" role="tab" data-toggle="tab">表格下载</a>
+    					<a data-target="#downloads" href="#downloads" aria-controls="downloads" role="tab" data-toggle="tab"
+    						tal:attributes="data-js-target python:p + '/banshidating/biaogexiazai/@@view'">表格下载</a>
     				</li>
   				</ul>
   					<!-- Tab panes -->
-  				<div class="tab-content" tal:define="p python:context.absolute_url()">   			
+  				<div class="tab-content">   			
     			<div role="tabpanel" class="tab-pane active col-xs-12" id="guides">
          <div class="row">
 				<div class="shortcutlink col-sm-8 col-xs-12 text-center">
@@ -251,13 +258,12 @@
        <div class="col-xs-12 col-md-4 col-last">
 			<div class="portlet portletSearch"><h4 class="portletHeader">
       <span class="portletTopLeft"></span>
-      <a tal:attributes="href python:context.absolute_url() +'/@@allorgnization_listings'" class="tile">
-<!--			<span class="actived">快捷查询</span> -->
+      <a tal:attributes="href python:p +'/@@allorgnization_listings'" class="tile">
 				<button type="button" class="btn btn-default btn-active">快捷查询</button>
 			</a>
       <span class="portletTopRight"></span>
   		</h4>
-    <div id="ajax" tal:attributes="data-js-target python:context.absolute_url()">		
+    <div id="ajax" tal:attributes="data-js-target python:p">		
 		<form id="quicksearch" class="form-inline row" style="margin-bottom:0px;">
 			<div class="form-group col-xs-9">
           <input type="text" placeholder="社会组织名称（可模糊查找）"  name="SearchableOrg" class="form-control" id="search_input">
@@ -270,10 +276,10 @@
     </form>
     </div>
 			<div class="right-ad">
-			<a tal:attributes="href python:context.absolute_url() +'/@@allorgnization_listings'">
+			<a tal:attributes="href python:p +'/@@allorgnization_listings'">
 				<img src="http://images.315ok.org/xtshzz/images/cujinhuibar.png" class="top img-responsive" alt="社会组织促进会">					
 			</a>
-			<a tal:attributes="href python:context.absolute_url() +'/@@allorgnization_listings'">
+			<a tal:attributes="href python:p +'/@@allorgnization_listings'">
 					<img src="http://images.315ok.org/xtshzz/images/pinggubar.png" class="down img-responsive" alt="社会组织评估">						
 			</a>
 			</div>
@@ -286,15 +292,14 @@
        	<div class="big-ad">
 				<p class="adtitle">深入开展党的群众路线教育活动</p>
 				<p class="addescription">第二批教育实践活动从2014年1月开始</p>
-				<a tal:attributes="href python:context.absolute_url() +'/dangjiangongzuo/dangdequnzhongluxianjiaoyoshijianhuodong'" class="hidden">hide</a>
+				<a tal:attributes="href python:p +'/dangjiangongzuo/dangdequnzhongluxianjiaoyoshijianhuodong'" class="hidden">hide</a>
 				</div>
 				</div>
 				<div class="col-xs-12 col-md-4 col-last">       
          	<div class="portlet rolltext_portlet">
          		<h4 class="portletHeader">
          			<a tal:attributes="href python:view.collection_url('fuwuxinxi')" >
-<!--         				<span class="actived">服务信息</span> -->
-				<button type="button" class="btn btn-default btn-active">服务信息</button>
+								<button type="button" class="btn btn-default btn-active">服务信息</button>
          				<span class="portletTopRight">更多&gt;&gt;</span> 
          			</a>
          		</h4>	
@@ -309,7 +314,7 @@
 						<!-- 行政许可公告-->
 						<div class="portlet">
 							<div class="portletHeader">
-								<a tal:attributes="href python:context.absolute_url() + '/socialorganizations/@@orgnizations_administrative_fullview'">
+								<a tal:attributes="href python:p + '/socialorganizations/@@orgnizations_administrative_fullview'">
 									<button type="button" class="btn btn-default btn-active">行政许可公告</button>
 									<span class="portletTopRight">更多&gt;&gt;</span></a>
 							</div>
@@ -347,10 +352,9 @@
 						</div>						
 					</div>										
 					<div class="col-md-4 col-xs-12">
-						<!-- 年检-->
 						<div class="portlet">
 							<div class="portletHeader">
-								<a tal:attributes="href python:context.absolute_url() + '/socialorganizations/@@orgnizations_survey_fullview'">
+								<a tal:attributes="href python:p + '/socialorganizations/@@orgnizations_survey_fullview'">
 									<button type="button" class="btn btn-default btn-active">年检结果公告</button>
 									<span class="portletTopRight">更多&gt;&gt;</span></a>
 							</div>
@@ -443,10 +447,16 @@
 	<div id="scripts">
 	<script tal:content="structure python:view.outputjs()"></script>
 	<script>
-$('.nav-tabs a').mouseover(function (e) {
+$(".nav-tabs a").mouseover(function (e) {
   e.preventDefault()
   $(this).tab('show')
-})		
+});
+$(".nav-tabs").on("click","a",function (e) {
+  e.preventDefault();
+  var url = $(this).attr("data-js-target");
+  window.location.href = url;
+  return false;
+});		
 	</script>	
 	</div>
   </tal:main-macro>
