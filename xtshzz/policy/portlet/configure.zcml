@@ -1,10 +1,18 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
-    xmlns:plone="http://namespaces.plone.org/plone">
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:five="http://namespaces.zope.org/five">
 
   <include package="plone.app.portlets" />
   <include package="collective.quickupload" /> 
    
+  <adapter factory=".navigation.DontFilterDefaultQueryBuilder" />
+
+	<five:implements
+    class="plone.app.portlets.portlets.navigation.Assignment"
+    interface=".navigation.INonDefaultPageFilteringNavigationPortlet" />
+ 
+ 
    <plone:portletRenderer
     portlet="plone.app.portlets.portlets.navigation.INavigationPortlet"
     layer="xtshzz.policy.browser.interfaces.IXtshzzThemeSpecific"
