@@ -183,7 +183,7 @@
 				</div>
 				<div class="qrcode col-sm-4 hidden-xs">
 				<div class="photo text-center">
-					<img alt="二维码" width="120" height="120" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode.jpg"/>
+					<img alt="二维码" width="120" height="120" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode_xtshzz.jpg"/>
 				</div>
 				<div class="text-center">
 					<span>扫一扫，关注我们</span>
@@ -217,7 +217,7 @@
 					</div>
 					<div class="qrcode col-sm-4 hidden-xs">
 						<div class="photo text-center">
-							<img alt="二维码" width="120" height="120" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode.jpg"/>
+							<img alt="二维码" width="120" height="120" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode_xtshzz.jpg"/>
 						</div>
 						<div class="text-center">
 							<span>扫一扫，关注我们</span>
