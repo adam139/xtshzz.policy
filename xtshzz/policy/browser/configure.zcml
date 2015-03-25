@@ -19,6 +19,16 @@
     attribute="jsonConfiguration"
     layer=".interfaces.IXtshzzThemeSpecific"
     />
+    
+  <browser:page
+        name="bootstrapbatchnavigation"
+        for="*"
+        permission="zope.Public"
+        class="plone.batching.browser.PloneBatchView"
+    		 layer=".interfaces.IXtshzzThemeSpecific"        
+        template="templates/batchnavigation_bootstrap.pt"
+        /> 
+ 
   
   <browser:viewlet
     name="xtshzz.policy.reviewhistory"
@@ -54,5 +64,11 @@
  		widget="plone.formwidget.captcha.interfaces.ICaptchaWidget"        
  		layer=".interfaces.IXtshzzThemeSpecific"
  		template="templates/captcha_input.pt" /> 		
- 
+
+<include package="z3c.jbot" file="meta.zcml" />
+
+<browser:jbot
+    directory="override"
+ 		layer=".interfaces.IXtshzzThemeSpecific"    
+     /> 
 </configure>
