@@ -22,7 +22,6 @@
 </head>
 
 <body>
-
   <div id="content-core" metal:fill-slot="main">
     <form name="searchform"
           action="@@search"
