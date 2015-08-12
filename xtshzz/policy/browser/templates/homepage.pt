@@ -370,8 +370,9 @@
 												</tr>
 												</tbody>
 											</table>
-											<p class="text-info bg-info">数据更新中ing,敬请期待……</p>
 											<!-- 临时关闭年检结果
+											<p class="text-info bg-info">数据更新中ing,敬请期待……</p> 
+											-->
     										<div id="sRollV">
 	  											<div id="sRollV1">
     												<table class="table table-bordered">                 
@@ -386,7 +387,7 @@
     											</div>
 	  											<div id="sRollV2">
     										</div>    
-    									</div> -->
+    									</div> 
     									</td>
   									</tr>
 								</tbody>
