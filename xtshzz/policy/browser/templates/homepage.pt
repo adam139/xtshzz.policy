@@ -234,7 +234,7 @@
          <div class="col-xs-12 col-md-4">
          	<div class="portlet rolltext_portlet">
          		<h4 class="portletHeader">
-         			<a tal:attributes="href python:view.collection_url('hudongjiaoliu')" >
+         			<a tal:attributes="href python:p + '/xinwenzhongxin/jingyanjiaoliu/@@view'" >
          				<button type="button" class="btn btn-default btn-active">互动交流</button>
          				<span class="portletTopRight">更多&gt;&gt;</span>
          			</a>
@@ -246,7 +246,7 @@
          <div class="col-xs-12 col-md-4">
     				<div class="portlet rolltext_portlet">
 	  				<h4  class="portletHeader">
-         	<a tal:attributes="href python:view.collection_url('zhengcefagui')">
+         	<a tal:attributes="href python:p + '/xinxigongkai/zhengcefagui/@@view'">
             <button type="button" class="btn btn-default btn-active">政策法规</button>
             <span class="portletTopRight">更多&gt;&gt;</span>
        		</a>
@@ -279,7 +279,7 @@
 			<a tal:attributes="href python:p +'/@@allorgnization_listings'">
 				<img src="http://images.315ok.org/xtshzz/images/cujinhuibar.png" class="top img-responsive" alt="社会组织促进会">					
 			</a>
-			<a tal:attributes="href python:p +'/@@allorgnization_listings'">
+			<a tal:attributes="href python:p +'/banshidating/biaogexiazai/pinggugongzuo2/@@view'">
 					<img src="http://images.315ok.org/xtshzz/images/pinggubar.png" class="down img-responsive" alt="社会组织评估">						
 			</a>
 			</div>
