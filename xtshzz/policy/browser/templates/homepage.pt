@@ -143,30 +143,30 @@
 					</p>
 					<p>
 						<a class="btn btn-default btn-xs" role="button"  
-							tal:attributes="href python:p +'/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweichenglidengji/@@view'">
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweichenglidengji'">
 							成立登记
 						</a>
 						<a class="btn btn-default btn-xs" role="button"  
-							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantichenglidengji/@@view'">
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantichenglidengji'">
 								成立登记
 						</a>
 					</p>
 					<p>
 						<a class="btn btn-default btn-xs" role="button"  
-							tal:attributes="href python:p +'/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweibiangengdengji/@@view'">
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweibiangengdengji'">
 							变更登记
 						</a>
 						<a class="btn btn-default btn-xs" role="button"  
-							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantibiangengdengji/@@view'">
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantibiangengdengji'">
 								变更登记
 						</a>
 					</p>
 					<p>
 						<a class="btn btn-default btn-xs" role="button"  
-							href="banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweizhuxiaodengji/@@view'">
+							tal:attributes="href python:p + '/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweizhuxiaodengji'">
 							注销登记</a>
 						<a class="btn btn-default btn-xs" role="button"  
-							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantizhuxiaodengji/@@view'">
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantizhuxiaodengji'">
 							注销登记
 						</a>
 					</p>
@@ -176,7 +176,7 @@
 							年检报告书
 						</a>
 						<a class="btn btn-default btn-xs" role="button"  
-							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantifenzhijigoubanli/@@view'">
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantifenzhijigoubanli'">
 								分支/代表机构
 						</a>
 					</p>
