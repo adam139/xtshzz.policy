@@ -279,7 +279,7 @@
 			<a tal:attributes="href python:p +'/@@allorgnization_listings'">
 				<img src="http://images.315ok.org/xtshzz/images/cujinhuibar.png" class="top img-responsive" alt="社会组织促进会">					
 			</a>
-			<a tal:attributes="href python:p +'/banshidating/biaogexiazai/pinggugongzuo2/@@view'">
+			<a tal:attributes="href python:p +'/fuwuzhinan/shekuaizuzhipinggu/@@view'">
 					<img src="http://images.315ok.org/xtshzz/images/pinggubar.png" class="down img-responsive" alt="社会组织评估">						
 			</a>
 			</div>
