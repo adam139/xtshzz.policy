@@ -11,14 +11,7 @@
     <include package="z3c.form" file="meta.zcml" />
     <include package="z3c.form" />  
      
-  <browser:page
-    for="*"
-    name="tinymce-jsonconfiguration"
-    class=".tinymce.TinyMCEBrowserView"
-    permission="zope2.View"
-    attribute="jsonConfiguration"
-    layer=".interfaces.IXtshzzThemeSpecific"
-    />
+
     
   <browser:page
         name="bootstrapbatchnavigation"
