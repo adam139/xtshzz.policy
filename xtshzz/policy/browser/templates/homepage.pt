@@ -7,15 +7,10 @@
       i18n:domain="xtshzz.policy">        
 
 <body>	
-<metal:main fill-slot="homepage">
+<metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="main">
-    		<div id="portal-top"            
-            tal:condition="not:ajax_load">
-				<div class="cell width-full position-0">
-            <div tal:replace="structure provider:plone.portaltop" />
-				</div>
-       </div>
-    <div id="homepage" class="container"
+
+    <div id="homepage" 
     			tal:define="p python:context.absolute_url()">      	
        <div class="row row-1" 
        	tal:define="plone_view context/@@plone;
@@ -413,7 +408,7 @@
 				</div>  
      </div>
    
-     <div class="container">
+     <div>
      	<div id="friendly-link" class="row hidden-xs">
      		<div class="friendlybg col-sm-12" >
 				<div class="linkzone">
@@ -440,29 +435,19 @@
 				</div>
 			</div>
      </div>
-     <div  class="container">
+     <div  class="homepage-footer row">
  			<!-- FOOTER -->
       <div class="col-xs-12 footer">
         <p class="pull-right"><a href="#">返回顶部</a></p>
         <p>&copy; 2010-<span tal:content="python:view.getCurrentYear()">2015</span>&middot;湘潭市社会组织促进会 &middot; <a href="http://www.miibeian.gov.cn/">湘ICP备07003419</a></p>
       </div>
-    </div>
-	<div id="scripts">
-	<script tal:content="structure python:view.outputjs()"></script>
-	<script>
-$(".nav-tabs a").mouseover(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-});
-$(".nav-tabs").on("click","a",function (e) {
-  e.preventDefault();
-  var url = $(this).attr("data-js-target");
-  window.location.href = url;
-  return false;
-});		
-	</script>	
-	</div>
+    </div>	
   </tal:main-macro>
-</metal:main>   
+ </metal:main>
+ <!--
+ <metal:js fill-slot="javascript_bottom_slot">
+	<script tal:content="structure python:view.outputjs()"></script>	
+	</metal:js>
+	-->   
 </body>
 </html>

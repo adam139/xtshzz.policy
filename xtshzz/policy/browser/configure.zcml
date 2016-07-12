@@ -10,8 +10,49 @@
   
     <include package="z3c.form" file="meta.zcml" />
     <include package="z3c.form" />  
-     
+  <browser:page
+      for="Products.CMFCore.interfaces.ISiteRoot"
+      name="index.html"
+      class=".homepage.FrontpageView"
+      permission="zope.Public"
+      layer="collective.diazotheme.bootstrap.interfaces.IThemeSpecific"       
+      template="templates/homepage.pt"
+/>      
+  <browser:page
+      for="*"
+      name="footer"
+      permission="zope.Public"
+ 	  layer=".interfaces.IXtshzzThemeSpecific"       
+      template="templates/footer.pt"
+      />      
+    <!-- The search box -->
+    <browser:viewlet
+        name="plone.searchbox"
+        layer=".interfaces.IXtshzzThemeSpecific"        
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class=".common.SearchBoxViewlet"
+        permission="zope2.View"
+        />    
+    
 
+        
+    <!-- override The breadcrumbs -->
+    <browser:viewlet
+        name="plone.path_bar"
+        manager="plone.app.layout.viewlets.interfaces.IAboveContent"
+        class=".common.PathBarViewlet"
+        layer=".interfaces.IXtshzzThemeSpecific"
+        permission="zope2.View"
+        />        
+    <!-- Override global sections viewlet -->
+
+    <browser:viewlet
+        name="plone.global_sections"
+        manager="plone.app.layout.viewlets.interfaces.IMainNavigation"
+        class=".dropdown.DropdownMenuViewlet"
+ 		layer=".interfaces.IXtshzzThemeSpecific" 
+        permission="zope2.View"
+        />
     
   <browser:page
         name="bootstrapbatchnavigation"

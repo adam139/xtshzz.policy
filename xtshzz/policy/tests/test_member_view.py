@@ -11,7 +11,7 @@ from plone.keyring.interfaces import IKeyManager
 from plone.app.testing import TEST_USER_ID, login, logout, TEST_USER_NAME, \
     TEST_USER_PASSWORD,SITE_OWNER_NAME,SITE_OWNER_PASSWORD, setRoles
 from plone.testing.z2 import Browser
-import unittest2 as unittest
+import unittest
 from plone.namedfile.file import NamedImage
 
 import os

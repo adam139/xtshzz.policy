@@ -1,7 +1,7 @@
 #-*- coding: UTF-8 -*-
 """refer  the plone.app.discussion catalog indexes
 """
-import unittest2 as unittest
+import unittest
 
 import transaction
 from zope import event

@@ -31,38 +31,46 @@ class SitePolicy(PloneSandboxLayer):
     def setUpZope(self, app, configurationContext):
         # Load ZCML
         import xtshzz.policy
-        xmlconfig.file('configure.zcml', xtshzz.policy, context=configurationContext)
+        import plone.app.contenttypes
+        import collective.diazotheme.bootstrap
         import my315ok.socialorgnization
+        import my315ok.products
         import dexterity.membrane
-        xmlconfig.file('configure.zcml', dexterity.membrane, context=configurationContext)
-        xmlconfig.file('configure.zcml', my315ok.socialorgnization, context=configurationContext)        
+        xmlconfig.file('configure.zcml', collective.diazotheme.bootstrap, context=configurationContext)
+        xmlconfig.file('configure.zcml', xtshzz.policy, context=configurationContext)
+        xmlconfig.file('configure.zcml', plone.app.contenttypes, context=configurationContext)
+        xmlconfig.file('configure.zcml', my315ok.products, context=configurationContext)        
+#         xmlconfig.file('configure.zcml', dexterity.membrane, context=configurationContext)
+#         xmlconfig.file('configure.zcml', my315ok.socialorgnization, context=configurationContext)        
         # Install products that use an old-style initialize() function
-        z2.installProduct(app, 'Products.PythonField')
-        z2.installProduct(app, 'Products.TALESField')
-        z2.installProduct(app, 'Products.TemplateFields')
-        z2.installProduct(app, 'Products.PloneFormGen')
-        z2.installProduct(app, 'Products.membrane')        
+#         z2.installProduct(app, 'Products.PythonField')
+#         z2.installProduct(app, 'Products.TALESField')
+#         z2.installProduct(app, 'Products.TemplateFields')
+#         z2.installProduct(app, 'Products.PloneFormGen')
+#         z2.installProduct(app, 'Products.membrane')        
     
     def tearDownZope(self, app):
+        pass
         # Uninstall products installed above
-        z2.uninstallProduct(app, 'Products.PloneFormGen')
-        z2.uninstallProduct(app, 'Products.TemplateFields')
-        z2.uninstallProduct(app, 'Products.TALESField')
-        z2.uninstallProduct(app, 'Products.PythonField')
-        z2.uninstallProduct(app, 'Products.membrane')        
+#         z2.uninstallProduct(app, 'Products.PloneFormGen')
+#         z2.uninstallProduct(app, 'Products.TemplateFields')
+#         z2.uninstallProduct(app, 'Products.TALESField')
+#         z2.uninstallProduct(app, 'Products.PythonField')
+#         z2.uninstallProduct(app, 'Products.membrane')        
         
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'xtshzz.policy:default')
-        applyProfile(portal, 'my315ok.socialorgnization:default')
-        applyProfile(portal, 'dexterity.membrane:default')
+        applyProfile(portal, 'plone.app.contenttypes:default')
+        applyProfile(portal, 'my315ok.products:default')        
+#         applyProfile(portal, 'dexterity.membrane:default')
 #        applyProfile(portal, 'dexterity.membrane.content:example')
 
 class IntegrationSitePolicy(SitePolicy):      
         
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'xtshzz.policy:default')
-        applyProfile(portal, 'my315ok.socialorgnization:default')
-        applyProfile(portal, 'dexterity.membrane:default')
+#         applyProfile(portal, 'my315ok.socialorgnization:default')
+#         applyProfile(portal, 'dexterity.membrane:default')
 #        applyProfile(portal, 'dexterity.membrane.content:example')
 
 #        portal = self.layer['portal']

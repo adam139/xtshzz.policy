@@ -3,22 +3,34 @@ from five import grok
 from plone.memoize.instance import memoize
 from zope.component import getMultiAdapter
 from Products.CMFCore.interfaces import ISiteRoot
+from Products.CMFPlone.resources import add_bundle_on_request
+from Products.CMFPlone.resources import add_resource_on_request
+
+# add_resource_on_request(self.request, 'jquery.recurrenceinput')
+# add_bundle_on_request(self.request, 'thememapper')
+
 from my315ok.socialorgnization import _
 from my315ok.products.product import Iproduct
 from my315ok.socialorgnization.content.orgnizationfolder import IOrgnizationFolder
 from collective.diazotheme.bootstrap.browser.homepage import HomepageView as baseview
 from xtshzz.policy.browser.interfaces import IXtshzzThemeSpecific
 
-grok.templatedir('templates')
+# grok.templatedir('templates')
 
 class FrontpageView(baseview):
      
-    grok.context(ISiteRoot)
-    grok.template('homepage')
-    grok.name('index.html')
-    grok.layer(IXtshzzThemeSpecific)
-    grok.require('zope2.View')      
+#     grok.context(ISiteRoot)
+#     grok.template('homepage')
+#     grok.name('index.html')
+#     grok.layer(IXtshzzThemeSpecific)
+#     grok.require('zope2.View')      
 
+    def __init__(self,context, request):
+        # Each view instance receives context and request as construction parameters
+        self.context = context
+        self.request = request
+        add_bundle_on_request(self.request, 'homepage-legacy')
+        
     
     def carouselid(self):
         return "carouselid"
@@ -176,6 +188,7 @@ class FrontpageView(baseview):
         view name may be "orgnizations_administrative","orgnizations_survey"
         """
         context = self.getOrgnizationFolder()
+#         add_bundle_on_request(self.request, 'homepage-legacy')
         fview = getMultiAdapter((context,self.request),name=view)
         # call getMemberList function output table
         # fetch 20 items roll

@@ -4,7 +4,7 @@
     xmlns:five="http://namespaces.zope.org/five">
 
   <include package="plone.app.portlets" />
-  <include package="collective.quickupload" /> 
+
    
   <adapter factory=".navigation.DontFilterDefaultQueryBuilder" />
 
@@ -23,11 +23,7 @@
     layer="xtshzz.policy.browser.interfaces.IXtshzzThemeSpecific"
     template="search.pt"
    />      
-   <plone:portletRenderer
-    portlet="collective.quickupload.portlet.quickuploadportlet.IQuickUploadPortlet"
-    layer="xtshzz.policy.browser.interfaces.IXtshzzThemeSpecific"
-    template="quickuploadportlet.pt"
-   />   
+ 
 
 </configure>
 
