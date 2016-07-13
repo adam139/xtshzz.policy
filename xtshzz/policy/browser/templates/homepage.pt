@@ -16,7 +16,7 @@
        	tal:define="plone_view context/@@plone;
        						toLocalizedTime nocall:plone_view/toLocalizedTime">
          <div class="col-xs-12 col-md-4">
-         	<div tal:content="structure python: view.carouselresult()">outer</div>        	
+         	<div tal:replace="structure python: view.carouselresult()">outer</div>        	
          </div>          
          <div class="col-xs-12 col-md-4 tabPortlet">
 				<div role="tabpanel" class="kuputab-container">
@@ -128,57 +128,38 @@
 				<div class="shortcutlink col-sm-8 col-xs-12 text-center">
 					<p>
 						<a class="btn btn-primary btn-xs" role="button"  
-							tal:attributes="href python:p +'/banshidating/banshiguicheng/minbanfeiqiye/@@view'">
-							民办非企业单位
-						</a>
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/minbanfeiqiye/@@view'">民办非企业单位</a>
 						<a class="btn btn-primary btn-xs" role="button" 
-							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/@@view'">
-							社会团体
-						</a>
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/@@view'">社会团体</a>
 					</p>
 					<p>
 						<a class="btn btn-default btn-xs" role="button"  
-							tal:attributes="href python:p +'/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweichenglidengji'">
-							成立登记
-						</a>
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweichenglidengji'">成立登记</a>
 						<a class="btn btn-default btn-xs" role="button"  
-							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantichenglidengji'">
-								成立登记
-						</a>
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantichenglidengji'">成立登记</a>
 					</p>
 					<p>
 						<a class="btn btn-default btn-xs" role="button"  
-							tal:attributes="href python:p +'/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweibiangengdengji'">
-							变更登记
-						</a>
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweibiangengdengji'">	变更登记</a>
 						<a class="btn btn-default btn-xs" role="button"  
-							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantibiangengdengji'">
-								变更登记
-						</a>
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantibiangengdengji'">	变更登记</a>
 					</p>
 					<p>
 						<a class="btn btn-default btn-xs" role="button"  
-							tal:attributes="href python:p + '/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweizhuxiaodengji'">
-							注销登记</a>
+							tal:attributes="href python:p + '/banshidating/banshiguicheng/minbanfeiqiye/minbanfeiqiyedanweizhuxiaodengji'">	注销登记</a>
 						<a class="btn btn-default btn-xs" role="button"  
-							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantizhuxiaodengji'">
-							注销登记
-						</a>
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantizhuxiaodengji'">注销登记</a>
 					</p>
 					<p>
 						<a class="btn btn-primary btn-xs" role="button"  
-							tal:attributes="href python:p +'/banshidating/biaogexiazai/nianjianbaogaoshu/@@view'">
-							年检报告书
-						</a>
+							tal:attributes="href python:p +'/banshidating/biaogexiazai/nianjianbaogaoshu/@@view'">年检报告书</a>
 						<a class="btn btn-default btn-xs" role="button"  
-							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantifenzhijigoubanli'">
-								分支/代表机构
-						</a>
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantifenzhijigoubanli'">分支/代表机构	</a>
 					</p>
 				</div>
-				<div class="qrcode col-sm-4 hidden-xs">
+				<div class="qrcode col-sm-4 hidden-xs" style="padding:0">
 				<div class="photo text-center">
-					<img alt="二维码" width="120" height="120" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode_xtshzz.jpg"/>
+					<img alt="二维码"  class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode_xtshzz.jpg"/>
 				</div>
 				<div class="text-center">
 					<span>扫一扫，关注我们</span>
