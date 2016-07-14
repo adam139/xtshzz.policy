@@ -191,7 +191,7 @@
 							<a class="btn btn-default btn-xs" role="button" 
 								tal:attributes="href python:p +'/banshidating/biaogexiazai/shehuituanti/fenzhijigou/@@view'">分支/代表机构</a></p>
 					</div>
-					<div class="qrcode col-sm-4 hidden-xs">
+					<div class="qrcode col-sm-4 hidden-xs" style="padding:0">
 						<div class="photo text-center">
 							<img alt="二维码" width="120" height="120" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode_xtshzz.jpg"/>
 						</div>
