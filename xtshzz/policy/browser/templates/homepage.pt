@@ -45,14 +45,14 @@
         					<span>
         						<a href="#"
            					class="tile"
-           					tal:attributes="href obj/getURL;title obj/Description">
+           					tal:attributes="href obj/getURL;title python:ttl">
            					<span tal:replace="python:view.cropTitle(ttl, 15)">
              						Title
             					</span>
         						</a>
         					</span>
             			<span class="portletItemDetails"
-            				tal:content="python:toLocalizedTime(obj.Date)">
+            				tal:content="python:toLocalizedTime(obj.CreationDate )">
                 		Date
             			</span>        		
     						</li>    				
@@ -68,14 +68,14 @@
         		<span>
         		<a href="#"
            	class="tile"
-           	tal:attributes="href obj/getURL;title obj/Description">
+           	tal:attributes="href obj/getURL;title python:ttl">
            	<span tal:replace="python:view.cropTitle(ttl, 15)">
              Title
             </span>
         		</a>
         		</span>
             <span class="portletItemDetails"
-            	tal:content="python:toLocalizedTime(obj.Date)">
+            	tal:content="python:toLocalizedTime(obj.CreationDate )">
                 Date
             </span>        		
     				</li> 
@@ -91,14 +91,14 @@
         		<span>
         		<a href="#"
            	class="tile"
-           	tal:attributes="href obj/getURL;title obj/Description">
+           	tal:attributes="href obj/getURL;title python:ttl">
            	<span tal:replace="python:view.cropTitle(ttl, 15)">
              Title
             </span>
         		</a>
         		</span>
             <span class="portletItemDetails"
-            	tal:content="python:toLocalizedTime(obj.Date)">
+            	tal:content="python:toLocalizedTime(obj.CreationDate )">
                 Date
             </span>        		
     				</li> 
@@ -193,7 +193,7 @@
 					</div>
 					<div class="qrcode col-sm-4 hidden-xs" style="padding:0">
 						<div class="photo text-center">
-							<img alt="二维码" width="120" height="120" class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode_xtshzz.jpg"/>
+							<img alt="二维码"  class="img-responsive" src="http://images.315ok.org/xtshzz/images/qrcode_xtshzz.jpg"/>
 						</div>
 						<div class="text-center">
 							<span>扫一扫，关注我们</span>
@@ -388,41 +388,7 @@
          </div>			
 				</div>  
      </div>
-   
-     <div>
-     	<div id="friendly-link" class="row hidden-xs">
-     		<div class="friendlybg col-sm-12" >
-				<div class="linkzone">
-				<ul class="govlink">
-					<li class="first"><a title="政府网站" href="#">政府网站：</a></li>
-					<li><a title="湖南湘潭民政" href="http://xiangtan.mca.gov.cn/">湖南湘潭民政</a></li>
-					<li><a title="中国湘潭网" href="http://www.xiangtan.gov.cn/new/index.html">中国湘潭网</a></li>
-					<li><a title="湖南民间组织信息网" href="http://hunanmjzz.mca.gov.cn/">湖南民间组织信息网</a></li>
-					<li><a title="中国社会组织" href="http://www.chinanpo.gov.cn/index.html">中国社会组织</a></li>
-					<li><a title="湘潭在线" href="http://www.xtol.cn/">湘潭在线</a></li>
-					<li><a title="红网论坛" href="http://bbs.rednet.cn/forum.php?fid=69&amp;mod=forumdisplay">红网论坛</a></li>
-					<li class="last"><a title="常德社会组织" href="http://www.changdenpo.org/">常德社会组织</a></li>
-				</ul>
-				<ul class="orglink">
-					<li class="first"><a title="协会网站" href="#">协会网站：</a></li>
-					<li><a title="钢材深加工产业协会" href="http://www.tspa.org.cn/">钢材深加工产业协会</a></li>
-					<li><a title="市出租汽车行业协会" href="http://www.xtstaxi.com">市出租汽车行业协会</a></li>
-					<li><a title="湘潭担保与信用行业协会" href="http://xtgca.com/">湘潭担保与信用行业协会</a></li>
-					<li><a title="宝庆商会" href="http://www.xtsysh.com/">宝庆商会</a></li>
-					<li><a title="摄影家协会" href="http://xt.image1.cn/subsite/site_5/index.html">摄影家协会</a></li>
-					<li><a title="湘潭市浙江商会" href="http://www.xtzjsh.com/">湘潭市浙江商会</a></li>
-					<li class="last"><a title="湘潭市国学研究会" href="http://www.xtguoxue.org/">湘潭市国学研究会</a></li>
-				</ul>
-				</div>
-			</div>
-     </div>
-     <div  class="homepage-footer row">
- 			<!-- FOOTER -->
-      <div class="col-xs-12 footer">
-        <p class="pull-right"><a href="#">返回顶部</a></p>
-        <p>&copy; 2010-<span tal:content="python:view.getCurrentYear()">2015</span>&middot;湘潭市社会组织促进会 &middot; <a href="http://www.miibeian.gov.cn/">湘ICP备07003419</a></p>
-      </div>
-    </div>	
+
   </tal:main-macro>
  </metal:main>
  <!--

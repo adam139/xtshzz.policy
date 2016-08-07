@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <registry>
+  <records interface="Products.CMFPlone.interfaces.ISecuritySchema"
+prefix="plone" /> 	
   <record name="plone.app.theming.interfaces.IThemeSettings.rules" interface="plone.app.theming.interfaces.IThemeSettings" field="rules">
     <field type="plone.registry.field.TextLine">
       <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="rules_file_path">File path to the rules file</description>
