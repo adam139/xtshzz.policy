@@ -78,8 +78,7 @@
                   id="login_form"
                   tal:condition="use_normal">
 
-                <div id="login-form" class="col-xs-12 col-md-4 col-md-offset-4">
-
+                <div id="login-form" class="col-xs-12 col-md-8 col-md-offset-2">
                     <input type="hidden"
                         name="came_from"
                         value=""
@@ -209,7 +208,7 @@
                     </div>
 
                 </div>
-<div class="col-md-4 hidden-xs"><!-- placeholder--></div>
+<div class="col-md-2 hidden-xs"><!-- placeholder--></div>
             </form>
 
             <form tal:attributes="action external_login_url"

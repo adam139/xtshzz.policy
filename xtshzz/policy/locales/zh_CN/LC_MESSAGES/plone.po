@@ -14,6 +14,30 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone\n"
 
+#: ./profiles/default/registry.xml
+msgid "Custom plugins"
+msgstr "定制的插件"
+
+#: ./profiles/default/registry.xml
+msgid "Displayed content types"
+msgstr "拟显示的内容类型"
+
+#. Default: "Templates"
+#: ./profiles/default/registry.xml
+msgid "label_tinymce_templates"
+msgstr "模板"
+
+msgid "label_change_note"
+msgstr "修改备注"
+
+msgid "help_change_note"
+msgstr "为本次更改，输入一个备注信息"
+
+#. Default: "Default"
+#: plone.dexterity/browser/base.py:16
+msgid "label_schema_default"
+msgstr "缺省"
+
 msgid "Listen to audio for this captcha"
 msgstr "听声音"
 
