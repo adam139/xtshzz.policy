@@ -38,7 +38,7 @@ prefix="plone" />
     <value key="jscompilation">++resource++xtshzz.policy/homepage-custom.js</value>
     <value key="csscompilation">++resource++xtshzz.policy/homepage.minv2.css</value>
     <value key="last_compilation">2015-08-14 00:00:00</value>
-    <value key="compile">False</value>
+    <value key="compile">True</value>
     <value key="enabled">False</value>
     <value key="stub_js_modules">
         <element>roll</element>
