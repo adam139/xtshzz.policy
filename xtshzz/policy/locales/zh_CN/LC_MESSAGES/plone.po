@@ -77,3 +77,5 @@ msgstr "主管单位负责人"
 msgid "Civil Agent"
 msgstr "民政局专员"
 
+msgid "government organization"
+msgstr "政府职能部门"

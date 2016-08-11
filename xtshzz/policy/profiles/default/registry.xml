@@ -77,7 +77,7 @@ prefix="plone" />
         ns0:domain="plone"
         ns0:translate="label_tinymce_templates">Templates</title>
   </field>
-  <value>[{"title": "EMC实验", "url": "++theme++collective.diazotheme.bootstrap/tinymce_templates/emc_experiment.html"},
+  <value>[{"title": "年检报告", "url": "++theme++collective.diazotheme.bootstrap/tinymce_templates/emc_experiment.html"},
   	{"title": "EMC分析", "url": "++theme++collective.diazotheme.bootstrap/tinymce_templates/emc_analysis.html"}]</value>
 </record>
 </registry>
