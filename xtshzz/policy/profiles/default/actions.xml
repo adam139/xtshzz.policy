@@ -55,7 +55,7 @@
    </property>
    <property name="visible">False</property>
   </object>
-  <object name="properties" meta_type="CMF Action" i18n:domain="owasp.policy">
+  <object name="properties" meta_type="CMF Action" i18n:domain="xtshzz.policy">
    <property name="title" i18n:translate="">member properties</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">python:object.restrictedTraverse('@@member_url')</property>
@@ -80,7 +80,7 @@
    </property>
    <property name="visible">False</property>
   </object>
-  <object name="membermanage" meta_type="CMF Action" i18n:domain="owasp.policy">
+  <object name="membermanage" meta_type="CMF Action" i18n:domain="xtshzz.policy">
    <property name="title" i18n:translate="">member manage</property>
    <property name="description" i18n:translate=""></property>
    <property
