@@ -114,11 +114,11 @@
   				<ul  class="nav nav-tabs kuputab-selectors row" role="tablist">
     				<li role="presentation" class="active col-xs-6">
     					<a href="#guides" aria-controls="guides" role="tab" data-toggle="tab"
-    						tal:attributes="data-js-target python:p + '/banshidating/banshiguicheng/@@view'">办事指南</a>
+    						tal:attributes="data-js-target python:p + '/banshidating/banshiguicheng'">办事指南</a>
     				</li>
     				<li role="presentation" class="col-xs-6">
     					<a data-target="#downloads" href="#downloads" aria-controls="downloads" role="tab" data-toggle="tab"
-    						tal:attributes="data-js-target python:p + '/banshidating/biaogexiazai/@@view'">表格下载</a>
+    						tal:attributes="data-js-target python:p + '/banshidating/biaogexiazai'">表格下载</a>
     				</li>
   				</ul>
   					<!-- Tab panes -->
@@ -128,9 +128,9 @@
 				<div class="shortcutlink col-sm-8 col-xs-12 text-center">
 					<p>
 						<a class="btn btn-primary btn-xs" role="button"  
-							tal:attributes="href python:p +'/banshidating/banshiguicheng/minbanfeiqiye/@@view'">民办非企业单位</a>
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/minbanfeiqiye'">民办非企业单位</a>
 						<a class="btn btn-primary btn-xs" role="button" 
-							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/@@view'">社会团体</a>
+							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti'">社会团体</a>
 					</p>
 					<p>
 						<a class="btn btn-default btn-xs" role="button"  
@@ -152,7 +152,7 @@
 					</p>
 					<p>
 						<a class="btn btn-primary btn-xs" role="button"  
-							tal:attributes="href python:p +'/banshidating/biaogexiazai/nianjianbaogaoshu/@@view'">年检报告书</a>
+							tal:attributes="href python:p +'/banshidating/biaogexiazai/nianjianbaogaoshu'">年检报告书</a>
 						<a class="btn btn-default btn-xs" role="button"  
 							tal:attributes="href python:p +'/banshidating/banshiguicheng/shehuituanti/shekuaituantifenzhijigoubanli'">分支/代表机构	</a>
 					</p>
@@ -171,25 +171,25 @@
 				<div class="row">
 					<div class="shortcutlink col-sm-8 col-xs-12 text-center">
 						<p><a class="btn btn-primary btn-xs" role="button" 
-							tal:attributes="href python:p +'/banshidating/biaogexiazai/minbanfeiqiye/@@view'">民办非企业单位</a>
+							tal:attributes="href python:p +'/banshidating/biaogexiazai/minbanfeiqiye'">民办非企业单位</a>
 							<a class="btn btn-primary btn-xs" role="button" 
-								tal:attributes="href python:p +'/banshidating/biaogexiazai/shehuituanti/@@view'"><span>社会团体</span></a></p>
+								tal:attributes="href python:p +'/banshidating/biaogexiazai/shehuituanti'"><span>社会团体</span></a></p>
 						<p><a class="btn btn-default btn-xs" role="button" 
-							tal:attributes="href python:p +'/banshidating/biaogexiazai/minbanfeiqiye/chengli/@@view'"><span>成立文件</span></a>
+							tal:attributes="href python:p +'/banshidating/biaogexiazai/minbanfeiqiye/chengli'"><span>成立文件</span></a>
 							<a class="btn btn-default btn-xs" role="button" 
-								tal:attributes="href python:p +'/banshidating/biaogexiazai/shehuituanti/chengli/@@view'">成立登记</a></p>
+								tal:attributes="href python:p +'/banshidating/biaogexiazai/shehuituanti/chengli'">成立登记</a></p>
 						<p><a class="btn btn-default btn-xs" role="button" 
-							tal:attributes="href python:p +'/banshidating/biaogexiazai/minbanfeiqiye/biangeng/@@view'">变更登记</a>
+							tal:attributes="href python:p +'/banshidating/biaogexiazai/minbanfeiqiye/biangeng'">变更登记</a>
 							<a class="btn btn-default btn-xs" role="button" 
-								tal:attributes="href python:p +'/banshidating/biaogexiazai/shehuituanti/biangeng/@@view'">变更登记</a></p>
+								tal:attributes="href python:p +'/banshidating/biaogexiazai/shehuituanti/biangeng'">变更登记</a></p>
 						<p><a class="btn btn-default btn-xs" role="button" 
-							tal:attributes="href python:p +'/banshidating/biaogexiazai/minbanfeiqiye/zhuxiao/@@view'">注销登记</a>
+							tal:attributes="href python:p +'/banshidating/biaogexiazai/minbanfeiqiye/zhuxiao'">注销登记</a>
 							<a class="btn btn-default btn-xs" role="button" 
-								tal:attributes="href python:p +'/banshidating/biaogexiazai/shehuituanti/zhuxiao/@@view'">注销登记</a></p>
+								tal:attributes="href python:p +'/banshidating/biaogexiazai/shehuituanti/zhuxiao'">注销登记</a></p>
 						<p><a class="btn btn-primary btn-xs" role="button" 
-							tal:attributes="href python:p +'/banshidating/biaogexiazai/nianjianbaogaoshu/@@view'">年检报告书</a>
+							tal:attributes="href python:p +'/banshidating/biaogexiazai/nianjianbaogaoshu'">年检报告书</a>
 							<a class="btn btn-default btn-xs" role="button" 
-								tal:attributes="href python:p +'/banshidating/biaogexiazai/shehuituanti/fenzhijigou/@@view'">分支/代表机构</a></p>
+								tal:attributes="href python:p +'/banshidating/biaogexiazai/shehuituanti/fenzhijigou'">分支/代表机构</a></p>
 					</div>
 					<div class="qrcode col-sm-4 hidden-xs" style="padding:0">
 						<div class="photo text-center">
