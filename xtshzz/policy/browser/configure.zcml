@@ -22,7 +22,7 @@
       for="*"
       name="footer"
       permission="zope.Public"
- 	  layer=".interfaces.IXtshzzThemeSpecific"       
+ 	    layer=".interfaces.IXtshzzThemeSpecific"       
       template="templates/footer.pt"
       />      
     <!-- The search box -->
@@ -80,6 +80,30 @@
 		for="*"
 		permission="zope2.View"
 		class=".macros.Macros"/> 
+
+<!-- manage tools-->      
+   <browser:page
+      for="*"
+      name="set_layout"
+      class=".manage_tools.setLayout"
+      layer="zope.interface.Interface"        
+      permission="cmf.ManagePortal"
+      />
+   <browser:page
+      for="*"
+      name="add_mark"
+      class=".manage_tools.addMarkInterface"
+      layer="zope.interface.Interface"        
+      permission="cmf.ManagePortal"
+      />
+   <browser:page
+      for="*"
+      name="set_date"
+      class=".manage_tools.setDate"
+      layer="zope.interface.Interface"       
+      permission="cmf.ManagePortal"
+      />          
+
      
    <z3c:widgetTemplate
         mode="input"
