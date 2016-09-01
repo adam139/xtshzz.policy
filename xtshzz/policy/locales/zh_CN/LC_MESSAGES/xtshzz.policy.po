@@ -57,3 +57,7 @@ msgstr "创建"
 msgid "member manage"
 msgstr "会员管理"
 
+msgid "member properties"
+msgstr "会员设置"
+
+

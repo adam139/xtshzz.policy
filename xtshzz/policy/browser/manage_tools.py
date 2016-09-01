@@ -2,6 +2,7 @@
 from zope.interface import implements
 from Acquisition import aq_inner
 from zope.dottedname.resolve import resolve
+from Products.Five.utilities.marker import mark
 from zope.publisher.interfaces import IPublishTraverse
 from Products.Five.browser import BrowserView
 from zope.interface import Interface
@@ -62,15 +63,16 @@ class addMarkInterface(setLayout):
     """
     self.layout will be input a name of the mark interface ,this parameter come from browser request url
     # id is yourpackage.interfaces.IFoo.
-    usage:http://host/yourobject/@@addmark?yourpackage.interfaces.Imark
+    usage:http://host/yourobject/@@add_mark?yourpackage.interfaces.Imark
     """
     
     def __call__(self):
-        ifid = self.layout
+
+        ifid = self.request.form.keys()[0]
         try:
             ifobj = resolve(ifid)
         except:
-            return "interface %s can not be resolved" % (self.layout)
+            return "interface %s can not be resolved" % (ifid)
         context = aq_inner(self.context)
-        mark(context,Ifobj)        
-        return "I has marked %s to provide %s" % (context.id,self.layout)        
+        mark(context,ifobj)        
+        return "I has marked %s to provide %s" % (context.id,ifid)        
