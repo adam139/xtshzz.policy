@@ -12,8 +12,13 @@
         for=".member_listing.MemberFolderB3View"
         ruleset="plone.content.folderView"
         />
+  <cache:rulesetType
+      name="plone.homepage"
+      title="Homepage"
+      description="Site homepage view"
+      />        
     <cache:ruleset
         for=".homepage.FrontpageView"
-        ruleset="plone.content.itemView"
+        ruleset="plone.homepage"
         />    
 </configure>
