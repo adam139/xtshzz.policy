@@ -101,7 +101,7 @@
       name="set_date"
       class=".manage_tools.setDate"
       layer="zope.interface.Interface"       
-      permission="cmf.ManagePortal"
+      permission="cmf.ModifyPortalContent"
       />          
 
      

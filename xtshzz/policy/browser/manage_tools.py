@@ -20,8 +20,8 @@ class setLayout(BrowserView):
     #receive url parameters
     def publishTraverse(self, request, name):
 
-        import pdb
-        pdb.set_trace()
+#         import pdb
+#         pdb.set_trace()
         if self.layout is None:
             self.layout = name
             return self
