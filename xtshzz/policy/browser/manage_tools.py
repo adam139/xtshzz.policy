@@ -38,7 +38,7 @@ class setLayout(BrowserView):
     
 class setDate(setLayout):
     """set content object create date for dexterity content types.
-    通过:contentobj@@setdate?2016-08-08形式来设置。
+    通过:contentobj@@set_date?2016-08-08形式来设置。
     """
 
    
