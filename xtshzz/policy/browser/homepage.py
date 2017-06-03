@@ -107,6 +107,7 @@ class FrontpageView(baseview):
             outhtml = ''.join([outhtml,out])   # quick concat string
             objurl = braindata[i].getURL()
             linkurl = braindata[i].linkurl
+            if not bool(linkurl):linkurl = objurl
             objtitle = braindata[i].Title
             outimg = """<div class="%(classes)s">
                         <a href="%(linkurl)s"><img class="img-responsive" style="%(css)s" src="%(imgsrc)s" alt="%(imgtitle)s"/></a>
