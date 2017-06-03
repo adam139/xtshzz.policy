@@ -77,7 +77,9 @@ prefix="plone" />
         ns0:domain="plone"
         ns0:translate="label_tinymce_templates">Templates</title>
   </field>
-  <value>[{"title": "年检报告", "url": "++theme++collective.diazotheme.bootstrap/tinymce_templates/emc_experiment.html"},
-  	{"title": "EMC分析", "url": "++theme++collective.diazotheme.bootstrap/tinymce_templates/emc_analysis.html"}]</value>
+  <value>[{"title": "年检报告", "url": "++theme++collective.diazotheme.bootstrap/tinymce_templates/annual_reporter.html"},
+  	{"title": "红头文件", "url": "++theme++collective.diazotheme.bootstrap/tinymce_templates/red_printer.html"},
+  	{"title": "法律文件", "url": "++theme++collective.diazotheme.bootstrap/tinymce_templates/law.html"},
+  	{"title": "分页文件", "url": "++theme++collective.diazotheme.bootstrap/tinymce_templates/auto_tab.html"}]</value>
 </record>
 </registry>
