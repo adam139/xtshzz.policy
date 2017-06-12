@@ -30,8 +30,9 @@ class setLayout(BrowserView):
         
     def __call__(self):        
         obj = self.context
+        datev = self.request.form.keys()[0]
         try:
-            obj.setLayout(self.layout)
+            obj.setLayout(datev)
             return "success"
         except:
             return "error"   
