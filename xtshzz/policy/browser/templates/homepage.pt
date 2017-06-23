@@ -215,7 +215,7 @@
          	<div class="portlet rolltext_portlet">
          		<h4 class="portletHeader">
          			<a tal:attributes="href python:p + '/xinwenzhongxin/jingyanjiaoliu/@@tableview'" >
-         				<button type="button" class="btn btn-default btn-active">互动交流</button>
+         				<span class="btn btn-default btn-active">互动交流</span>
          				<span class="portletTopRight">更多&gt;&gt;</span>
          			</a>
          		</h4>	
@@ -227,7 +227,7 @@
     				<div class="portlet rolltext_portlet">
 	  				<h4  class="portletHeader">
          	<a tal:attributes="href python:p + '/xinxigongkai/zhengcefagui/@@tableview'">
-            <button type="button" class="btn btn-default btn-active">政策法规</button>
+            <span class="btn btn-default btn-active">政策法规</span>
             <span class="portletTopRight">更多&gt;&gt;</span>
        		</a>
     				</h4>
@@ -239,7 +239,7 @@
 			<div class="portlet portletSearch"><h4 class="portletHeader">
       <span class="portletTopLeft"></span>
       <a tal:attributes="href python:p +'/@@allorgnization_listings'" class="tile">
-				<button type="button" class="btn btn-default btn-active">快捷查询</button>
+				<span class="btn btn-default btn-active">快捷查询</span>
 			</a>
       <span class="portletTopRight"></span>
   		</h4>
@@ -284,7 +284,7 @@
          	<div class="portlet rolltext_portlet">
          		<h4 class="portletHeader">
          			<a tal:attributes="href python:p + '/fuwuzhinan/xinxichaxun/fuwuxinxi/@@tableview'" >
-								<button type="button" class="btn btn-default btn-active">服务信息</button>
+								<span class="btn btn-default btn-active">服务信息</span>
          				<span class="portletTopRight">更多&gt;&gt;</span> 
          			</a>
          		</h4>	
@@ -300,7 +300,7 @@
 						<div class="portlet">
 							<div class="portletHeader">
 								<a tal:attributes="href python:p + '/socialorganizations/@@orgnizations_administrative_fullview'">
-									<button type="button" class="btn btn-default btn-active">行政许可公告</button>
+									<span class="btn btn-default btn-active">行政许可公告</span>
 									<span class="portletTopRight">更多&gt;&gt;</span></a>
 							</div>
 							<div class="rolltables">
@@ -340,7 +340,7 @@
 						<div class="portlet">
 							<div class="portletHeader">
 								<a tal:attributes="href python:p + '/socialorganizations/@@orgnizations_survey_fullview'">
-									<button type="button" class="btn btn-default btn-active">年检结果公告</button>
+									<span class="btn btn-default btn-active">年检结果公告</span>
 									<span class="portletTopRight">更多&gt;&gt;</span></a>
 							</div>
 							<div class="rolltables">
@@ -384,7 +384,7 @@
          	<div class="portlet rolltext_portlet">
          		<h4 class="portletHeader">
          			<a tal:attributes="href python:p + '/xinxigongkai/xingzhengchufagonggao/@@view'" >
-         				<button type="button" class="btn btn-default btn-active">行政处罚公告</button>
+         				<span class="btn btn-default btn-active">行政处罚公告</span>
          				<span class="portletTopRight">更多&gt;&gt;</span> 
          			</a>
          		</h4>
