@@ -305,11 +305,15 @@
 				<div role="tabpanel" class="kuputab-container">
   				<!-- Nav tabs -->
   				<ul  class="nav nav-tabs kuputab-selectors row" role="tablist">
-    				<li role="presentation" class="active col-xs-6">
+    				<li role="presentation" class="col-xs-4">
     					<a href="#hudongjiaoliu" aria-controls="hudongjiaoliu" role="tab" data-toggle="tab"
     						tal:attributes="data-js-target python:p + '/xinwenzhongxin/jingyanjiaoliu/@@tableview'">互动交流</a>
     				</li>
-    				<li role="presentation" class="col-xs-6">
+                    <li role="presentation" class="active col-xs-4">
+    					<a href="#zaixianpeixun" aria-controls="zaixianpeixun" role="tab" data-toggle="tab"
+    						tal:attributes="data-js-target python:p + '/zhijianzhibu/zaixianpeixun/@@tableview'">在线培训</a>
+    				</li>    				
+    				<li role="presentation" class="col-xs-4">
     					<a href="#zhengcefagui" aria-controls="zhengcefagui" role="tab" data-toggle="tab"
     						tal:attributes="data-js-target python:p + '/xinxigongkai/zhengcefagui/@@tableview'">政策法规</a>
     				</li>    				
@@ -338,8 +342,31 @@
     						</li>    				
     					</tal:group>
     					</ul>    	
-    				</div>
-    			<div role="tabpanel" class="tab-pane" id="zhengcefagui">
+    		</div>
+            <div role="tabpanel" class="tab-pane" id="zaixianpeixun">
+         	<ul class="tabcontent-lists">    	
+         	<tal:group tal:repeat="obj python:view.collection('zaixianpeixun',7)">
+    				<li class="portletItem"
+        		tal:define="oddrow repeat/obj/odd;ttl obj/Title"
+        		tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
+        		<span>
+        		<a href="#"
+           	class="tile"
+           	tal:attributes="href obj/getURL;title python:ttl">
+           	<span tal:replace="python:view.cropTitle(ttl, 15)">
+             Title
+            </span>
+        		</a>
+        		</span>
+            <span class="portletItemDetails"
+            	tal:content="python:toLocalizedTime(obj.created )">
+                Date
+            </span>        		
+    				</li> 
+    				</tal:group>
+    				</ul>    				    	
+    		</div>    				
+    		<div role="tabpanel" class="tab-pane" id="zhengcefagui">
          	<ul class="tabcontent-lists">    	
          	<tal:group tal:repeat="obj python:view.collection('zhengcefagui',7)">
     				<li class="portletItem"
