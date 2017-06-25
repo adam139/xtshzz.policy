@@ -229,7 +229,7 @@
   				</ul>
   					<!-- Tab panes start-->
   				<div class="tab-content">
-   				<div role="tabpanel" class="tab-pane active" id="dangwuguanli">
+   				<div role="tabpanel" class="tab-pane" id="dangwuguanli">
          		<ul class="tabcontent-lists">
          		<tal:group tal:repeat="obj python:view.collection('dangwuguanli',7)">    				
     						<li class="portletItem"
@@ -252,7 +252,7 @@
     					</tal:group>
     					</ul>    	
     				</div>
-    			<div role="tabpanel" class="tab-pane" id="dangjianxinxi">
+    			<div role="tabpanel" class="tab-pane active" id="dangjianxinxi">
          	<ul class="tabcontent-lists">    	
          	<tal:group tal:repeat="obj python:view.collection('dangjianxinxi',7)">
     				<li class="portletItem"
@@ -320,7 +320,7 @@
   				</ul>
   					<!-- Tab panes start-->
   				<div class="tab-content">
-   				<div role="tabpanel" class="tab-pane active" id="hudongjiaoliu">
+   				<div role="tabpanel" class="tab-pane" id="hudongjiaoliu">
          		<ul class="tabcontent-lists">
          		<tal:group tal:repeat="obj python:view.collection('hudongjiaoliu',7)">    				
     						<li class="portletItem"
@@ -343,7 +343,7 @@
     					</tal:group>
     					</ul>    	
     		</div>
-            <div role="tabpanel" class="tab-pane" id="zaixianpeixun">
+            <div role="tabpanel" class="tab-pane active" id="zaixianpeixun">
          	<ul class="tabcontent-lists">    	
          	<tal:group tal:repeat="obj python:view.collection('zaixianpeixun',7)">
     				<li class="portletItem"
