@@ -374,7 +374,7 @@
       <span class="portletTopRight"></span>
   		</h4>
     <div id="ajax" tal:attributes="data-js-target python:p">		
-		<form id="quicksearch" class="form-inline row" style="margin-bottom:0px;">
+		<form id="quicksearch" class="form-inline row" style="margin:5px 0px;">
 			<div class="form-group col-xs-9">
           <input type="text" placeholder="社会组织名称（可模糊查找）"  name="SearchableOrg" class="form-control" id="search_input">
     		</div>
