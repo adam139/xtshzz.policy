@@ -21,7 +21,7 @@
               tal:content="title">
                   crumb
           </a>
-          <span id="breadcrumbs-current"
+          <span class="hidden-xs" id="breadcrumbs-current"
                 tal:condition="is_last"
                 tal:content="title">crumb</span>
         </tal:item>
