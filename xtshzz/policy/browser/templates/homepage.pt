@@ -419,7 +419,7 @@
 			</a>
 			-->
 			<a tal:attributes="href python:p +'/xinxigongkai/tongzhigonggao/xiangtanshiminzhengjuxingzhengshenpizhongjiefuwushixiangqingdan'">
-				<img src="http://images.315ok.org/xtshzz/images/zhongjiefuwubar.png" class="top img-responsive" alt="社会组织促进会">					
+				<img src="http://images.315ok.org/xtshzz/images/zhongjiefuwubar2.jpg" class="top img-responsive" alt="社会组织促进会">					
 			</a>			
 			<a tal:attributes="href python:p +'/fuwuzhinan/shekuaizuzhipinggu/@@tableview'">
 					<img src="http://images.315ok.org/xtshzz/images/pinggubar.png" class="down img-responsive" alt="社会组织评估">						
