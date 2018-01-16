@@ -122,7 +122,7 @@
     				</li>
     				<li role="presentation" class="col-xs-6">
     					<a data-target="#downloads" href="#downloads" aria-controls="downloads" role="tab" data-toggle="tab"
-    						tal:attributes="data-js-target string:'http://222.240.178.46:6888/sorg/jsp/ext/som/login/login.jsp'">表格下载</a>
+    						tal:attributes="data-js-target python:'http://222.240.178.46:6888/sorg/jsp/ext/som/login/login.jsp'">表格下载</a>
     				</li>
   				</ul>
   					<!-- Tab panes -->
