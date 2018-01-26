@@ -122,7 +122,7 @@
     				</li>
     				<li role="presentation" class="col-xs-6">
     					<a data-target="#downloads" href="#downloads" aria-controls="downloads" role="tab" data-toggle="tab"
-    						tal:attributes="data-js-target python:'http://222.240.178.46:6888/sorg/jsp/ext/som/login/login.jsp'">表格下载</a>
+    						tal:attributes="data-js-target python:p + '/banshidating/biaogexiazai'">表格下载</a>
     				</li>
   				</ul>
   					<!-- Tab panes -->
@@ -393,14 +393,16 @@
 			</div>
 			</div> <!-- tabPortlet end-->
        <div class="col-xs-12 col-md-4">
-			<div class="portlet portletSearch"><h4 class="portletHeader">
+       	<!--
+			<div class="portlet portletSearch">
+				<h4 class="portletHeader">
       <span class="portletTopLeft"></span>
       <a tal:attributes="href python:p +'/@@allorgnization_listings'" class="tile">
 				<span class="btn btn-default btn-active">快捷查询</span>
 			</a>
       <span class="portletTopRight"></span>
-  		</h4>
-    <div id="ajax" tal:attributes="data-js-target python:p">		
+  		</h4> -->
+    <!-- <div id="ajax" tal:attributes="data-js-target python:p">		
 		<form id="quicksearch" class="form-inline row" style="margin:5px 0px;">
 			<div class="form-group col-xs-9">
           <input type="text" placeholder="社会组织名称（可模糊查找）"  name="SearchableOrg" class="form-control" id="search_input">
@@ -411,21 +413,20 @@
     		</button>
     		</div>
     </form>
-    </div>
+  </div> -->
 			<div class="right-ad">
-				<!--
-			<a tal:attributes="href python:p +'/@@allorgnization_listings'">
-				<img src="http://images.315ok.org/xtshzz/images/cujinhuibar.png" class="top img-responsive" alt="社会组织促进会">					
+			<a tal:attributes="href python:'http://222.240.178.46:6888/sorg/jsp/ext/som/login/login.jsp'">
+				<img src="http://images.315ok.org/xtshzz/images/mzhtguanlipt.jpg" class="up img-responsive" alt="民政厅管理平台">					
 			</a>
-			-->
+
 			<a tal:attributes="href python:p +'/xinxigongkai/tongzhigonggao/xiangtanshiminzhengjuxingzhengshenpizhongjiefuwushixiangqingdan'">
-				<img src="http://images.315ok.org/xtshzz/images/zhongjiefuwubar2.jpg" class="top img-responsive" alt="社会组织促进会">					
+				<img src="http://images.315ok.org/xtshzz/images/zhongjiefuwubar3.jpg" class="mid img-responsive" alt="社会组织促进会">					
 			</a>			
 			<a tal:attributes="href python:p +'/fuwuzhinan/shekuaizuzhipinggu/@@tableview'">
-					<img src="http://images.315ok.org/xtshzz/images/pinggubar.png" class="down img-responsive" alt="社会组织评估">						
+					<img src="http://images.315ok.org/xtshzz/images/pinggubar.jpg" class="down img-responsive" alt="社会组织评估">						
 			</a>
 			</div>
-    </div>		
+		
        </div>	       	
        </div>
        
