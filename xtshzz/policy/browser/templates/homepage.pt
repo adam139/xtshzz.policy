@@ -494,47 +494,17 @@
 						</div>						
 					</div>										
 					<div class="col-md-4 col-xs-12">
-						<div class="portlet">
-							<div class="portletHeader">
-								<a tal:attributes="href python:p + '/socialorganizations/@@orgnizations_survey_fullview'">
+						<div class="portlet rolltext_portlet">
+							<h4 class="portletHeader">
+								<a tal:attributes="href python:p + '/fuwuzhinan/shekuaizuzhinianjian/nianjianjieguo'">
 									<span class="btn btn-default btn-active">年检结果公告</span>
 									<span class="portletTopRight">更多&gt;&gt;</span></a>
-							</div>
-							<div class="rolltables">
-								<table class="table">
-  									<tbody><tr> 
-    									<td class="nopadding">
-    										<table class="table table-bordered">
-												<tbody><tr class="theader">
-			  										<td class="title">社会组织名称</td>
-			  										<td class="item">年度</td>
-			  										<td class="result">年检结果</td>
-												</tr>
-												</tbody>
-											</table>
-											<!-- 临时关闭年检结果
-											<p class="text-info bg-info">数据更新中ing,敬请期待……</p> 
-											-->
-    										<div id="sRollV">
-	  											<div id="sRollV1">
-    												<table class="table table-bordered">                 
-        											<tbody tal:content="structure python: view.getable('orgnizations_survey')" >
-        											<tr> 
-          											<td>中国中亚友好协会</td>
-          											<td>2013</td>
-          											<td>合格</td>
-        											</tr>
-        											</tbody>
-    												</table>
-    											</div>
-	  											<div id="sRollV2">
-    										</div>    
-    									</div> 
-    									</td>
-  									</tr>
-								</tbody>
-							</table>
-							</div>
+							</h4>
+<!-- ul's parent div must be set css code {display:inline;float:left;overflow:hidden;height or width;} 
+	li must be set height or width.
+	-->	
+	           <div tal:content="structure python: view.rollresult(collection='nianjianjieguogonggao',limit=10)">	           	
+	           </div>							
 						</div>						
 					</div>	
 					<div class="col-xs-12 col-md-4">
