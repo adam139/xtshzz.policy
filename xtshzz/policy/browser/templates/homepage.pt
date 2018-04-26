@@ -50,7 +50,7 @@
         						<a href="#"
            					class="tile"
            					tal:attributes="href obj/getURL;title python:ttl">
-           					<span tal:replace="python:view.cropTitle(ttl, 15)">
+           					<span tal:replace="python:view.cropTitle(ttl, 14)">
              						Title
             					</span>
         						</a>
@@ -73,7 +73,7 @@
         		<a href="#"
            	class="tile"
            	tal:attributes="href obj/getURL;title python:ttl">
-           	<span tal:replace="python:view.cropTitle(ttl, 15)">
+           	<span tal:replace="python:view.cropTitle(ttl, 14)">
              Title
             </span>
         		</a>
@@ -96,7 +96,7 @@
         		<a href="#"
            	class="tile"
            	tal:attributes="href obj/getURL;title python:ttl">
-           	<span tal:replace="python:view.cropTitle(ttl, 15)">
+           	<span tal:replace="python:view.cropTitle(ttl, 14)">
              Title
             </span>
         		</a>
@@ -239,7 +239,7 @@
         						<a href="#"
            					class="tile"
            					tal:attributes="href obj/getURL;title python:ttl">
-           					<span tal:replace="python:view.cropTitle(ttl, 15)">
+           					<span tal:replace="python:view.cropTitle(ttl, 14)">
              						Title
             					</span>
         						</a>
@@ -262,7 +262,7 @@
         		<a href="#"
            	class="tile"
            	tal:attributes="href obj/getURL;title python:ttl">
-           	<span tal:replace="python:view.cropTitle(ttl, 15)">
+           	<span tal:replace="python:view.cropTitle(ttl, 14)">
              Title
             </span>
         		</a>
@@ -285,7 +285,7 @@
         		<a href="#"
            	class="tile"
            	tal:attributes="href obj/getURL;title python:ttl">
-           	<span tal:replace="python:view.cropTitle(ttl, 15)">
+           	<span tal:replace="python:view.cropTitle(ttl, 14)">
              Title
             </span>
         		</a>
@@ -330,7 +330,7 @@
         						<a href="#"
            					class="tile"
            					tal:attributes="href obj/getURL;title python:ttl">
-           					<span tal:replace="python:view.cropTitle(ttl, 15)">
+           					<span tal:replace="python:view.cropTitle(ttl, 14)">
              						Title
             					</span>
         						</a>
@@ -353,7 +353,7 @@
         		<a href="#"
            	class="tile"
            	tal:attributes="href obj/getURL;title python:ttl">
-           	<span tal:replace="python:view.cropTitle(ttl, 15)">
+           	<span tal:replace="python:view.cropTitle(ttl, 14)">
              Title
             </span>
         		</a>
@@ -376,7 +376,7 @@
         		<a href="#"
            	class="tile"
            	tal:attributes="href obj/getURL;title python:ttl">
-           	<span tal:replace="python:view.cropTitle(ttl, 15)">
+           	<span tal:replace="python:view.cropTitle(ttl, 14)">
              Title
             </span>
         		</a>
