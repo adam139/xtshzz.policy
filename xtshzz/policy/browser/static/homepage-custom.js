@@ -21,8 +21,9 @@ $(document).ready(function(){
 		  return false;
 		});				
 	StartRollV();
-	StartRollVs();
-	rolltext(".roll-wrapper");
+	$('.carousel').carousel();
+	//StartRollVs();
+	//rolltext(".roll-wrapper");
 	$("#quicksearch").on("click",".searchButton",function(){var a=$("#search_input").val();var b2=encodeURIComponent(a);var base=$("#ajax").attr('data-js-target');window.location.href=base+"/@@allorgnization_listings?orgname="+b2;return false;});$("#search_input").keypress(function(event){if(event.which==13){var a=$("#search_input").val();var b2=encodeURIComponent(a);var base=$("#ajax").attr('data-js-target');window.location.href=base+"/@@allorgnization_listings?orgname="+b2;return false;}});
 	});
 });
