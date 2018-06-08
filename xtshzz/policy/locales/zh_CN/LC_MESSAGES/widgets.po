@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mockup\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2017-06-23 22:25+0800\n"
+"PO-Revision-Date: 2018-06-08 10:42+0800\n"
 "Last-Translator: Adam <yuejun.tang@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -20,10 +20,6 @@ msgstr ""
 #: patterns/resourceregistry/js/builder.js
 msgid " css files to build"
 msgstr "要建立的CSS文件"
-
-#: patterns/relateditems/pattern.js
-msgid "(empty)"
-msgstr "(空)"
 
 # not sure
 #: patterns/resourceregistry/js/registry.js
@@ -114,7 +110,11 @@ msgstr "编译后CSS的预设路径"
 msgid "Automatically generated path to the compiled JavaScript."
 msgstr "编译后JavaScript的预设路径"
 
-#: patterns/upload/templates/upload.xml
+#: patterns/structure/templates/tablerow.xml
+msgid "Before publishing date"
+msgstr "在发布日期之前"
+
+#: patterns/relateditems/pattern.js
 msgid "Browse"
 msgstr "浏览"
 
@@ -172,7 +172,7 @@ msgstr "清除缓存"
 msgid "Clear cache"
 msgstr "清除缓存"
 
-#: patterns/pickadate/pattern.js
+#: patterns/resourceregistry/js/builder.js
 msgid "Close"
 msgstr "关闭"
 
@@ -223,6 +223,10 @@ msgstr "配置显示列"
 #: patterns/structure/js/actions.js
 msgid "Copied"
 msgstr "已复制"
+
+#: patterns/relateditems/pattern.js
+msgid "Current path:"
+msgstr "当前路径"
 
 #: patterns/filemanager/js/customize.js
 msgid "Customize"
@@ -279,6 +283,10 @@ msgstr "从本地电脑拖放文件进入下面区域或者点击浏览按钮。
 #: patterns/upload/templates/upload.xml
 msgid "Drop files here..."
 msgstr "将文件拖至此处..."
+
+#: patterns/filemanager/pattern.js
+msgid "Edit"
+msgstr "编辑"
 
 #: patterns/tinymce/pattern.js
 msgid "Email Address"
@@ -357,6 +365,10 @@ msgstr "存储 CSS 包时产生错误"
 msgid "Error uploading with TUS resumable uploads"
 msgstr "使用TUS上传可恢复的上传时产生错误"
 
+#: patterns/structure/templates/tablerow.xml
+msgid "Expired"
+msgstr "过期的"
+
 #: patterns/resourceregistry/js/registry.js
 msgid "Export"
 msgstr "导出"
@@ -386,6 +398,14 @@ msgstr "外部图片URL（能是本站的相对地址或者以http:// or https:/
 msgid "External URL (can be relative within this site or absolute if it starts with http:// or https://)"
 msgstr "外部URL（能是本站的相对地址或者以http:// or https://打头的绝对地址）"
 
+#: patterns/relateditems/pattern.js
+msgid "Favorites"
+msgstr "收藏夹"
+
+#: patterns/filemanager/pattern.js
+msgid "File"
+msgstr "文件"
+
 #: patterns/filemanager/js/addnew.js
 msgid "Filename"
 msgstr "文件名"
@@ -402,9 +422,33 @@ msgstr "筛选器"
 msgid "Filter..."
 msgstr "筛选..."
 
+#: patterns/filemanager/pattern.js
+msgid "Find"
+msgstr "发现"
+
+#: patterns/filemanager/js/findfile.js
+msgid "Find File"
+msgstr "发现文件"
+
+#: patterns/filemanager/js/findinfiles.js
+msgid "Find in File"
+msgstr "在文件中寻找"
+
+#: patterns/filemanager/pattern.js
+msgid "Find in Files"
+msgstr "在文件中寻找"
+
 #: patterns/filemanager/js/customize.js
 msgid "Find resource in plone to override"
 msgstr "搜寻 Resource 进行编辑"
+
+#: patterns/filemanager/js/findinfiles.js
+msgid "Find text within theme resource in plone"
+msgstr "在Plone的theme资源中发现文本"
+
+#: patterns/filemanager/js/findfile.js
+msgid "Find theme resource in plone"
+msgstr "在Plone中发现theme资源"
 
 #: patterns/resourceregistry/js/builder.js
 msgid "Finished!"
@@ -434,6 +478,10 @@ msgstr "初始"
 #: patterns/resourceregistry/js/registry.js
 msgid "Init instruction for requirejs shim"
 msgstr "用于 requirejs shim 初始指令"
+
+#: patterns/tinymce/pattern.js
+msgid "Inline"
+msgstr "不浮动"
 
 #: patterns/tinymce/pattern.js
 msgid "Insert"
@@ -471,6 +519,10 @@ msgstr "lESS 生成器"
 msgid "Last compilation"
 msgstr "前一次编译"
 
+#: patterns/tinymce/pattern.js
+msgid "Left"
+msgstr "左浮动"
+
 #: patterns/resourceregistry/pattern.js
 msgid "Less Variables"
 msgstr "Less 变量"
@@ -487,9 +539,17 @@ msgstr "调入……"
 msgid "Main JavaScript file"
 msgstr "主 JavaScript 文件"
 
+#: patterns/structure/js/views/app.js
+msgid "Manage selection"
+msgstr "管理选择"
+
 #: patterns/resourceregistry/js/registry.js
 msgid "Name"
 msgstr "名称"
+
+#: patterns/filemanager/pattern.js
+msgid "New file"
+msgstr "新文件"
 
 #: patterns/filemanager/js/newfolder.js
 msgid "New folder"
@@ -507,9 +567,17 @@ msgstr "下个月"
 msgid "No javascripts to build, skipping"
 msgstr "没有 JavaScript 建立，跳过"
 
+#: patterns/relateditems/pattern.js
+msgid "One level up"
+msgstr ""
+
 #: patterns/resourceregistry/js/overrides.js
 msgid "Only ++plone++ resources are available to override"
 msgstr "只有++plone++资源可以重写"
+
+#: patterns/relateditems/pattern.js
+msgid "Open folder"
+msgstr "打开文件夹"
 
 #: patterns/tinymce/pattern.js
 msgid "Open in new window"
@@ -579,6 +647,10 @@ msgstr "重新排列文件夹内容"
 msgid "Rearrange items in this folder"
 msgstr "重新排列此文件夹中条目"
 
+#: patterns/relateditems/pattern.js
+msgid "Recently Used"
+msgstr "最近使用的"
+
 #: patterns/thememapper/pattern.js
 msgid "Refresh"
 msgstr "刷新"
@@ -611,6 +683,10 @@ msgstr "资源"
 msgid "Resources base URL"
 msgstr "基于 URL 的资源"
 
+#: patterns/tinymce/pattern.js
+msgid "Responsive"
+msgstr "自适应"
+
 #: patterns/structure/js/views/rearrange.js
 msgid "Reverse"
 msgstr "逆序"
@@ -618,6 +694,10 @@ msgstr "逆序"
 #: patterns/querystring/pattern.js
 msgid "Reversed Order"
 msgstr "相反顺序"
+
+#: patterns/tinymce/pattern.js
+msgid "Right"
+msgstr "右浮动"
 
 #: patterns/thememapper/js/rulebuilderview.js
 msgid "Rule Builder"
@@ -638,14 +718,6 @@ msgstr "搜索"
 #: patterns/tinymce/pattern.js
 msgid "Search for item on site..."
 msgstr "搜索站点上的项目"
-
-#: patterns/relateditems/pattern.js
-msgid "Search:"
-msgstr "搜索:"
-
-#: patterns/tinymce/pattern.js
-msgid "Select a anchor"
-msgstr "选择一个锚点"
 
 #: patterns/pickadate/pattern.js
 msgid "Select a month"
@@ -697,7 +769,7 @@ msgstr "大小"
 
 #: patterns/querystring/pattern.js
 msgid "Sort on"
-msgstr "分类"
+msgstr "排序"
 
 #: patterns/tinymce/pattern.js
 msgid "Specify an image. It can be on this site already (Internal Image), an image you upload (Upload), or from an external site (External Image)."
@@ -718,10 +790,6 @@ msgstr "停止开发 JavaScript"
 #: patterns/resourceregistry/js/registry.js
 msgid "Stub JS Modules"
 msgstr "Stub JS Modules"
-
-#: patterns/tinymce/pattern.js
-msgid "Target"
-msgstr "目的"
 
 #: patterns/upload/pattern.js
 msgid "The file transfer failed"
@@ -751,6 +819,10 @@ msgstr "标题"
 msgid "Today"
 msgstr "今天"
 
+#: patterns/thememapper/pattern.js
+msgid "Tools"
+msgstr "工具"
+
 #: patterns/resourceregistry/js/registry.js
 msgid "URL"
 msgstr "URL"
@@ -764,10 +836,14 @@ msgid "Upload"
 msgstr "上传"
 
 #: patterns/filemanager/pattern.js
+msgid "Upload Local Files..."
+msgstr "上载本地文件"
+
+#: patterns/filemanager/pattern.js
 msgid "Upload file to current directory"
 msgstr "上传文件到当前目录"
 
-#: patterns/structure/js/views/app.js
+#: patterns/relateditems/pattern.js
 msgid "Upload files"
 msgstr "上传文件"
 
@@ -820,11 +896,6 @@ msgstr "天数"
 msgid "enter search phrase"
 msgstr "输入搜索短语"
 
-# not sure
-#: patterns/relateditems/pattern.js
-msgid "entire site"
-msgstr "整个站点"
-
 #: patterns/resourceregistry/js/overrides.js
 msgid "error loading resource for editing"
 msgstr "在导入资源用于编辑是产生错误"
@@ -837,10 +908,6 @@ msgstr "完成保存CSS包"
 #: patterns/livesearch/pattern.js
 msgid "found"
 msgstr "发现"
-
-#: patterns/relateditems/pattern.js
-msgid "home"
-msgstr "主页"
 
 #: patterns/resourceregistry/js/builder.js
 msgid "less compilation error on file "
@@ -884,8 +951,8 @@ msgid "shown"
 msgstr "展示"
 
 #: patterns/structure/js/views/app.js
-msgid "there was an error performing action"
-msgstr "执行操作出错"
+msgid "there was an error performing the action"
+msgstr "执行该操作发生错误"
 
 #: patterns/querystring/pattern.js
 msgid "to"

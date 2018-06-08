@@ -57,6 +57,22 @@ msgstr ""
 msgid "Yes, delete"
 msgstr ""
 
+#: ./patterns/filemanager/js/findfile.js
+msgid "Find File"
+msgstr ""
+
+#: ./patterns/filemanager/js/findfile.js
+msgid "Find theme resource in plone"
+msgstr ""
+
+#: ./patterns/filemanager/js/findinfiles.js
+msgid "Find in File"
+msgstr ""
+
+#: ./patterns/filemanager/js/findinfiles.js
+msgid "Find text within theme resource in plone"
+msgstr ""
+
 #: ./patterns/filemanager/js/newfolder.js
 msgid "New folder"
 msgstr ""
@@ -82,7 +98,15 @@ msgid "Save"
 msgstr ""
 
 #: ./patterns/filemanager/pattern.js
+msgid "New file"
+msgstr ""
+
+#: ./patterns/filemanager/pattern.js
 msgid "Add new file to current folder"
+msgstr ""
+
+#: ./patterns/filemanager/pattern.js
+msgid "Find in Files"
 msgstr ""
 
 #: ./patterns/filemanager/pattern.js
@@ -91,6 +115,22 @@ msgstr ""
 
 #: ./patterns/filemanager/pattern.js
 msgid "Delete currently selected resource"
+msgstr ""
+
+#: ./patterns/filemanager/pattern.js
+msgid "File"
+msgstr ""
+
+#: ./patterns/filemanager/pattern.js
+msgid "Edit"
+msgstr ""
+
+#: ./patterns/filemanager/pattern.js
+msgid "Find"
+msgstr ""
+
+#: ./patterns/filemanager/pattern.js
+msgid "Upload Local Files..."
 msgstr ""
 
 #: ./patterns/filemanager/pattern.js
@@ -142,18 +182,6 @@ msgid "There was an error loading modal."
 msgstr ""
 
 #: ./patterns/pickadate/pattern.js
-msgid "Clear"
-msgstr ""
-
-#: ./patterns/pickadate/pattern.js
-msgid "Close"
-msgstr ""
-
-#: ./patterns/pickadate/pattern.js
-msgid "Today"
-msgstr ""
-
-#: ./patterns/pickadate/pattern.js
 msgid "Next month"
 msgstr ""
 
@@ -167,6 +195,14 @@ msgstr ""
 
 #: ./patterns/pickadate/pattern.js
 msgid "Select a year"
+msgstr ""
+
+#: ./patterns/pickadate/pattern.js
+msgid "Today"
+msgstr ""
+
+#: ./patterns/pickadate/pattern.js
+msgid "Clear"
 msgstr ""
 
 #: ./patterns/pickadate/pattern.js
@@ -210,19 +246,35 @@ msgid "Reversed Order"
 msgstr ""
 
 #: ./patterns/relateditems/pattern.js
-msgid "home"
+msgid "Open folder"
 msgstr ""
 
 #: ./patterns/relateditems/pattern.js
-msgid "entire site"
+msgid "One level up"
 msgstr ""
 
 #: ./patterns/relateditems/pattern.js
-msgid "Search:"
+msgid "Favorites"
 msgstr ""
 
 #: ./patterns/relateditems/pattern.js
-msgid "(empty)"
+msgid "Current path:"
+msgstr ""
+
+#: ./patterns/relateditems/pattern.js
+msgid "Browse"
+msgstr ""
+
+#: ./patterns/relateditems/pattern.js
+msgid "Recently Used"
+msgstr ""
+
+#: ./patterns/relateditems/pattern.js
+msgid "Upload files"
+msgstr ""
+
+#: ./patterns/resourceregistry/js/builder.js
+msgid "Close"
 msgstr ""
 
 #: ./patterns/resourceregistry/js/builder.js
@@ -566,7 +618,7 @@ msgid "operation url ${url} is not valid"
 msgstr ""
 
 #: ./patterns/structure/js/views/app.js
-msgid "there was an error performing action"
+msgid "there was an error performing the action"
 msgstr ""
 
 #: ./patterns/structure/js/views/app.js
@@ -578,15 +630,15 @@ msgid "Selected"
 msgstr ""
 
 #: ./patterns/structure/js/views/app.js
+msgid "Manage selection"
+msgstr ""
+
+#: ./patterns/structure/js/views/app.js
 msgid "Rearrange"
 msgstr ""
 
 #: ./patterns/structure/js/views/app.js
 msgid "Rearrange folder contents"
-msgstr ""
-
-#: ./patterns/structure/js/views/app.js
-msgid "Upload files"
 msgstr ""
 
 #: ./patterns/structure/js/views/columns.js
@@ -658,7 +710,19 @@ msgid "shown"
 msgstr ""
 
 #: ./patterns/structure/templates/table.xml
+msgid "Title"
+msgstr ""
+
+#: ./patterns/structure/templates/table.xml
 msgid "Actions"
+msgstr ""
+
+#: ./patterns/structure/templates/tablerow.xml
+msgid "Expired"
+msgstr ""
+
+#: ./patterns/structure/templates/tablerow.xml
+msgid "Before publishing date"
 msgstr ""
 
 #: ./patterns/thememapper/js/cacheview.js
@@ -745,6 +809,10 @@ msgstr ""
 msgid "Show help"
 msgstr ""
 
+#: ./patterns/thememapper/pattern.js
+msgid "Tools"
+msgstr ""
+
 #: ./patterns/tinymce/pattern.js
 msgid "Search for item on site..."
 msgstr ""
@@ -755,10 +823,6 @@ msgstr ""
 
 #: ./patterns/tinymce/pattern.js
 msgid "Insert link"
-msgstr ""
-
-#: ./patterns/tinymce/pattern.js
-msgid "Title"
 msgstr ""
 
 #: ./patterns/tinymce/pattern.js
@@ -798,7 +862,43 @@ msgid "Alternative Text"
 msgstr ""
 
 #: ./patterns/tinymce/pattern.js
+msgid "Specify an image. It can be on this site already (Internal Image), an image you upload (Upload), or from an external site (External Image)."
+msgstr ""
+
+#: ./patterns/tinymce/pattern.js
+msgid "External Image"
+msgstr ""
+
+#: ./patterns/tinymce/pattern.js
+msgid "Internal Image"
+msgstr ""
+
+#: ./patterns/tinymce/pattern.js
+msgid "Specify the object to link to. It can be on this site already (Internal), an object you upload (Upload), from an external site (External), an email address (Email), or an anchor on this page (Anchor)."
+msgstr ""
+
+#: ./patterns/tinymce/pattern.js
+msgid "External"
+msgstr ""
+
+#: ./patterns/tinymce/pattern.js
 msgid "External Image URL (can be relative within this site or absolute if it starts with http:// or https://)"
+msgstr ""
+
+#: ./patterns/tinymce/pattern.js
+msgid "Inline"
+msgstr ""
+
+#: ./patterns/tinymce/pattern.js
+msgid "Right"
+msgstr ""
+
+#: ./patterns/tinymce/pattern.js
+msgid "Left"
+msgstr ""
+
+#: ./patterns/tinymce/pattern.js
+msgid "Responsive"
 msgstr ""
 
 #: ./patterns/tinymce/pattern.js
