@@ -103,7 +103,13 @@
       layer="zope.interface.Interface"       
       permission="cmf.ModifyPortalContent"
       />          
-
+   <browser:page
+      for="Products.CMFCore.interfaces.ISiteRoot"
+      name="clear_TTWresources"
+      class=".manage_tools.clearResource"
+      layer="zope.interface.Interface"       
+      permission="cmf.ModifyPortalContent"
+      />
      
    <z3c:widgetTemplate
         mode="input"

@@ -6,7 +6,7 @@ from Products.Five.utilities.marker import mark
 from zope.publisher.interfaces import IPublishTraverse
 from Products.Five.browser import BrowserView
 from zope.interface import Interface
-
+from Products.CMFPlone.interfaces.resources import OVERRIDE_RESOURCE_DIRECTORY_NAME
 from zExceptions import NotFound
 
 
@@ -59,6 +59,25 @@ class setDate(setLayout):
         context.reindexObject(idxs=['created', 'modified'])
 
         return "date on '%s' successfully set to %s." % (context.Title(), datev)    
+
+class clearResource (setLayout):
+    """ clear TTW customized resources in ZODB
+    通过:SITENAME/@@clear_TTWresources形式来嗲。
+    """
+    def __call__(self):
+        from plone.resource.interfaces import IResourceDirectory
+        from zope.component import queryUtility
+        persistent_directory = queryUtility(IResourceDirectory, name='persistent')
+        container = persistent_directory[OVERRIDE_RESOURCE_DIRECTORY_NAME]
+#         import pdb
+#         pdb.set_trace()
+        try:
+            static = container['static']
+            for res in static.listDirectory():                
+                static.__delitem__(res)
+            return "remove static resources successful"
+        except:        
+            return "remove static resources failed"         
 
 class addMarkInterface(setLayout):
     """
