@@ -51,7 +51,12 @@ prefix="plone" />
     <value key="last_compilation">2017-07-31 08:00:00</value>
     <value key="compile">False</value>
     <value key="enabled">True</value>
-  </records>  
+  </records>
+  
+<records prefix="plone.resources/imagesize-limit"
+         interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+    <value key="js">++resource++xtshzz.policy/imagesize-limit.js</value>
+</records>    
   <!-- custom TinyMCE templates -->	
 <!-- activate the plugin -->
 <record name="plone.custom_plugins" interface="Products.CMFPlone.interfaces.controlpanel.ITinyMCESchema" field="custom_plugins">
