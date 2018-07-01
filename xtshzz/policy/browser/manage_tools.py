@@ -36,6 +36,33 @@ class setLayout(BrowserView):
             return "success"
         except:
             return "error"   
+
+class addLink2Collection(setLayout):
+    """add link content type to the specify collection.
+    通过:collectionobj@@addLink2Collection形式来设置。
+    """
+
+   
+    def __call__(self):
+#         datev = self.layout
+        context = self.context
+        linkquery = {u'i': u'portal_type', u'o': u'plone.app.querystring.operation.selection.any', u'v': [u'Link', u'Document']}
+        from plone.app.contenttypes.behaviors.collection import ICollection as ICollection_behavior
+        query = ICollection_behavior(context).query
+#         import pdb
+#         pdb.set_trace()
+        for qr in query:
+            if qr['i'] == 'portal_type':
+                break
+        if bool(qr):
+            query.remove(qr)
+            query.append(linkquery)
+            
+        ICollection_behavior(context).query = query
+             
+
+
+        return "link type has been added to  '%s' successfully ." % (context.Title()) 
     
 class setDate(setLayout):
     """set content object create date for dexterity content types.

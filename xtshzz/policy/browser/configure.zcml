@@ -102,7 +102,14 @@
       class=".manage_tools.setDate"
       layer="zope.interface.Interface"       
       permission="cmf.ModifyPortalContent"
-      />          
+      /> 
+   <browser:page
+      for="*"
+      name="addLink2Collection"
+      class=".manage_tools.addLink2Collection"
+      layer="zope.interface.Interface"       
+      permission="cmf.ModifyPortalContent"
+      />                
    <browser:page
       for="Products.CMFCore.interfaces.ISiteRoot"
       name="clear_TTWresources"
