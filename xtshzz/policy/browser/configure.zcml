@@ -129,11 +129,11 @@
  		layer=".interfaces.IXtshzzThemeSpecific"
  		template="templates/captcha_input.pt" /> 		
 
-   <adapter factory=".widget.LeadImageMinSizeImageFieldWidget" />
+   <adapter factory=".widgets.LeadImageMinSizeImageFieldWidget" />
    <z3c:widgetTemplate
   mode="input"
   widget=".interfaces.IMinSizeImageWidget"
-  layer=".interfaces.IExercise6Layer"
+  layer=".interfaces.IXtshzzThemeSpecific"
   template="templates/image_widget.pt"
   />
 
