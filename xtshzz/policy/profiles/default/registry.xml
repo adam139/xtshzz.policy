@@ -30,18 +30,32 @@ prefix="plone" />
       </value>
       <value key="deps">jquery</value>
  </records> 
-  
+<records prefix="plone.resources/homepage"
+         interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+      <value key="js">++resource++xtshzz.policy/homepage-custom.js</value>
+      <value key="css">
+        <element>++resource++xtshzz.policy/homepage.less</element>
+      </value>
+      <value key="deps">jquery</value>
+</records>  
     <!-- Bundles -->
   <records prefix="plone.bundles/homepage-legacy"
             interface='Products.CMFPlone.interfaces.IBundleRegistry'>    
-    <value key="depends">plone</value>
-    <value key="jscompilation">++resource++xtshzz.policy/homepage-custom.js</value>
-    <value key="csscompilation">++resource++xtshzz.policy/homepage.minv2.css</value>
-    <value key="last_compilation">2015-08-14 00:00:00</value>
+  <value key="resources">
+    <element>homepage</element>
+  </value>    
+    <value key="depends">plone</value>    
+    <value key="jscompilation">++resource++xtshzz.policy/homepage-compiled.min.js</value>
+    <value key="csscompilation">++resource++xtshzz.policy/homepage-compiled.css</value>
+    <value key="last_compilation">2016-08-14 00:00:00</value>
     <value key="compile">True</value>
     <value key="enabled">False</value>
     <value key="stub_js_modules">
+        <element>jquery</element>
+        <element>bootstrap-carousel</element>
+        <element>bootstrap-tabs</element>
         <element>roll</element>
+        
     </value>
   </records>         
   <records prefix="plone.bundles/legacy-custom"
