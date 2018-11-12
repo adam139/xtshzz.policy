@@ -5,12 +5,10 @@
 		<object name="dexterity_membrane_workflow" meta_type="Workflow"/>
     <bindings>
     	<default/>
-    	    <type type_id="my315ok.socialorgnization.orgnization">
+    	<type type_id="my315ok.socialorgnization.orgnization">
             <bound-workflow workflow_id="simple_publication_workflow"/>
-        </type>    	
-    	    <type type_id="my315ok.socialorgnization.orgnizationsurvey">
-            <bound-workflow workflow_id="organization_anual_survey_workflow"/>
-        </type>
+        </type> 	
+
         <type type_id="dexterity.membrane.organizationmember">
       				<bound-workflow workflow_id="dexterity_membrane_workflow" />
 			</type>

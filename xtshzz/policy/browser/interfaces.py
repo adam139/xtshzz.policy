@@ -4,6 +4,12 @@ from zope import schema
 from plone.theme.interfaces import IDefaultPloneLayer
 from xtshzz.policy import MessageFactory as _
 
+from plone.formwidget.namedfile.interfaces import INamedImageWidget
+
+
+class IMinSizeImageWidget(INamedImageWidget):
+    pass
+
 class IXtshzzThemeSpecific(Interface):
     """Marker interface that defines a ZTK browser layer. We can reference
     this in the 'layer' attribute of ZCML <browser:* /> directives to ensure
