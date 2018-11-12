@@ -231,7 +231,7 @@
   				<div class="tab-content">
    				<div role="tabpanel" class="tab-pane" id="dangwuguanli">
          		<ul class="tabcontent-lists">
-         		<tal:group tal:repeat="obj python:view.collection('dangwuguanli',7)">    				
+         		<tal:group tal:repeat="obj python:view.collection('dangwuguanli',11)">    				
     						<li class="portletItem"
         					tal:define="oddrow repeat/obj/odd;ttl obj/Title"
         					tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
@@ -254,7 +254,7 @@
     				</div>
     			<div role="tabpanel" class="tab-pane active" id="dangjianxinxi">
          	<ul class="tabcontent-lists">    	
-         	<tal:group tal:repeat="obj python:view.collection('dangjianxinxi',7)">
+         	<tal:group tal:repeat="obj python:view.collection('dangjianxinxi',11)">
     				<li class="portletItem"
         		tal:define="oddrow repeat/obj/odd;ttl obj/Title"
         		tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
@@ -277,7 +277,7 @@
     			</div>
     			<div role="tabpanel" class="tab-pane" id="dangwujiaoliu">
          	<ul class="tabcontent-lists">    	
-         	<tal:group tal:repeat="obj python:view.collection('dangwujiaoliu',7)">
+         	<tal:group tal:repeat="obj python:view.collection('dangwujiaoliu',11)">
     				<li class="portletItem"
         		tal:define="oddrow repeat/obj/odd;ttl obj/Title"
         		tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
@@ -322,7 +322,7 @@
   				<div class="tab-content">
    				<div role="tabpanel" class="tab-pane" id="hudongjiaoliu">
          		<ul class="tabcontent-lists">
-         		<tal:group tal:repeat="obj python:view.collection('hudongjiaoliu',7)">    				
+         		<tal:group tal:repeat="obj python:view.collection('hudongjiaoliu',11)">    				
     						<li class="portletItem"
         					tal:define="oddrow repeat/obj/odd;ttl obj/Title"
         					tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
@@ -345,7 +345,7 @@
     		</div>
             <div role="tabpanel" class="tab-pane active" id="zaixianpeixun">
          	<ul class="tabcontent-lists">    	
-         	<tal:group tal:repeat="obj python:view.collection('zaixianpeixun',7)">
+         	<tal:group tal:repeat="obj python:view.collection('zaixianpeixun',11)">
     				<li class="portletItem"
         		tal:define="oddrow repeat/obj/odd;ttl obj/Title"
         		tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
@@ -368,7 +368,7 @@
     		</div>    				
     		<div role="tabpanel" class="tab-pane" id="zhengcefagui">
          	<ul class="tabcontent-lists">    	
-         	<tal:group tal:repeat="obj python:view.collection('zhengcefagui',7)">
+         	<tal:group tal:repeat="obj python:view.collection('zhengcefagui',11)">
     				<li class="portletItem"
         		tal:define="oddrow repeat/obj/odd;ttl obj/Title"
         		tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
@@ -418,7 +418,9 @@
 			<a tal:attributes="href python:'http://222.240.178.46:6888/sorg/jsp/ext/som/login/login.jsp'">
 				<img src="http://images.315ok.org/xtshzz/images/mzhtguanlipt.jpg" class="up img-responsive" alt="民政厅管理平台">					
 			</a>
-
+			<a tal:attributes="href python:'http://www.chinanpo.gov.cn/search/orgindex.html'">
+				<img src="http://images.315ok.org/xtshzz/images/social_orgs_search.jpg" class="up2 img-responsive" alt="民政厅管理平台">					
+			</a>
 			<a tal:attributes="href python:p +'/xinxigongkai/tongzhigonggao/xiangtanshiminzhengjuxingzhengshenpizhongjiefuwushixiangqingdan'">
 				<img src="http://images.315ok.org/xtshzz/images/zhongjiefuwubar3.jpg" class="mid img-responsive" alt="社会组织促进会">					
 			</a>			
