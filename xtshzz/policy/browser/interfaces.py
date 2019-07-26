@@ -1,26 +1,22 @@
-from zope.interface import Interface
-from zope import schema
-
+from plone.formwidget.namedfile.interfaces import INamedImageWidget
 from plone.theme.interfaces import IDefaultPloneLayer
 from xtshzz.policy import MessageFactory as _
-
-from plone.formwidget.namedfile.interfaces import INamedImageWidget
+from zope import schema
+from zope.interface import Interface
 
 
 class IMinSizeImageWidget(INamedImageWidget):
     pass
 
+
 class IXtshzzThemeSpecific(Interface):
     """Marker interface that defines a ZTK browser layer. We can reference
     this in the 'layer' attribute of ZCML <browser:* /> directives to ensure
     the relevant registration only takes effect when this theme is installed.
-    
+
     The browser layer is installed via the browserlayer.xml GenericSetup
     import step.
     """
-
-
-
 
 
 class IDropdownConfiguration(Interface):
@@ -75,4 +71,4 @@ class IDropdownMenuViewlet(Interface):
     """
 
     def getTabObject(tabUrl=''):
-        """Get the submenu tree for tab object"""   
+        """Get the submenu tree for tab object"""

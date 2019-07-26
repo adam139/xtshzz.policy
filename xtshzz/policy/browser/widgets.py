@@ -1,5 +1,5 @@
-from .interfaces import IXtshzzThemeSpecific
 from .interfaces import IMinSizeImageWidget
+from .interfaces import IXtshzzThemeSpecific
 from plone.app.contenttypes.behaviors.leadimage import ILeadImage
 from plone.formwidget.namedfile.widget import NamedImageWidget
 from plone.namedfile.interfaces import INamedImageField

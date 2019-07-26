@@ -1,11 +1,11 @@
 # -*- coding: UTF-8 -*-
 
-from plone.i18n.normalizer.interfaces import INormalizer
-from zope.interface import implements
 from plone.i18n.normalizer.base import mapUnicode
-
+from plone.i18n.normalizer.interfaces import INormalizer
 # Chinese character to pinyin mapping
 from xtshzz.policy.patch.pinyin import PinYinDict as mapping
+from zope.interface import implements
+
 
 class Normalizer(object):
     """
@@ -30,5 +30,6 @@ class Normalizer(object):
         """
 
         return mapUnicode(text, mapping=mapping)
+
 
 normalizer = Normalizer()

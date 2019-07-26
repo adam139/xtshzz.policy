@@ -1,16 +1,18 @@
-#-*- coding: UTF-8 -*-
-from Products.CMFPlone import PloneMessageFactory as _p
-from plone.app.layout.viewlets.content import WorkflowHistoryViewlet
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+# -*- coding: UTF-8 -*-
 from Acquisition import aq_inner
-from Products.CMFPlone.utils import log
+from plone.app.layout.viewlets.content import WorkflowHistoryViewlet
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.WorkflowCore import WorkflowException
+from Products.CMFPlone import PloneMessageFactory as _p
+from Products.CMFPlone.utils import log
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
 import logging
+
 
 class ReviewViewlet(WorkflowHistoryViewlet):
     render = ViewPageTemplateFile("templates/review_history.pt")
-    
+
     def workflowHistory(self, complete=True):
         """Return workflow history of this context.
 
@@ -29,8 +31,8 @@ class ReviewViewlet(WorkflowHistoryViewlet):
 
         try:
             # get total history
-#            import pdb
-#            pdb.set_trace()
+            #            import pdb
+            #            pdb.set_trace()
             review_history = workflow.getInfoFor(context, 'review_history')
 
             if not complete:
@@ -57,7 +59,8 @@ class ReviewViewlet(WorkflowHistoryViewlet):
                 else:
                     r['actor'] = membership.getMemberInfo(actorid)
                     if r['actor'] is not None:
-                        r['actor_home'] = self.navigation_root_url + '/author/' + actorid
+                        r['actor_home'] = self.navigation_root_url + \
+                            '/author/' + actorid
                     else:
                         # member info is not available
                         # the user was probably deleted
@@ -70,4 +73,3 @@ class ReviewViewlet(WorkflowHistoryViewlet):
                 severity=logging.DEBUG)
 
         return review_history
-    

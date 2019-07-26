@@ -1,20 +1,21 @@
 # -*- coding: utf-8 -*-
-from Products.CMFCore.utils import getToolByName
-from Products.membrane.interfaces import IMembraneUserObject
+from dexterity.membrane.behavior.membranepassword import IProvidePasswords
 from dexterity.membrane.behavior.membraneuser import IMembraneUser
 from dexterity.membrane.behavior.membraneuser import INameFromFullName
-from dexterity.membrane.behavior.membranepassword import IProvidePasswords
 from dexterity.membrane.membrane_helpers import get_user_id_for_email
 from dexterity.membrane.testing import DEXTERITY_MEMBRANE_FUNCTIONAL_TESTING
 from plone.app.content.interfaces import INameFromTitle
 from plone.app.dexterity.behaviors import metadata
 from plone.app.referenceablebehavior.referenceable import IReferenceable
-from plone.app.testing import TEST_USER_NAME
-from plone.app.testing import TEST_USER_ID
 from plone.app.testing import login
 from plone.app.testing import logout
 from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
+from plone.app.testing import TEST_USER_NAME
 from plone.behavior.interfaces import IBehaviorAssignable
+from Products.CMFCore.utils import getToolByName
+from Products.membrane.interfaces import IMembraneUserObject
+
 import unittest
 
 
@@ -36,7 +37,9 @@ class TestMember(unittest.TestCase):
     def test_create_member(self):
         member = self._createType(
             self.layer['portal'], 'dexterity.membrane.organizationmember', 'jane')
-        self.assertEqual(member.portal_type, 'dexterity.membrane.organizationmember')
+        self.assertEqual(
+            member.portal_type,
+            'dexterity.membrane.organizationmember')
 
     def test_member_is_membrane_type(self):
         membrane = getToolByName(self.layer['portal'], 'membrane_tool')
@@ -262,8 +265,8 @@ class TestMember(unittest.TestCase):
         wf_tool.doActionFor(bob, 'approve')
         # Do some reindexing for good measure (alternatively: fire
         # some events).
-        #membrane.reindexObject(joe)
-        #membrane.reindexObject(bob)
+        # membrane.reindexObject(joe)
+        # membrane.reindexObject(bob)
         # Test roles of enabled joe:
         self.assertEqual(
             joe_member.getRolesInContext(self.layer['portal']),
@@ -325,7 +328,8 @@ class TestMember(unittest.TestCase):
         # Test default roles:
         self.assertEqual(
             sorted(joe_member.getRolesInContext(self.layer['portal'].joe)),
-            ['Authenticated', u'Creator', u'Editor', u'Reader', 'Social Organization']
+            ['Authenticated', u'Creator', u'Editor',
+                u'Reader', 'Social Organization']
         )
         # Adjust the registry setting
         from zope.component import getUtility
