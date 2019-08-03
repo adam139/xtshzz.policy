@@ -24,12 +24,12 @@
      replacement=".i18n.__call__"
   /> 
 
-
+<!--
     <monkey:patch
      description="patch file field class for file download"
      class ="plone.app.blob.field.BlobWrapper"
      original="index_html"
      replacement=".filedownload.index_html"
   /> 
-
+-->
 </configure>
