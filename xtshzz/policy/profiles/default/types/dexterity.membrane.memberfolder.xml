@@ -7,7 +7,7 @@ i18n:domain="dexterity.membrane" xmlns:i18n="http://xml.zope.org/namespaces/i18n
 <property name="description"
 i18n:translate="">memberfolder for site member</property>
 <property name="icon_expr">string:${portal_url}/folder_icon.png</property>
-<property name="factory">dexterity.membrane.content.memberfolder</property>
+<property name="factory">my315ok.socialorgnization.content.memberfolder</property>
 <property name="global_allow">True</property>
 <property name="filter_content_types">True</property>
 <property name="allowed_content_types">
@@ -18,7 +18,7 @@ i18n:translate="">memberfolder for site member</property>
 </property>
 <property name="allow_discussion">False</property>
 <!-- schema and class used for content items -->
-<property name="schema">dexterity.membrane.content.memberfolder.IMemberfolder</property>
+<property name="schema">my315ok.socialorgnization.content.memberfolder.IMemberfolder</property>
 <property name="klass">plone.dexterity.content.Container</property>
 <property name="behaviors">
 <element value="plone.app.content.interfaces.INameFromTitle" />
