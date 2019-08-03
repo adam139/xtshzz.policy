@@ -1,8 +1,8 @@
 # -*- coding: UTF-8 -*-
 from dexterity.membrane import _ as _dm
-from dexterity.membrane.content.member import IOrganizationMember
-from dexterity.membrane.content.member import ISponsorMember
-from dexterity.membrane.content.memberfolder import IMemberfolder
+from my315ok.socialorgnization.content.member import IOrganizationMember
+from my315ok.socialorgnization.content.member import ISponsorMember
+from my315ok.socialorgnization.content.memberfolder import IMemberfolder
 from five import grok
 from plone.dexterity.utils import createContentInContainer
 from plone.directives import form
@@ -64,14 +64,13 @@ class IRegistrationForm(IOrganizationMember):
                               required=True)
 
     form.omitted(
-        'description',
+#         'description',
         'homepage',
         'bio',
         'last_name',
-        'first_name',
-        'photo')
+        'first_name')
 
-    form.no_omit(IEditForm, 'description', 'homepage')
+    form.no_omit(IEditForm,  'homepage')
 
 
 @form.validator(field=IRegistrationForm['captcha'])
@@ -172,14 +171,13 @@ class IRegistrationSponsorForm(ISponsorMember):
                               required=True)
 
     form.omitted(
-        'description',
+#         'description',
         'homepage',
         'bio',
         'last_name',
-        'first_name',
-        'photo')
+        'first_name')
 
-    form.no_omit(IEditForm, 'description', 'homepage')
+    form.no_omit(IEditForm, 'homepage')
 
 
 @form.validator(field=IRegistrationSponsorForm['captcha'])

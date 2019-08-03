@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from dexterity.membrane.content.member import IOrganizationMember
-from dexterity.membrane.content.member import ISponsorMember
+from my315ok.socialorgnization.content.member import IOrganizationMember
+from my315ok.socialorgnization.content.member import ISponsorMember
 from my315ok.socialorgnization.content.orgnization import IOrgnization
 from Products.CMFCore.utils import getToolByName
 from xtshzz.policy import MessageFactory as _

@@ -16,18 +16,18 @@
     <include package=".portlet" />
     <include file="permissions.zcml" />
 
-<subscriber
-    for="dexterity.membrane.content.member.ISponsorMember
+  <subscriber
+    for="my315ok.socialorgnization.content.member.ISponsorMember
          zope.lifecycleevent.IObjectAddedEvent"
     handler=".subscriber.updateSponsorOperator"
     />
-<subscriber
+  <subscriber
     for="Products.PluggableAuthService.interfaces.events.IUserLoggedInEvent"
     handler=".subscriber.userLoginedIn"
     />
 
   <!-- -*- cusomize indexer -*- -->
-        <adapter factory=".indexer.indexer_text" name="text" /> 
+  <adapter factory=".indexer.indexer_text" name="text" /> 
 
   <genericsetup:registerProfile
       name="default"

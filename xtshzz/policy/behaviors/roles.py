@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-from dexterity.membrane.behavior.membraneuser import DxUserObject
+from dexterity.membrane.behavior.user import DxUserObject
 from dexterity.membrane.behavior.membraneuser import IMembraneUser
-from dexterity.membrane.content.member import IOrganizationMember
-from dexterity.membrane.content.member import ISponsorMember
+from my315ok.socialorgnization.content.member import IOrganizationMember
+from my315ok.socialorgnization.content.member import ISponsorMember
 from Products.membrane.interfaces import IMembraneUserRoles
 from zope.component import adapter
 from zope.interface import implementer

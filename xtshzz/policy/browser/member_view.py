@@ -3,8 +3,8 @@ from Acquisition import aq_inner
 from dexterity.membrane import _
 from dexterity.membrane.behavior.membranepassword import IProvidePasswords
 from dexterity.membrane.content.member import IMember
-from dexterity.membrane.content.member import IOrganizationMember
-from dexterity.membrane.content.member import ISponsorMember
+from my315ok.socialorgnization.content.member import IOrganizationMember
+from my315ok.socialorgnization.content.member import ISponsorMember
 from five import grok
 from my315ok.socialorgnization.content.orgnization import IOrgnization
 from my315ok.socialorgnization.content.orgnization import IOrgnization_annual_survey
