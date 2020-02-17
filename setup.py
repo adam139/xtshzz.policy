@@ -26,7 +26,6 @@ setup(name='xtshzz.policy',
       install_requires=[
           'setuptools',
           'Products.CMFPlone',
-          'collective.z3cform.datetimewidget',
           'Products.membrane>=2.0.2',          
           'five.grok',
           'collective.wtf',
